@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="breadcrumbs" destination="bc-container" as="breadcrumbs" before="-"/>
+        <move element="cms_page" destination="cms-page" as="cms_page"/>
+
+        <referenceBlock name="side_menu">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Hiperdino_Anniversary2020::html/side/side_anniversary2020_menu.phtml</argument>
+            </action>
+        </referenceBlock>
+        
+        <referenceContainer name="content">
+            <block class="Hiperdino\Anniversary2020\Block\Customer\Edit" name="hdanniversary2020_customer_edit" template="Hiperdino_Anniversary2020::customer/edit.phtml" cacheable="false" />
+        </referenceContainer>
+    </body>
+</page>

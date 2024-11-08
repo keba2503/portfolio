@@ -1,0 +1,455 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="hiperdino_anniversary2020" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Aniversario Participaciones</label>
+            <tab>singular</tab>
+            <resource>Hiperdino_Anniversary2020::anniversary2020_configuration</resource>
+            <group id="general" translate="label" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configuración</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitado</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="id_raffle" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>ID de sorteo</label>
+                    <comment>Identificación de sorteo</comment>
+                </field>
+                <field id="promo_start" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fecha de inicio</label>
+                    <frontend_model>Hiperdino\Anniversary2020\Block\Adminhtml\DatePicker</frontend_model>
+                    <comment>Fecha de inicio de promoción (YYYY/mm/dd)</comment>
+                </field>
+                <field id="promo_end" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fecha de fin</label>
+                    <frontend_model>Hiperdino\Anniversary2020\Block\Adminhtml\DatePicker</frontend_model>
+                    <comment>Fecha de fin de promoción (YYYY/mm/dd)</comment>
+                </field>
+                <field id="final_promotion_title" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Titulo promoción final</label>
+                    <comment>Para la tabla de participaciones</comment>
+                </field>
+                <field id="message_out_promotion" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Mensaje fuera de promoción</label>
+                    <comment>Mensaje de los servicios cuando se llamen fuera de las fechas de la promoción</comment>
+                </field>
+                <field id="text_terms_promotion" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Términos para la aceptación de la promoción</label>
+                    <comment>Texto para la aceptación de los términos de la promoción</comment>
+                </field>
+                <field id="terms_accept" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Términos para la aceptación de la promoción</label>
+                    <comment>Texto para la aceptación de los términos de la promoción - checkbox</comment>
+                </field>
+                <field id="terms_accept_app" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Términos para la aceptación de la promoción</label>
+                    <comment>Texto para la aceptación de los términos de la promoción - checkbox APP</comment>
+                </field>
+                <field id="url_page_terms_promotion1" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL página de política de privacidad</label>
+                    <comment>Terminación de la URL para mostrar los términos de la página de aceptación de la política de privacidad</comment>
+                </field>
+                <field id="url_page_terms_promotion2" translate="label" type="text" sortOrder="51" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL página de condiciones de aniversario</label>
+                    <comment>Terminación de la URL para mostrar los términos de la página de aceptación de las condiciones de aniversario </comment>
+                </field>
+                <field id="text_terms_promotion_app" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Términos para la aceptación de la promoción APP</label>
+                    <comment>Texto para la aceptación de los términos de la promoción</comment>
+                </field>
+                <field id="url_page_terms_promotion1_app" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL página de política de privacidad APP</label>
+                    <comment>Terminación de la URL para mostrar los términos de la página de aceptación de la política de privacidad</comment>
+                </field>
+                <field id="url_page_terms_promotion2_app" translate="label" type="text" sortOrder="51" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL página de condiciones de aniversario APP</label>
+                    <comment>Terminación de la URL para mostrar los términos de la página de aceptación de las condiciones de aniversario </comment>
+                </field>
+                <field id="text_email_promotion" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto promocional</label>
+                    <comment>Texto promocional que aparecerá en email, las vista de pedido, etc</comment>
+                </field>
+                <field id="text_rgpd" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto de registro RGPD</label>
+                    <comment>Texto de registro exitoso de RGPD</comment>
+                </field>
+                <field id="url_email_promotion" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL a la página promocional</label>
+                    <comment>URL a la página promocional que aparecerá en email, las vista de pedido, etc (No desde la app)</comment>
+                </field>
+            </group>
+            <group id="import" translate="label" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Importación de rascas</label>
+                <field id="csv" translate="label" type="file" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Archivo de importación</label>
+                    <backend_model>Hiperdino\Anniversary2020\Model\Config\Backend\File</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020</upload_dir>
+                    <comment>El formato del archivo debe ser CSV.</comment>
+                </field>
+            </group>
+            <group id="register_rasca" translate="label" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configuración página de registro de rascas</label>
+                <field id="tittle" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Título de la página</label>
+                </field>
+                <field id="text_out_promotion" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto fuera promoción</label>
+                    <comment>Texto que se mostrará en la vista del registro de rasca cuando no se encuentre dentro de los días activos de la promoción</comment>
+                </field>
+                <field id="text_promotion_header" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto promoción superior</label>
+                    <comment>Texto que se mostrará en la vista del registro de rasca bajo el título de la página cuando esté activa la promoción</comment>
+                </field>
+                <field id="text_promotion_footer" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto promoción inferior</label>
+                    <comment>Texto que se mostrará en la vista del registro de rasca bajo el recuadro donde se introducirá el código del rasca, cuando esté activa la promoción</comment>
+                </field>
+                <field id="image_promotion" translate="label" type="image" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL de la imagen de la promoción</label>
+                    <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/image_promotion</upload_dir>
+                    <base_url type="media" scope_info="1">anniversary2020/image_promotion</base_url>
+                    <comment>El formato de la imagen debe ser jpg.</comment>
+                </field>
+                <field id="image_code_participation" translate="label" type="image" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL de la imagen de donde encuentro mi código</label>
+                    <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/image_code_participation</upload_dir>
+                    <base_url type="media" scope_info="1">anniversary2020/image_code_participation</base_url>
+                    <comment>El formato de la imagen debe ser jpg.</comment>
+                </field>
+                <field id="num_max_wrong_rascas_registered" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Número máximo intentos erroneos de registro</label>
+                    <comment>Número máximo de intentos de registro de rascas erroneos por día para cada usuario. Si no se añade cantidad, por defecto será 20.</comment>
+                </field>
+                <field id="error_max_wrong_rascas_registered" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Mensaje error al superar num de intentos erroneos</label>
+                    <comment>Mensaje que se le mostrará al usuario al alcanzar el número máximo de intentos erroneos de registro</comment>
+                </field>
+                <field id="error_invalid_rasca" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Mensaje error rasca no válido</label>
+                    <comment>Mensaje que se le mostrará al usuario al introducir un rasca con formato no válido o que no exista</comment>
+                </field>
+                <field id="error_registered_rasca" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Mensaje error rasca registrado otro usuario</label>
+                    <comment>Mensaje que se le mostrará al usuario al introducir un rasca ya registrado otro usuario</comment>
+                </field>
+                <field id="error_registered_my_rasca" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Mensaje error rasca registrado por si mismo</label>
+                    <comment>Mensaje que se le mostrará al usuario al introducir un rasca ya registrado el mismo</comment>
+                </field>
+            </group>
+            <group id="week_config" translate="label" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configuración de los sorteos semanales</label>
+                <field id="active_week" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Semana activa</label>
+                    <source_model>Hiperdino\Anniversary2020\Model\Config\Source\WeekListMode</source_model>
+                    <comment>Semana que se utilizará por defecto si algo falla en las fechas de inicio de cada semana</comment>
+                </field>
+                <group id="week_1" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Semana 1</label>
+                    <field id="start_weekly_promotion" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Fecha de inicio Semana 1</label>
+                        <frontend_model>Hiperdino\Anniversary2020\Block\Adminhtml\DatePicker</frontend_model>
+                        <comment>Fecha de inicio de la semana 1 de la promoción (YYYY/mm/dd)</comment>
+                    </field>
+                    <field id="tittle_weekly_promotion" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Título de la promoción</label>
+                    </field>
+                    <field id="text_weekly_promotion_header" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Texto promoción superior</label>
+                        <comment>Texto que se mostrará en la vista del registro de rasca bajo el título de la página cuando esté activa la promoción</comment>
+                    </field>
+                    <field id="text_weekly_promotion_footer" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Texto promoción inferior</label>
+                        <comment>Texto que se mostrará en la vista del registro de rasca bajo el recuadro donde se introducirá el código del rasca, cuando esté activa la promoción</comment>
+                    </field>
+                    <field id="image_weekly_promotion" translate="label" type="image" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>URL de la imagen de la promoción</label>
+                        <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                        <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/image_weekly_promotion</upload_dir>
+                        <base_url type="media" scope_info="1">anniversary2020/image_weekly_promotion</base_url>
+                        <comment>El formato de la imagen debe ser jpg.</comment>
+                    </field>
+                </group>
+                <group id="week_2" translate="label" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Semana 2</label>
+                    <field id="start_weekly_promotion" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Fecha de inicio Semana 2</label>
+                        <frontend_model>Hiperdino\Anniversary2020\Block\Adminhtml\DatePicker</frontend_model>
+                        <comment>Fecha de inicio de la semana 2 de la promoción (YYYY/mm/dd)</comment>
+                    </field>
+                    <field id="tittle_weekly_promotion" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Título de la promoción</label>
+                    </field>
+                    <field id="text_weekly_promotion_header" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Texto promoción superior</label>
+                        <comment>Texto que se mostrará en la vista del registro de rasca bajo el título de la página cuando esté activa la promoción</comment>
+                    </field>
+                    <field id="text_weekly_promotion_footer" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Texto promoción inferior</label>
+                        <comment>Texto que se mostrará en la vista del registro de rasca bajo el recuadro donde se introducirá el código del rasca, cuando esté activa la promoción</comment>
+                    </field>
+                    <field id="image_weekly_promotion" translate="label" type="image" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>URL de la imagen de la promoción</label>
+                        <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                        <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/image_weekly_promotion</upload_dir>
+                        <base_url type="media" scope_info="1">anniversary2020/image_weekly_promotion</base_url>
+                        <comment>El formato de la imagen debe ser jpg.</comment>
+                    </field>
+                </group>
+                <group id="week_3" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Semana 3</label>
+                    <field id="start_weekly_promotion" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Fecha de inicio Semana 3</label>
+                        <frontend_model>Hiperdino\Anniversary2020\Block\Adminhtml\DatePicker</frontend_model>
+                        <comment>Fecha de inicio de la semana 3 de la promoción (YYYY/mm/dd)</comment>
+                    </field>
+                    <field id="tittle_weekly_promotion" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Título de la promoción</label>
+                    </field>
+                    <field id="text_weekly_promotion_header" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Texto promoción superior</label>
+                        <comment>Texto que se mostrará en la vista del registro de rasca bajo el título de la página cuando esté activa la promoción</comment>
+                    </field>
+                    <field id="text_weekly_promotion_footer" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Texto promoción inferior</label>
+                        <comment>Texto que se mostrará en la vista del registro de rasca bajo el recuadro donde se introducirá el código del rasca, cuando esté activa la promoción</comment>
+                    </field>
+                    <field id="image_weekly_promotion" translate="label" type="image" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>URL de la imagen de la promoción</label>
+                        <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                        <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/image_weekly_promotion</upload_dir>
+                        <base_url type="media" scope_info="1">anniversary2020/image_weekly_promotion</base_url>
+                        <comment>El formato de la imagen debe ser jpg.</comment>
+                    </field>
+                </group>
+                <group id="week_4" translate="label" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Semana 4</label>
+                    <field id="start_weekly_promotion" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Fecha de inicio Semana 4</label>
+                        <frontend_model>Hiperdino\Anniversary2020\Block\Adminhtml\DatePicker</frontend_model>
+                        <comment>Fecha de inicio de la semana 4 de la promoción (YYYY/mm/dd)</comment>
+                    </field>
+                    <field id="tittle_weekly_promotion" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Título de la promoción</label>
+                    </field>
+                    <field id="text_weekly_promotion_header" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Texto promoción superior</label>
+                        <comment>Texto que se mostrará en la vista del registro de rasca bajo el título de la página cuando esté activa la promoción</comment>
+                    </field>
+                    <field id="text_weekly_promotion_footer" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Texto promoción inferior</label>
+                        <comment>Texto que se mostrará en la vista del registro de rasca bajo el recuadro donde se introducirá el código del rasca, cuando esté activa la promoción</comment>
+                    </field>
+                    <field id="image_weekly_promotion" translate="label" type="image" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>URL de la imagen de la promoción</label>
+                        <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                        <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/image_weekly_promotion</upload_dir>
+                        <base_url type="media" scope_info="1">anniversary2020/image_weekly_promotion</base_url>
+                        <comment>El formato de la imagen debe ser jpg.</comment>
+                    </field>
+                </group>
+            </group>
+            <group id="menu_config" translate="label" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configuración del menú lateral</label>
+                <field id="title_menu" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Título del menú</label>
+                </field>
+                <field id="title_menu_customer" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Título del menú de mi cuenta</label>
+                </field>
+                <field id="url_anniversary" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Url Aniversario</label>
+                    <comment>Url key de la página CMS para acceder a la home de aniversario</comment>
+                </field>
+                <field id="url_cms_rasca" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Url CMS Rasca</label>
+                    <comment>Url key de la página CMS para acceder al formulario del rasca</comment>
+                </field>
+                <field id="url_cms_raffles" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL CMS Sorteos</label>
+                    <comment>Url key de la página CMS con info de los sorteos</comment>
+                </field>
+                <field id="url_cms_direct_awards" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL CMS Premios directos</label>
+                    <comment>Url key de la página CMS con info de los premios directos</comment>
+                </field>
+                <field id="url_cms_participate" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL CMS Cómo participar</label>
+                    <comment>Url key de la página CMS con info para participar</comment>
+                </field>
+                <field id="url_cms_legal" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL CMS Bases legales</label>
+                    <comment>Url key de la página CMS con info legal</comment>
+                </field>
+            </group>
+            <group id="text_participations_cards" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Textos de mis rascas</label>
+                <field id="text_card_not_raffle" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto de participaciones sin asociar al sorteo</label>
+                </field>
+                <field id="text_card_raffle" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto de participaciones asociadas al sorteo</label>
+                </field>
+                <field id="text_boton" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto de botón para asociar al sorteo</label>
+                </field>
+                <field id="text_boton_scratch" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto de botón para ir rascar</label>
+                </field>
+            </group>
+            <group id="participations_carrousel" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Sección de carrousel de Rascas</label>
+                <field id="scratch_start" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fecha de inicio</label>
+                    <frontend_model>Hiperdino\Anniversary2020\Block\Adminhtml\DatePicker</frontend_model>
+                    <comment>Fecha de inicio de rascado (YYYY/mm/dd)</comment>
+                </field>
+                <field id="scratch_end" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fecha de fin</label>
+                    <frontend_model>Hiperdino\Anniversary2020\Block\Adminhtml\DatePicker</frontend_model>
+                    <comment>Fecha de fin de rascado (YYYY/mm/dd)</comment>
+                </field>
+                <field id="text_title_carrousel" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Titulo superior de vista de carrousel</label>
+                </field>
+                <field id="scratched_percentage" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Porcentaje de rascado</label>
+                    <comment>Porcentaje de rascado para que se considere que la participación ya fue rascada. Ejemplo: 20.</comment>
+                </field>
+                <field id="title_modal_scratch" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Titulo de modal de rascado</label>
+                </field>
+                <field id="text_modal_scratch" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto de modal de rascado</label>
+                </field>
+                <field id="image_carrousel" translate="label" type="image" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL de la imagen de vista de carrousel</label>
+                    <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/image_carrousel</upload_dir>
+                    <base_url type="media" scope_info="1">anniversary2020/image_carrousel</base_url>
+                    <comment>El formato de la imagen debe ser jpg.</comment>
+                </field>
+                <field id="image_scratch" translate="label" type="image" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL de la imagen de rascado</label>
+                    <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/image_scratch</upload_dir>
+                    <base_url type="media" scope_info="1">anniversary2020/image_scratch</base_url>
+                    <comment>El formato de la imagen debe ser jpg.</comment>
+                </field>
+            </group>
+            <group id="participations_modals" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configuración de modales</label>
+                <field id="text_modal_prize" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto explicativo de modal de Rasca con premio</label>
+                </field>
+                <field id="background_modal" translate="label" type="image" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL de la imagen de fondo de modales</label>
+                    <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/background_modal</upload_dir>
+                    <base_url type="media" scope_info="1">anniversary2020/background_modal</base_url>
+                    <comment>El formato de la imagen debe ser jpg.</comment>
+                </field>
+                <field id="background_modal_app" translate="label" type="image" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL de la imagen de fondo de modales app</label>
+                    <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/background_modal_app</upload_dir>
+                    <base_url type="media" scope_info="1">anniversary2020/background_modal_app</base_url>
+                    <comment>El formato de la imagen debe ser jpg.</comment>
+                </field>
+                <field id="image_participation_without_prize" translate="label" type="image" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL de la imagen de Rasca sin premio</label>
+                    <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/image_participation_without_prize</upload_dir>
+                    <base_url type="media" scope_info="1">anniversary2020/image_participation_without_prize</base_url>
+                    <comment>El formato de la imagen debe ser jpg.</comment>
+                </field>
+                <field id="image_default_prize" translate="label" type="image" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL de imagen default de premio</label>
+                    <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">anniversary2020/image_default_prize</upload_dir>
+                    <base_url type="media" scope_info="1">anniversary2020/image_default_prize</base_url>
+                    <comment>El formato de la imagen debe ser jpg.</comment>
+                </field>
+            </group>
+            <group id="register_participation" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Textos de sección de registro en el sorteo</label>
+                <field id="title_register_participation" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Titulo de sección de registro de Rascas</label>
+                </field>
+                <field id="text_confirm_register" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto explicativo en confirmación de participación</label>
+                </field>
+            </group>
+            <group id="raffle" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Servicios web Sorteos</label>
+                <field id="api_base_url" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL base de la API</label>
+                </field>
+                <field id="login_uidactividad" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Login - uidActividad</label>
+                </field>
+                <field id="login_username" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Login - username</label>
+                </field>
+                <field id="login_password" translate="label" type="password" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Login - password</label>
+                </field>
+            </group>
+            <group id="queue" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cola de Participaciones</label>
+                <field id="enabled_history" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitado historico</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="max_times" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Intentos máximos</label>
+                </field>
+                <field id="delete_success_days" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Borrar registros completos anteriores a X (días)</label>
+                </field>
+                <field id="delete_errors_days" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Borrar registros erroneos anteriores a X (días)</label>
+                </field>
+            </group>
+            <group id="push" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Textos del push</label>
+                <field id="participation_message" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto del push de participaciones</label>
+                </field>
+                <field id="participation_internal_path" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Ruta interna de la vista app</label>
+                </field>
+            </group>
+            <group id="participation_winner" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email de participaciones premiadas para clientes que cierran pedidos en WEB</label>
+                <field id="enabled" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Habilitado</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="identity" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Remitente de correo electrónico</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="template" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Plantilla de participaciones premiadas</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+            <group id="homai" translate="label" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cupones Homai</label>
+                <field id="promotion_ids" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Id Promociones</label>
+                    <comment>Id de promociones en los que se modificará el literal del descuento, separado por ,</comment>
+                </field>
+                <field id="prize_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto precio</label>
+                    <comment>Label que se mostrará en vez del descuento</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

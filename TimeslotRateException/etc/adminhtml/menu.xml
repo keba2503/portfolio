@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+       <add id="Hiperdino_TimeslotRateException::rate" title="Tarifas" translate="title" module="Hiperdino_TimeslotRateException" parent="Singular_Delivery::delivery" sortOrder="40" dependsOnModule="Singular_Delivery" action="timeslotrateexception/rate/index" resource="Hiperdino_TimeslotRateException::rate"/>
+       <add id="Hiperdino_TimeslotRateException::exception_rate" title="Excepciones de tarifas" translate="title" module="Hiperdino_TimeslotRateException" parent="Singular_Delivery::delivery" sortOrder="40" dependsOnModule="Singular_Delivery" action="timeslotrateexception/exception/index" resource="Hiperdino_TimeslotRateException::exception_rate"/>
+    </menu>
+</config>

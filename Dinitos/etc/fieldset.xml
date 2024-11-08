@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:DataObject/etc/fieldset.xsd">
+    <scope id="global">
+        <fieldset id="sales_convert_quote">
+            <field name="total_dinitos_qty">
+                <aspect name="to_order" />
+            </field>
+            <field name="dinitos_rewards">
+                <aspect name="to_order" />
+            </field>
+            <field name="dinitos_rewards_discount_split">
+                <aspect name="to_order" />
+            </field>
+            <field name="dinitos_rewards_base_discount">
+                <aspect name="to_order" />
+            </field>
+            <field name="dinitos_rewards_discount_amount">
+                <aspect name="to_order" />
+            </field>
+        </fieldset>
+    </scope>
+</config>

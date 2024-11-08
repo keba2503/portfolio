@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- model preferences -->
+    <preference for="Hiperdino\TimeslotRateException\Api\ExceptionRepositoryInterface" type="Hiperdino\TimeslotRateException\Model\Repository\ExceptionRepository"/>
+    <preference for="Hiperdino\TimeslotRateException\Api\RateRepositoryInterface" type="Hiperdino\TimeslotRateException\Model\Repository\RateRepository"/>
+    <preference for="Hiperdino\TimeslotRateException\Api\Data\ExceptionInterface" type="Hiperdino\TimeslotRateException\Model\Data\Exception" />
+    <preference for="Hiperdino\TimeslotRateException\Api\Data\RateInterface" type="Hiperdino\TimeslotRateException\Model\Data\Rate" />
+    <preference for="Hiperdino\TimeslotRateException\Api\Data\TimeslotRateExceptionConfigInterface" type="Hiperdino\TimeslotRateException\Model\Data\TimeslotRateExceptionConfig" />
+    <!-- end model preferences -->
+
+    <!-- Grid -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hiperdino_timeslotrateexception_rate_listing_data_source" xsi:type="string">Hiperdino\TimeslotRateException\Model\ResourceModel\Rate\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Hiperdino\TimeslotRateException\Model\ResourceModel\Rate\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hiperdino_delivery_rate</argument>
+            <argument name="resourceModel" xsi:type="string">Hiperdino\TimeslotRateException\Model\ResourceModel\Rate</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hiperdino_timeslotrateexception_exception_listing_data_source" xsi:type="string">Hiperdino\TimeslotRateException\Model\ResourceModel\Exception\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Hiperdino\TimeslotRateException\Model\ResourceModel\Exception\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hiperdino_delivery_rate_exception</argument>
+            <argument name="resourceModel" xsi:type="string">Hiperdino\TimeslotRateException\Model\ResourceModel\Exception</argument>
+        </arguments>
+    </virtualType>
+    <!-- End Grid -->
+
+    <!-- Plugins -->
+    <type name="Hiperdino\Checkout\Block\Cart">
+        <plugin name="show_shipping_method_price_after" type="Hiperdino\TimeslotRateException\Plugin\ShippingPriceAfter"/>
+    </type>
+
+    <type name="Magento\Shipping\Model\Carrier\AbstractCarrier">
+        <plugin name="carrier_around_collect_totals" type="Hiperdino\TimeslotRateException\Plugin\CarrierCollectTotalAround" sortOrder="10"/>
+    </type>
+    <!-- End Plugins -->
+
+    <!-- Composite -->
+    <type name="Singular\EcommerceApp\Model\Composite\GlobalConfigInfo">
+        <arguments>
+            <argument name="configs" xsi:type="array">
+                <item name="global_config_timeslot_rate_exception" xsi:type="object">Hiperdino\TimeslotRateException\Model\App\Config\GlobalConfig</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- End Composite -->
+</config>

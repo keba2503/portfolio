@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="index">
+        <job name="queue_dinitos_update" instance="Hiperdino\Dinitos\Cron\QueueDinitosUpdate" method="execute">
+            <schedule>0 0 * * *</schedule>
+        </job>
+    </group>
+</config>

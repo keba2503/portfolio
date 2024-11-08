@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- commands -->
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="Hiperdino_Anniversary_Command_Update" xsi:type="object">Hiperdino\Anniversary\Command\Update</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- end commands -->
+
+    <!-- plugins -->
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="anniversary_to_order_item" type="Hiperdino\Anniversary\Plugin\AroundQuoteItemToOrderItem" sortOrder="100" disabled="false" />
+    </type>
+
+    <type name="Magento\Checkout\Model\Session">
+        <plugin name="anniversary_after_load_customer_quote" type="Hiperdino\Anniversary\Plugin\AfterLoadCustomerQuote" sortOrder="100"/>
+    </type>
+    <!-- end plugins -->
+
+</config>

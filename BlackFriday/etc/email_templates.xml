@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+	<template id="hiperdino_blackfriday_promotions_zbon_template_email" label="Código promocional BlackFriday" file="blackfriday_coupon_code.html" type="html" module="Hiperdino_BlackFriday" area="frontend"/>
+    <template id="blackfriday_storepass_booking" label="Correo de reserva" file="blackfriday_storepass_booking.html" type="html" module="Hiperdino_BlackFriday" area="frontend"/>
+</config>

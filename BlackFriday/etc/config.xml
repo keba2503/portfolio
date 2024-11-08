@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <hiperdino_blackfriday>
+            <general>
+                <promo_start>2019/11/29</promo_start>
+                <promo_end>2019/12/01</promo_end>
+                <show_text_in_checkout>1</show_text_in_checkout>
+                <label_info_checkout>Promoción Black Friday</label_info_checkout>
+                <info_checkout_without_discount>¡Aún no has conseguido ningún descuento! Compra productos marcados como Black Friday para conseguir cupones de descuento para tus siguientes compras</info_checkout_without_discount>
+                <info_checkout_with_discount>Ha obtenido %1 para su siguiente compra online. Recibirá un email con un cupón personal. Válido hasta el 31/12/2019.</info_checkout_with_discount>
+            </general>
+			<promotions>
+				<override_header_discount>1</override_header_discount>
+				<override_customer_discount>20</override_customer_discount>
+				<override_employee_discount>23.2</override_employee_discount>
+			</promotions>
+			<website>
+				<exit_postcode>35001</exit_postcode>
+			</website>
+        </hiperdino_blackfriday>
+    </default>
+</config>

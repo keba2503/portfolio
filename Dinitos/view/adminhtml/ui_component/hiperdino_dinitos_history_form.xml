@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                hiperdino_dinitos_history_form.hiperdino_dinitos_history_form_data_source
+            </item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Información general</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Hiperdino\Dinitos\Block\Adminhtml\History\Edit\BackButton"/>
+            <button name="delete" class="Hiperdino\Dinitos\Block\Adminhtml\History\Edit\DeleteButton"/>
+            <button name="save" class="Hiperdino\Dinitos\Block\Adminhtml\History\Edit\SaveButton"/>
+        </buttons>
+        <namespace>hiperdino_dinitos_history_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>hiperdino_dinitos_history_form.hiperdino_dinitos_history_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="hiperdino_dinitos_history_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="dinitos/history/save"/>
+        </settings>
+        <dataProvider class="Hiperdino\Dinitos\Model\DataProvider\History"
+                      name="hiperdino_dinitos_history_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">history</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>id</dataScope>
+            </settings>
+        </field>
+        <field name="concept" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">history</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="false">Concepto</label>
+                <dataScope>concept</dataScope>
+            </settings>
+        </field>
+        <field name="customer_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">history</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="false">Customer Id</label>
+                <dataScope>customer_id</dataScope>
+            </settings>
+        </field>
+        <field name="increment_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">history</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="false">Increment Id</label>
+                <dataScope>increment_id</dataScope>
+            </settings>
+        </field>
+        <field name="dinitos_quantity" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">history</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="false">Cantidad</label>
+                <dataScope>dinitos_quantity</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

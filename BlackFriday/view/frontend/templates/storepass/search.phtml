@@ -1,0 +1,100 @@
+<?php
+/** @var \Hiperdino\BlackFriday\Block\StorePass $block */
+?>
+<?php $tiendas = $block->getTiendas() ?>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= $block->getGoogleMapsKey(); ?>"></script>
+
+<section class="user-account user-account--nuestras-tiendas">
+
+    <?php if($block->isModifying()): ?>
+        <div class="container container-message bf-storepass-modifying-msg">
+            <?= $block->getIsModifyingMessage() ?>
+        </div>
+    <?php endif; ?>
+
+    <div class="user-account__headings">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 col-xl-8 offset-md-1">
+                    <div class="page-corporate__block checkout__item flex-item">
+                        <h2 class="header__text"><?= __("Elige tu tienda de compra de juguetes")?></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php if ($tiendas && count($tiendas)): ?>
+        <div class="user-account__table">
+            <div class="container">
+                <?php $count = 1 ?>
+                <?php foreach ($tiendas as $tienda): ?>
+                    <div class="row">
+                        <div class="table-container tiendas__table col-md-10 col-lg-10 col-xl-8 offset-md-1">
+                            <div class="tiendas__container justify-between flex-wrap">
+                                <div class="table-container__left flex-container justify-between">
+                                    <div class="tienda__item tienda-<?= $tienda->getId() ?>">
+                                        <h3 class="sub__title"><?= $tienda->getName() ?></h3>
+                                        <p class="text-base flex-inline">
+                                            <span class="menu__icon flex-item"> <i class="icon icon-location-pin"></i> </span>
+                                            <?= $block->getTiendaAddress($tienda) ?>
+                                        </p>
+                                        <?php if ($tienda->getSchedule()): ?>
+                                            <br/>
+                                            <p class="text-base flex-inline">
+                                                <span class="menu__icon flex-item"> <i class="icon icon-clock"></i> </span>
+                                                <?= $tienda->getSchedule() ?>
+                                            </p>
+                                        <?php endif; ?>
+                                        <?php if ($tienda->getPhone()): ?>
+                                            <br/>
+                                            <p class="text-base flex-inline">
+                                                <span class="menu__icon flex-item"> <i class="icon icon-contact"></i> </span>
+                                                <?= $tienda->getFax() ? $tienda->getPhone()." / ". $tienda->getFax() : $tienda->getPhone() ?>
+                                            </p>
+                                        <?php endif; ?>
+                                        <div class="text-left tiendas__info">
+                                            <span class="flex-item text-postal"> <a href="<?= $block->getUrl("tiendas/index/detail/", array("id" => $tienda->getId()))?>"><?= __('Ver más información') ?></a> </span>
+                                        </div>
+                                        <div class="text-left tiendas__info">
+                                            <a href="<?= $block->getBookingUrl($tienda) ?>">
+                                                <button class="button button__complex button__complex--modal button__complex--container flex-container flex-row justify-center items-center">
+                                                    <div class="button__content flex-item">
+                                                        <div class="button__content--container flex-container flex-row justify-center items-center">
+                                                            <div class="button__text flex-item"><?= __('Reservar franja horaria') ?></div>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-container__right flex-container justify-between">
+                                    <div class="table-container__right-item select__item cart__button block--wrapper flex-item">
+                                        <?php if ($tienda->getLatitude() && $tienda->getLongitude() && is_numeric($tienda->getLatitude()) && is_numeric($tienda->getLongitude())): ?>
+                                            <div id="map-<?= $count ?>" class="store-loc__map" data-default_lat="<?= $tienda->getLatitude() ?>" data-default_lon="<?= $tienda->getLongitude() ?>" data-store="<?= $tienda->getName() ?>" style="position: relative; overflow: hidden;"></div>
+                                        <?php endif;?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php $count++ ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="user-account__table">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-8 col-xl-8 offset-md-1">
+                        <p class="text-base">
+                            <?= __('Lo sentimos, no hay ninguna tienda disponible que coincida con la búsqueda')  ?>
+                        </p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif ?>
+</section>

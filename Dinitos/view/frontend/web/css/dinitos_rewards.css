@@ -1,0 +1,33 @@
+.dinitos-qty {
+    color: #666;
+}
+
+.is-disabled {
+    pointer-events: none;
+}
+
+.reward.is-disabled .dinitos-qty, .reward.is-disabled > div:first-child {
+    opacity: 0.3;
+}
+
+.shortfall-hidden {
+    visibility: hidden;
+}
+
+.shortfall {
+    color: #77bd1e !important;
+}
+
+.reward-selected > div.input.input-radio-container.flex-container.flex-row.items-center.no-margin > div > label > span {
+    background: linear-gradient(270deg, #7ac01f, #1c752c);
+    border: 1px;
+    border-radius: .125rem;
+}
+
+.in-quote div:first-child {
+    font-weight: bold;
+}
+
+.rw-pointer {
+    cursor: pointer;
+}

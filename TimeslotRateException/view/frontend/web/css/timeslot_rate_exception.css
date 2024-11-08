@@ -1,0 +1,39 @@
+.button__complex.hdcheckout-timeslot-button .button__content .button__text {
+    font-weight: 400;
+}
+
+.button__complex.hdcheckout-timeslot-button .button__content .button__text .timeslot__special_price{
+    font-weight: 600;
+}
+
+.button__complex.has-border.hdcheckout-timeslot-button .button__content .button__text {
+    color: #111;
+}
+
+.hdcheckout-timeslot-element .button__complex.has-border .timeslot__special_price {
+    color: #1c752c;
+}
+
+.button__complex.hdcheckout-timeslot-button {
+    height: 5rem;
+}
+
+.button__complex.has-border.hdcheckout-timeslot-button:hover .button__content .button__text,
+.button__complex.has-border.hdcheckout-timeslot-button:hover .button__content .button__text .timeslot__special_price,
+.button__complex-checkout-method:hover,
+.button__complex-checkout-method.button__complex.action_selectShippingMethod:hover .button__content .button__text,
+.button__complex-checkout-method.button__complex.action_timeslot_selectShippingMethod:hover .button__content .button__text {
+    color: #fff;
+}
+
+.hdcheckout-date-element .button__complex,
+.hdcheckout-date-element .button__complex:hover,
+.hdcheckout-timeslot-button.button__complex,
+.hdcheckout-timeslot-button.button__complex.has-border,
+.hdcheckout-timeslot-button.button__complex.has-border:hover,
+.button__complex-checkout-method.checked,
+.button__complex-checkout-method:hover,
+.button__complex-checkout:hover:not(.checked),
+.button__complex.action_checkoutContinue:not(.checked) {
+    background: #1c752c;
+}

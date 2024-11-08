@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- model preferences   -->
+    <preference for="Hiperdino\Dinitos\Api\Data\HistoryInterface" type="Hiperdino\Dinitos\Model\Data\History" />
+    <preference for="Hiperdino\Dinitos\Api\HistoryRepositoryInterface" type="Hiperdino\Dinitos\Model\Repository\HistoryRepository" />
+    <preference for="Hiperdino\Dinitos\Api\Data\RewardInterface" type="Hiperdino\Dinitos\Model\Data\Reward" />
+    <preference for="Hiperdino\Dinitos\Api\Data\FilterDinitosInterface" type="Hiperdino\Dinitos\Model\History\Filter" />
+    <preference for="Hiperdino\Dinitos\Api\Data\TextHistoryConfigInterface" type="Hiperdino\Dinitos\Model\Data\TextHistoryConfig" />
+    <preference for="Hiperdino\Dinitos\Api\Data\TextRewardConfigInterface" type="Hiperdino\Dinitos\Model\Data\TextRewardConfig" />
+    <preference for="Hiperdino\Dinitos\Api\RewardRepositoryInterface" type="Hiperdino\Dinitos\Model\Repository\RewardRepository" />
+    <preference for="Hiperdino\Dinitos\Api\Data\PackageInterface" type="Hiperdino\Dinitos\Model\Data\Package" />
+    <preference for="Hiperdino\Dinitos\Api\PackageRepositoryInterface" type="Hiperdino\Dinitos\Model\Repository\PackageRepository" />
+    <preference for="Hiperdino\Dinitos\Api\AppManagerInterface" type="Hiperdino\Dinitos\Model\App\AppManager" />
+    <preference for="Hiperdino\Dinitos\Api\Data\CustomerDinitosResponseInterface" type="Hiperdino\Dinitos\Model\App\CustomerDinitosResponse" />
+    <preference for="Hiperdino\Dinitos\Api\Data\HistoryListInterface" type="Hiperdino\Dinitos\Model\App\HistoryList" />
+    <preference for="Hiperdino\Dinitos\Api\Data\RewardListInterface" type="Hiperdino\Dinitos\Model\App\RewardList" />
+    <preference for="Hiperdino\Dinitos\Api\Data\RewardRequestListInterface" type="Hiperdino\Dinitos\Model\App\RewardRequestList" />
+    <preference for="Hiperdino\Dinitos\Api\Data\RewardResponseInterface" type="Hiperdino\Dinitos\Model\App\RewardResponse" />
+    <preference for="Hiperdino\Dinitos\Api\Data\RewardResponseListInterface" type="Hiperdino\Dinitos\Model\App\RewardResponseList" />
+    <preference for="Hiperdino\Dinitos\Api\Data\PackageListResponseInterface" type="Hiperdino\Dinitos\Model\App\PackageListResponse" />
+    <preference for="Hiperdino\Dinitos\Api\Data\DinitosBagsRewardInterface" type="Hiperdino\Dinitos\Model\Data\DinitosBagsReward" />
+    <!-- end model preferences   -->
+
+    <!-- plugins -->
+    <type name="Magento\OfflineShipping\Model\Carrier\Flatrate">
+        <plugin name="hiperdino_dinitos_after_flatrate_collect_rates" type="Hiperdino\Dinitos\Plugin\AfterFlatrateCollectRates" sortOrder="99" disabled="false" />
+    </type>
+    <type name="Singular\Delivery\Model\Carrier\Pickup">
+        <plugin name="hiperdino_dinitos_after_pickup_collect_rates" type="Hiperdino\Dinitos\Plugin\AfterPickupCollectRates" sortOrder="99" disabled="false" />
+    </type>
+    <type name="Hiperdino\PickupPoints\Model\Carrier\PickupPoint">
+        <plugin name="hiperdino_dinitos_after_pickup_points_collect_rates" type="Hiperdino\Dinitos\Plugin\AfterPickupPointCollectRates" sortOrder="99" disabled="false" />
+    </type>
+    <type name="Hiperdino\Taquillas\Model\Carrier\Taquillas">
+        <plugin name="hiperdino_dinitos_after_taquillas_points_collect_rates" type="Hiperdino\Dinitos\Plugin\AfterTaquillasCollectRates" sortOrder="100" disabled="false" />
+    </type>
+    <type name="Magento\Shipping\Model\Carrier\AbstractCarrier">
+        <plugin name="hiperdino_dinitos_after_shipping_collect" type="Hiperdino\Dinitos\Plugin\AfterShippingCollect" sortOrder="120" disabled="false" />
+    </type>
+    <type name="Hiperdino\Checkout\Helper\MagentoCoupon">
+        <plugin name="hiperdino_dinitos_after_apply_coupon" type="Hiperdino\Dinitos\Plugin\AfterApplyCoupon" sortOrder="130" disabled="false" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address\Rate">
+        <plugin name="hiperdino_dinitos_after_import_shipping_rate" type="Hiperdino\Dinitos\Plugin\AfterImportShippingRate" sortOrder="100" disabled="false" />
+    </type>
+    <!-- end plugins -->
+
+    <!-- commands -->
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="Hiperdino_Dinitos_Command_Update" xsi:type="object">Hiperdino\Dinitos\Command\Update</item>
+            </argument>
+            <argument name="commands" xsi:type="array">
+                <item name="Hiperdino_Dinitos_Command_Expired" xsi:type="object">Hiperdino\Dinitos\Command\Expired</item>
+            </argument>
+            <argument name="commands" xsi:type="array">
+                <item name="Hiperdino_Dinitos_Command_Reminder" xsi:type="object">Hiperdino\Dinitos\Command\Reminder</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- end commands -->
+
+    <!-- Grid -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hiperdino_dinitos_history_listing_data_source" xsi:type="string">Hiperdino\Dinitos\Model\ResourceModel\History\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Hiperdino\Dinitos\Model\ResourceModel\History\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hiperdino_dinitos_history</argument>
+            <argument name="resourceModel" xsi:type="string">Hiperdino\Dinitos\Model\ResourceModel\History</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hiperdino_dinitos_rewards_listing_data_source" xsi:type="string">Hiperdino\Dinitos\Model\ResourceModel\Reward\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Hiperdino\Dinitos\Model\ResourceModel\Reward\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hiperdino_dinitos_rewards</argument>
+            <argument name="resourceModel" xsi:type="string">Hiperdino\Dinitos\Model\ResourceModel\Reward</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hiperdino_dinitos_package_listing_data_source" xsi:type="string">Hiperdino\Dinitos\Model\ResourceModel\Package\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Hiperdino\Dinitos\Model\ResourceModel\Package\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hiperdino_dinitos_packages</argument>
+            <argument name="resourceModel" xsi:type="string">Hiperdino\Dinitos\Model\ResourceModel\Package</argument>
+        </arguments>
+    </virtualType>
+    <!-- End Grid -->
+
+    <!-- Dinitos Alert Type -->
+    <type name="Hiperdino\Alert\Helper\Alerts">
+        <arguments>
+            <argument name="alertTypes" xsi:type="array">
+                <item name="dinitos_expiration" xsi:type="object">Hiperdino\Dinitos\Model\AlertType\ExpirationAlert</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- End Dinitos Alert Type -->
+
+    <!-- Movements Types -->
+    <type name="Hiperdino\Dinitos\Model\Services\History\GetTypeMovements">
+        <arguments>
+            <argument name="movementsType" xsi:type="array">
+                <item name="0" xsi:type="object">Hiperdino\Dinitos\Model\History\MovementTypes\AccumulationMovement</item>
+                <item name="1" xsi:type="object">Hiperdino\Dinitos\Model\History\MovementTypes\RedemptionMovement</item>
+                <item name="2" xsi:type="object">Hiperdino\Dinitos\Model\History\MovementTypes\ExpirationMovement</item>
+                <item name="3" xsi:type="object">Hiperdino\Dinitos\Model\History\MovementTypes\RedemptionMovement</item>
+                <item name="4" xsi:type="object">Hiperdino\Dinitos\Model\History\MovementTypes\AccumulationMovement</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

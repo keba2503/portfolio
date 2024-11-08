@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="hiperdino_delivery_rate" engine="innodb" resource="default" comment="Delivery rate table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Unique identifier of movement"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Name of the delivery rate"/>
+        <column xsi:type="varchar" name="description" nullable="false" length="50" comment="Description of the delivery rate"/>
+        <column xsi:type="varchar" name="amount" padding="10" unsigned="true" nullable="false" comment="Amount associated with the delivery rate"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation date"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated date"/>
+        <index referenceId="HIPERDINO_DELIVERY_RATE_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="hiperdino_delivery_rate_exception" engine="innodb" resource="default" comment="Delivery rate exception table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Unique identifier of movement"/>
+        <column xsi:type="date" name="start_date" on_update="false" nullable="true" comment="Start Date"/>
+        <column xsi:type="date" name="end_date" on_update="false" nullable="true" comment="End Date"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Description of the delivery rate"/>
+        <column xsi:type="text" name="description" nullable="false" comment="Description of the delivery rate"/>
+        <column xsi:type="smallint" name="is_active" nullable="false" comment="Is Active"/>
+        <column xsi:type="int" name="rate" nullable="false" unsigned="true" comment="Rate"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="HIPERDINO_DELIVERY_RATE_EXCEPTION_RATE" table="hiperdino_delivery_rate_exception" column="rate" referenceTable="hiperdino_delivery_rate" referenceColumn="id" onDelete="CASCADE"/>
+        <index referenceId="HIPERDINO_DELIVERY_RATE_EXCEPTION_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+</schema>

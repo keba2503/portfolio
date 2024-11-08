@@ -1,0 +1,8 @@
+<?php
+/** @var \Hiperdino\BlackFriday\Block\CatalogProductQuickview $block */
+?>
+<?php if($block->showAdvice()): ?>
+    <div class="quickview__blackfriday flex-item">
+        <p><?= $block->getMessage() ?></p>
+    </div>
+<?php endif; ?>

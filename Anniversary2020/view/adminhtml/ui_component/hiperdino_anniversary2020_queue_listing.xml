@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">hiperdino_anniversary2020_queue_listing.hiperdino_anniversary2020_queue_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>hiperdino_anniversary2020_queue_columns</spinner>
+        <deps>
+            <dep>hiperdino_anniversary2020_queue_listing.hiperdino_anniversary2020_queue_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="hiperdino_anniversary2020_queue_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="hiperdino_anniversary2020_queue_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <massaction name="listing_massaction">
+            <action name="reset">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">reset</item>
+                        <item name="label" xsi:type="string" translate="true">Marcar como pendiente</item>
+                        <item name="url" xsi:type="url" path="hiperdino_anniversary2020/queue/massReset"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Reset</item>
+                            <item name="message" xsi:type="string" translate="true">Estás seguro de marcarlos como pendientes?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <columns name="hiperdino_anniversary2020_queue_columns">
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="id" sortOrder="10">
+            <settings>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="id_customer" sortOrder="11">
+            <settings>
+                <label translate="true">Id Cliente</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="body">
+            <settings>
+                <filter>text</filter>
+                <label translate="false">Body</label>
+            </settings>
+        </column>
+        <column name="status" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Hiperdino\Anniversary2020\Ui\Component\Listing\Column\Status"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Estado</label>
+            </settings>
+        </column>
+        <column name="tries">
+            <settings>
+                <filter>text</filter>
+                <label translate="false">Intentos</label>
+            </settings>
+        </column>
+        <column name="message">
+            <settings>
+                <filter>text</filter>
+                <label translate="false">Mensaje</label>
+            </settings>
+        </column>
+        <column name="type" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Hiperdino\Anniversary2020\Ui\Component\Listing\Column\Type"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Tipo</label>
+            </settings>
+        </column>
+        <column name="updated_at">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="false">Actualizado el</label>
+            </settings>
+        </column>
+        <column name="response">
+            <settings>
+                <filter>text</filter>
+                <label translate="false">Respuesta</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

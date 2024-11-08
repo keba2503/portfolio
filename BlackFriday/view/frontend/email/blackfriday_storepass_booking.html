@@ -1,0 +1,76 @@
+<!--@subject Reserva para compra en tienda HiperDino Online Black Friday @-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+</head>
+<body>
+    <table width="700" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr>
+            <td>
+                <table width="700" border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tr height="80">
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="center">
+                            <table width="740" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="width: 100%" align="center">
+                                        <img src="{{view url='img/email/bf_email_simple.png'}}" alt="HiperDino BlackFriday"
+                                             style="width: 100%; max-width: 500px;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr height="80">
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <span style="font-size: 24px; color: #e69b3d">Reserva de franja horaria confirmada</span>
+                        </td>
+                    </tr>
+                    <tr height="50">
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="center">
+                            <table width="740" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="width: 100%" align="center">
+                                        <img src="cid:{{var qr_image_cid}}" alt="HiperDino BlackFriday"
+                                             style="width: 100%; max-width: 350px;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <p style="font-weight: 600; color: #000000">{{var tienda_name}} | {{var booked_for}} | {{var start_end_time}}</p>
+                        </td>
+                    </tr>
+                    <tr height="60">
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            <p style="color: #000000">Hola {{var customer_name}},</p>
+                            <p style="color: #000000">Has reservado correctamente la franja horaria que mejor te viene para poder ir a tu tienda y comprar juguetes.</p>
+                            <p style="color: #000000">Porque tu seguridad es nuestra prioridad, este año hemos establecido una nueva manera de comprar con los mejores precios del Black Friday. Queremos que puedas comprar tus juguetes de la manera más segura.</p>
+                            <p style="color: #000000">El día y hora que has elegido, acércate a tu tienda y compra a los mejores precios. Será en el momento en el que vayas a la caja a pagar, cuando tengas que enseñar el QR que ves en este correo y así se te aplicará el descuento.</p>
+                            <p style="color: #000000">¡Te esperamos!</p>
+                            <hr/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            <p style="color: #000000">Puedes acceder a tu cuenta para modificar o cancelar tu reserva.</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

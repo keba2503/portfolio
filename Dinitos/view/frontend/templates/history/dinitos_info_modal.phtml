@@ -1,0 +1,20 @@
+<?php /** @var $block Hiperdino\Dinitos\Block\History; */ ?>
+
+<?php
+$showDinitosLink = $block->isDinitosLinkEnabled();
+$dinitosHistoryTexts = $block->getDinitosHistoryTexts();
+$dinitosCMSblockIdentifier = $dinitosHistoryTexts['cms_block_id_onboarding'];
+?>
+
+<?php if ($showDinitosLink): ?>
+    <div class="dinitos-info dialogBox-modal dialogBox-modal-dinitos flex-container flex-row justify-center items-center">
+        <div class="dialogBox--wrapper bg-white p-5 radius-10 position-relative">
+            <div class="dinitos_info_modal_close-btn button button__icon quickview__close" data-myaction="closeCustomModal" data-target="dialogBox-modal-dinitos">
+                <i class="icon icon-close flex-item"></i>
+            </div>
+            <div>
+                <?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($dinitosCMSblockIdentifier)->toHtml(); ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

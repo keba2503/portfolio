@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+	<referenceContainer name="global-modals">
+		<block class="Hiperdino\BlackFriday\Block\Modal\WarningModal" name="blackfriday_warning_modal"
+			   template="Hiperdino_BlackFriday::modal/warningModal.phtml">
+			<block class="Magento\Cms\Block\Block" name="blackfriday-info">
+				<arguments>
+					<argument name="block_id" xsi:type="string">blackfriday-info</argument>
+				</arguments>
+			</block>
+		</block>
+
+		<block class="Hiperdino\BlackFriday\Block\Modal\WarningModal" name="blackfriday_logout_modal" template="Hiperdino_BlackFriday::modal/logoutModal.phtml">
+			<block class="Magento\Cms\Block\Block" name="blackfriday-out">
+				<arguments>
+					<argument name="block_id" xsi:type="string">blackfriday-out</argument>
+				</arguments>
+			</block>
+		</block>
+
+		<block class="Hiperdino\BlackFriday\Block\Modal\EntryModal" name="blackfriday_entry_modal" template="Hiperdino_BlackFriday::modal/entryModal.phtml"/>
+
+		<block class="Hiperdino\BlackFriday\Block\Modal\StoresModal" name="blackfriday_stores_modal" template="Hiperdino_BlackFriday::modal/storesModal.phtml"/>
+
+        <block class="Hiperdino\Sopladera\Block\DenyModal" name="blackfriday_deny_modal" template="Hiperdino_BlackFriday::modal/denyModal.phtml"/>
+    </referenceContainer>
+
+    <referenceBlock name="quickview-demo">
+        <block class="Hiperdino\BlackFriday\Block\CatalogProductQuickview" name="blackfriday_product_quickview" template="Hiperdino_BlackFriday::catalog/product/quickview.phtml"/>
+    </referenceBlock>
+
+</page>

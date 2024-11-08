@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="hiperdino_blackfriday" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Black Friday</label>
+            <tab>singular</tab>
+            <resource>Hiperdino_BlackFriday::blackfriday_configuration</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configuración</label>
+                <field id="promo_start" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fecha de inicio</label>
+                    <frontend_model>Hiperdino\BlackFriday\Block\Adminhtml\DatePicker</frontend_model>
+                    <comment>Fecha de inicio de promoción (YYYY/mm/dd)</comment>
+                </field>
+                <field id="promo_end" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fecha de fin</label>
+                    <frontend_model>Hiperdino\BlackFriday\Block\Adminhtml\DatePicker</frontend_model>
+                    <comment>Fecha de fin de promoción (YYYY/mm/dd)</comment>
+                </field>
+                <field id="blackfriday_tag" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Tag para productos de Black Friday</label>
+                    <comment>Se mostrará la etiqueta en los productos marcados como Black Friday</comment>
+                    <source_model>Singular\Home\Model\Attribute\ProductTags\Options</source_model>
+                </field>
+                <field id="show_text_in_checkout" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Habilitar visualización de texto en el checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Si se activa se mostrará la información de los descuentos del black friday en el checkout de la web y la app.</comment>
+                </field>
+                <field id="label_info_checkout" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Título para info en el checkout</label>
+                    <depends>
+                        <field id="show_text_in_checkout">1</field>
+                    </depends>
+                </field>
+                <field id="info_checkout_without_discount" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto cuando el cliente no tiene descuento</label>
+                    <comment>Texto que se mostrará cuando el cliente aún no tenga descuento</comment>
+                    <depends>
+                        <field id="show_text_in_checkout">1</field>
+                    </depends>
+                </field>
+                <field id="info_checkout_with_discount" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Texto cuando el cliente tiene descuento</label>
+                    <comment>Texto que se mostrará cuando el cliente tiene descuento</comment>
+                    <depends>
+                        <field id="show_text_in_checkout">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="promotions" translate="label" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>Promociones</label>
+                <field id="has_zbon_promotion" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Utiliza promoción ZBON</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="promotion_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Id Promociones</label>
+                    <comment>Id de promociones en los que se modificará el literal del descuento, separado por ,</comment>
+                </field>
+                <field id="zbon_template_email" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Plantilla para el Email</label>
+                    <comment>Plantilla de correo electrónico con el cupón promocional de la ZBON</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <depends>
+                        <field id="has_zbon_promotion">1</field>
+                    </depends>
+                </field>
+				<field id="override_header_discount" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Sobrescribir descuentos</label>
+					<comment>Modifica la cabecera en el XML de nuevo pedido, pone a 0 el descuento fijo y sobrescribe el descuento porcentual. Sólo para tiendas Black Friday.</comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="override_customer_discount" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Descuento para el cliente</label>
+					<depends>
+						<field id="override_header_discount">1</field>
+					</depends>
+				</field>
+				<field id="override_employee_discount" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Descuento para el empleado</label>
+					<depends>
+						<field id="override_header_discount">1</field>
+					</depends>
+				</field>
+            </group>
+            <group id="import" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>Importación de productos de Black Friday</label>
+                <field id="csv" translate="label" type="file" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Archivo de importación</label>
+                    <backend_model>Hiperdino\BlackFriday\Model\Config\Backend\File</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">blackfriday</upload_dir>
+                    <comment>El formato del archivo debe ser CSV. Los datos se trasladan a una tabla desde la cual una tarea programada se encargará luego de actualizar los productos.</comment>
+                </field>
+            </group>
+            <group id="website" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Website</label>
+                <field id="is_bf" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>La tienda es de tipo Black Friday</label>
+                    <comment>IMPORTANTE: Indica que la tienda es BlackFriday por lo tanto se le aplicarán configuraciones, diseños, etc...</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="max_quote_items" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Máximo de artículos en cesta</label>
+                    <comment>Formato número. Se contabilizará el total de productos en la cesta, teniendo en cuenta las unidades de los mismos. Dejar vacío para no establecer un límite.</comment>
+                </field>
+                <field id="exit_postcode" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Código postal de salida</label>
+                    <comment>Código postal por defecto para cuando un cliente sale de Black Friday y no sabemos su código postal real.</comment>
+                </field>
+                <field id="access" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitar entrada a Black Friday</label>
+                    <comment>Se mostrará el acceso a Black Friday en la cabecera.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="website_messages" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Mensajes</label>
+                <field id="entry" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Modal entrada</label>
+                    <comment>Mensaje de descripción del modal de entrada</comment>
+                </field>
+                <field id="entry_app" translate="label" type="textarea" sortOrder="25" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Modal entrada (App)</label>
+                    <comment>Mensaje de descripción del modal de entrada en la APP.</comment>
+                </field>
+                <field id="app_cart" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Aviso vaciado de cesta (app)</label>
+                    <comment>Mensaje que se mostrará en la app para informar al cliente del vaciado de cesta</comment>
+                </field>
+                <field id="app_exit" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Mensaje salida Black Friday (app)</label>
+                    <comment>Mensaje que se mostrará en la app para informar de la salida de Black Friday</comment>
+                </field>
+                <field id="show_availability_msg" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Mostrar aviso de disponibilidad</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="availability_msg" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Mensaje del aviso de disponibilidad</label>
+                </field>
+            </group>
+            <group id="storepass" translate="label" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Reserva de franja horaria</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Habilitado</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="promotion_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>ID de promoción</label>
+                    <comment>Se usa para codificar el QR.</comment>
+                </field>
+                <field id="default_cus_id" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Código de cliente por defecto</label>
+                    <comment>Se usa solo en caso de que el cliente que haga la reserva no disponga aún de código propio.</comment>
+                </field>
+                <field id="timeslot_date_start" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Primera fecha disponible</label>
+                    <frontend_model>Hiperdino\BlackFriday\Block\Adminhtml\DatePicker</frontend_model>
+                    <comment>Primer día disponible para reservar franja horaria (YYYY/mm/dd).</comment>
+                </field>
+                <field id="timeslot_date_end" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Última fecha disponible</label>
+                    <frontend_model>Hiperdino\BlackFriday\Block\Adminhtml\DatePicker</frontend_model>
+                    <comment>Último día disponible para reservar franja horaria (YYYY/mm/dd).</comment>
+                </field>
+                <field id="max_days_for_booking" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Número de días máximos a mostrar desde la fecha actual</label>
+                    <comment>Si se deja vacío o se pone 0, se mostrarán hasta 7 días en adelante.</comment>
+                </field>
+                <field id="allow_same_day" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Mostrar franjas del día actual</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+        <section id="singular_qr">
+            <group id="paths">
+                <field id="bf_storepass" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>QR BlackFriday StorePass</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

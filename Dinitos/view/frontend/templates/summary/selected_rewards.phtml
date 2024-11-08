@@ -1,0 +1,26 @@
+<?php /** @var $block Hiperdino\Dinitos\Block\Cart\Totals\Rewards; */ ?>
+
+<?php
+$enabled = $block->dinitosEnabled();
+$rewards = $block->getRewardsProducTypeFromQuote();
+$discount = $block->getRewardsProductsPercentage();
+$priceFree = $block::PRICE_FREE;
+?>
+
+<?php if ($block->dinitosEnabled() && count($rewards) > 0): ?>
+    <div class="side-menu-checkout__item flex-item side-menu-checkout__text has-border-bottom">
+        <?php foreach ($rewards as $field): ?>
+            <div class=" flex-container justify-between">
+                <?php if ($discount < 100): ?>
+                    <span><?= $field['cart_text'] ?></span>
+                <?php else: ?>
+                    <span><?= $field['cart_text'] ?></span>
+                    <span><?= $this->formatPrice($priceFree) ?></span>
+                <?php endif ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif ?>
+
+
+

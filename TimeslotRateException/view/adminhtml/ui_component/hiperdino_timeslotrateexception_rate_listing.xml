@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                hiperdino_timeslotrateexception_rate_listing.hiperdino_timeslotrateexception_rate_listing_data_source
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>spinner_columns</spinner>
+        <buttons>
+            <button name="add">
+                <url path="*/*/create"/>
+                <class>primary</class>
+                <label translate="false">Añadir tarifa</label>
+            </button>
+        </buttons>
+        <deps>
+            <dep>hiperdino_timeslotrateexception_rate_listing.hiperdino_timeslotrateexception_rate_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="hiperdino_timeslotrateexception_rate_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="hiperdino_timeslotrateexception_rate_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="sticky" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <exportButton name="export_button"/>
+    </listingToolbar>
+    <columns name="spinner_columns">
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="name" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Nombre</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="description" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Descripción</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="amount" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Importe</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="created_at" sortOrder="10">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Fecha de creación</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="updated_at" sortOrder="10">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Fecha de actualización</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Hiperdino\TimeslotRateException\Ui\Component\Listing\Column\Rate\Actions" sortOrder="90">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

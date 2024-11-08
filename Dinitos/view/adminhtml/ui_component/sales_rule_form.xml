@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <fieldset name="rule_information" sortOrder="10">
+        <field name="discount_type" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">sales_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>int</dataType>
+                <label translate="false">Tipo de descuento</label>
+                <visible>true</visible>
+                <dataScope>discount_type</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Hiperdino\Dinitos\Ui\Component\Listing\Column\DiscountTypeOptions"/>
+                        <caption translate="true">-- Seleccione --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

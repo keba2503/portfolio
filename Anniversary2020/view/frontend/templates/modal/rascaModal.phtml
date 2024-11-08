@@ -1,0 +1,65 @@
+<?php
+
+/** @var \Hiperdino\Anniversary2020\Block\Codes $block */
+?>
+
+<div class="dialogBox-modal dialogBox-modal-dorasca flex-container flex-row justify-center items-center">
+    <div class="dialogBox--wrapper dialogBox--wrapper-modal flex-item" style="background-color: #1C752C ;background-image: url('<?= $block->getBackgroundModalImg() ?>')">
+        <div class="dialogBox__item dialogBox__login dialogBox__item--sixe-fixed flex-container flex-row-toggle justify-between">
+            <div class="login__control quickview__control quickview__control-modal">
+                <div class="button button__icon quickview__close flex-container flex-row justify-center items-center" data-myaction="closeCustomModal" data-target="dialogBox-modal-dorasca">
+                    <i class="icon icon-close flex-item"></i>
+                </div>
+            </div>
+            <div class="dialogBox__full flex-item">
+                <div class="dialogBox__content flex-container flex-column">
+                    <div class="dialogBox__title flex-item">
+                        <div class="title__text fz-56 white">
+                            <b><?= __('¡ENHORABUENA!') ?></b>
+                        </div>
+                    </div>
+
+                    <div class="dialogBox__sub-title dialogBox__description flex-item">
+                        <p class="prize-modal fz-36 white">
+                            <?= $escaper->escapeHtml(__('!Has ganado 1')); ?><br>
+                            <b class="t-upper" id="prize-text"></b>!
+                        </p>
+                        <p class="white"><?= $block->getModalPrizeText() ?></p>
+                    </div>
+                    <div class="flex-item other-code">
+                        <div class="flex-container flex-column justify-center">
+                            <div class="anniversary__button block--wrapper flex-item">
+                                <button class="button button__complex has-border button__complex--modal button__complex--container has-margin-bottom flex-container flex-row justify-center items-center action_createAccount" data-myaction="closeCustomModal" data-target="dialogBox-modal-dorasca">
+                                    <div class="button__content flex-item">
+                                        <div class="button__content--container flex-container flex-row justify-center items-center">
+                                            <div class="button__text flex-item">
+                                                <?= __('Aceptar') ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="white"><?= __("Descarga Nuestra app y disfruta de todas sus ventajas") ?></div>
+                        <div class="footer-store--wrapper flex-item">
+                            <div class="footer-store--container flex-container flex-row flex-wrap justify-center items-center">
+                                <div class="store__item flex-item">
+                                    <a href="<?= $block->getIosStoreUrl() ?>" target="_blank" class="link--wrapper">
+                                        <div class="store--badge app-store--badge"></div>
+                                    </a>
+                                </div>
+                                <div class="store__item flex-item">
+                                    <a href="<?= $block->getAndroidStoreUrl() ?>" target="_blank" class="link--wrapper">
+                                        <div class="store--badge google-play--badge"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

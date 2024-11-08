@@ -1,0 +1,22 @@
+<?php /** @var Hiperdino\Anniversary\Block\Order\Totals\Anniversary $block */?>
+
+<?php if ($block->showAnniversaryInfo()): ?>
+    <?php $anniversary = $block->getAnniversaryInfo(); ?>
+    <tr>
+        <td style="font-family:'Source Sans Pro','Arial';font-size:16px;color:#999;line-height:23px" width="600">
+            <table style="border-top:2px solid #c9c9c9" width="200" align="right">
+                <tbody>
+                <tr height="10"></tr>
+                <tr>
+                    <td width="100">
+                        <p style="font-family:'Source Sans Pro','Arial';font-size:16px;color:#999">
+                            <?= __($anniversary["label"]) ?></p></td>
+                    <td style="font-size:16px;font-weight:bold;color:#bd1e1e" width="100" align="right">
+                        <span class="m_3085217190401068836price"> <?= $anniversary["qty"] ?></span></td>
+                </tr>
+                <tr height="10"></tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+<?php endif; ?>

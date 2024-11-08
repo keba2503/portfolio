@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                hiperdino_dinitos_package_listing.hiperdino_dinitos_package_listing_data_source
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>spinner_columns</spinner>
+        <buttons>
+            <button name="add">
+                <url path="*/*/create"/>
+                <class>primary</class>
+                <label translate="false">Añadir paquete</label>
+            </button>
+        </buttons>
+        <deps>
+            <dep>hiperdino_dinitos_package_listing.hiperdino_dinitos_package_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="hiperdino_dinitos_package_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="hiperdino_dinitos_package_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="sticky" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters" />
+        <paging name="listing_paging"/>
+        <exportButton name="export_button"/>
+    </listingToolbar>
+    <columns name="spinner_columns">
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="increment_id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Increment ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="customer_id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Customer ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="dinitos_quantity">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Cantidad de dinitos</label>
+            </settings>
+        </column>
+        <column name="available_dinitos">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Cantidad de dinitos disponible</label>
+            </settings>
+        </column>
+        <column name="redeemed" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Canjeado</label>
+            </settings>
+        </column>
+        <column name="expired" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Expirado</label>
+            </settings>
+        </column>
+        <column name="expiration_date">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Fecha de expiración</label>
+            </settings>
+        </column>
+        <column name="created_at">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Fecha de creación</label>
+            </settings>
+        </column>
+        <column name="updated_at">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Fecha de actualización</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Hiperdino\Dinitos\Ui\Component\Listing\Column\Package\Actions">
+
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

@@ -1,0 +1,11 @@
+<?php /** @var $block Hiperdino\Dinitos\Block\History; */ ?>
+
+<?php
+$dinitosHistoryTexts = $block->getDinitosHistoryTexts();
+$dinitosCMSblockIdentifier = $dinitosHistoryTexts['cms_block_id_onboarding'];
+?>
+
+<?php if ($dinitosCMSblockIdentifier): ?>
+    <a href="#"
+       class="dinitos-info-btn"><?= __($dinitosHistoryTexts['text_url_onboarding']) ?></a>
+<?php endif ?>

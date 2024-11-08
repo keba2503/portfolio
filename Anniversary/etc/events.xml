@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <event name="checkout_cart_save_after">
+        <observer name="anniversary_cart_save_after" instance="Hiperdino\Anniversary\Observer\CartSaveAfter" />
+    </event>
+
+    <event name="customer_login">
+        <observer name="anniversary_customer_login" instance="Hiperdino\Anniversary\Observer\CustomerLoginAnniversary" />
+    </event>
+
+    <event name="ecommerceapp_quote_save">
+        <observer name="anniversary_app_cart_save_after" instance="Hiperdino\Anniversary\Observer\CartSaveAfter" />
+    </event>
+
+    <event name="hdcheckout_merger_quote_after">
+        <observer name="anniversary_merger_quote_after" instance="Hiperdino\Anniversary\Observer\MergerQuoteAfter" />
+    </event>
+
+    <event name="email_order_set_template_vars_before">
+        <observer name="anniversary_add_order_email_variable" instance="Hiperdino\Anniversary\Observer\AddAnniversaryVariableToOrderEmail" />
+    </event>
+
+    <event name="email_invoice_set_template_vars_before">
+        <observer name="anniversary_add_invoice_email_variable" instance="Hiperdino\Anniversary\Observer\AddAnniversaryVariableToInvoiceEmail" />
+    </event>
+</config>

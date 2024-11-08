@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hiperdino_Anniversary2020::anniversary2020" title="Anniversary 2020" translate="title" module="Hiperdino_Anniversary2020" parent="Magento_Backend::marketing" sortOrder="60" dependsOnModule="Hiperdino_Anniversary2020" resource="Hiperdino_Anniversary2020::anniversary2020"/>
+        <add id="Hiperdino_Anniversary2020::anniversary2020_grid_rascas" title="Rascas" translate="title" module="Hiperdino_Anniversary2020" parent="Hiperdino_Anniversary2020::anniversary2020" sortOrder="10" dependsOnModule="Hiperdino_Anniversary2020" action="hiperdino_anniversary2020/post/rascas" resource="Hiperdino_Anniversary2020::anniversary2020"/>
+
+        <add id="Hiperdino_Anniversary2020::participation_queue" title="Participaciones" translate="title" module="Hiperdino_Anniversary2020" parent="Singular_Queue::main_menu" sortOrder="70" dependsOnModule="Hiperdino_Anniversary2020" resource="Hiperdino_Anniversary2020::anniversary2020"/>
+        <add id="Hiperdino_Anniversary2020::anniversary2020_grid_participation" title="Cola de participaciones" translate="title" module="Hiperdino_Anniversary2020" parent="Hiperdino_Anniversary2020::participation_queue" sortOrder="10" dependsOnModule="Hiperdino_Anniversary2020" action="hiperdino_anniversary2020/queue/participation" resource="Hiperdino_Anniversary2020::anniversary2020_grid_participation"/>
+
+        <add id="Hiperdino_Anniversary2020::anniversary2020_prizes" title="Aniversario - Premios" translate="title" module="Hiperdino_Anniversary2020" parent="Magento_Sales::sales_operation" sortOrder="100" dependsOnModule="Hiperdino_Anniversary2020" action="hiperdino_anniversary2020/prizes/index" resource="Hiperdino_Anniversary2020::anniversary2020_prizes"/>
+    </menu>
+</config>

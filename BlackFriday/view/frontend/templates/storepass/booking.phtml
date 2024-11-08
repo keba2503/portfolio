@@ -1,0 +1,191 @@
+<?php
+/** @var \Hiperdino\BlackFriday\Block\StorePass $block */
+?>
+<?php
+$timeslotsOptions = $block->getTimeslotsOptions();
+?>
+<?php if(count($timeslotsOptions)): ?>
+
+    <div class="row">
+        <div class="col-md-8">
+            <?php if($block->isModifying()): ?>
+                <div class="container container-message bf-storepass-modifying-msg">
+                    <?= $block->getIsModifyingMessage() ?>
+                </div>
+            <?php endif; ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-11 col-xl-8 offset-md-1">
+                        <div class="flex-container flex-column justify-center">
+                            <div class="checkout__item checkout__sub-title flex-item">
+                                <?= __('HiperDino Black Friday') ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container bf-storepass-main">
+                <div class="row">
+                    <div class="col-12 col-lg-11 col-xl-8 offset-md-1">
+                        <div class="flex-container flex-column justify-center">
+                            <div class="checkout__item checkout__sub-title flex-item">
+                                <?= __('Elige el día para la compra de juguetes.') ?>
+                            </div>
+                            <div class="checkout__item flex-item">
+                                <div class="checkout-horary flex-container flex-wrap flex-row ">
+                                    <?php foreach($timeslotsOptions as $date => $timeslots): ?>
+                                        <div class="checkout-horary__item cart__button block--wrapper flex-item bfstorepass-date-element" data-date="<?= $block->forDataHtml($date) ?>">
+                                            <div class="button button__complex has-border button__complex--modal button__complex--size has-margin-bottom flex-container flex-row justify-center items-center bfstorepass-date-button"
+                                                 data-date="<?= $block->forDataHtml($date) ?>">
+                                                <div class="button__content flex-item">
+                                                    <div class="button__content--container flex-container flex-row justify-center items-center">
+                                                        <div class="button__text flex-item">
+                                                            <?= $block->getDateDay($date) ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container bf-storepass-main">
+                <div class="row">
+                    <div class="col-12 col-md-10 col-lg-9 col-xl-7 offset-md-1">
+                        <div class="flex-container flex-column justify-center">
+                            <?php foreach($timeslotsOptions as $date => $timeslots): ?>
+                                <div class="checkout__item flex-item bfstorepass-date-title" data-date="<?= $block->forDataHtml($date) ?>" style="display: none;">
+                                    <div class="checkout__item checkout__sub-title flex-item">
+                                        <?= __('Elige la franja horaria de compra de juguetes para el día') ?> <?= $block->getDateFullLabel($date) ?>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                            <div class="checkout__item flex-item">
+                                <div class="checkout-horary flex-wrap flex-container flex-row justify-between adjust-moz-height">
+                                    <?php foreach($timeslotsOptions as $date => $timeslots): ?>
+                                        <?php foreach($timeslots as $timeslot): ?>
+                                            <div class="cart__button block--wrapper flex-item bfstorepass-timeslot-element" style="display: none;"
+                                                 data-date="<?= $block->forDataHtml($date) ?>"
+                                                 data-timeslot-id="<?= $timeslot['id'] ?>">
+                                                <div class="button button__complex has-border button__complex--size--time has-margin-bottom flex-container flex-row justify-center items-center bfstorepass-timeslot-button">
+                                                    <div class="button__content flex-item">
+                                                        <div class="button__content--container flex-container flex-row justify-center items-center">
+                                                            <div class="button__text flex-item">
+                                                                <?= $timeslot['start_time'] ?> <?= __('a') ?> <?= $timeslot['end_time'] ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form id="bfstorepass-booking-form" method="post" action="<?= $block->getBookingPostUrl() ?>">
+                <input type="hidden" id="timeslot_id" name="timeslot_id" value="" />
+                <input type="hidden" id="book_for" name="book_for" value="" />
+                <div id="bfstorepass-booking-container" class="container" style="display: none;">
+                    <div class="row">
+                        <div class="col-12 col-md-10 col-lg-9 col-xl-7 offset-md-1">
+                            <button id="bfstorepass-booking-submit"
+                                    class="button button__complex button__complex--modal button__complex--container flex-container flex-row justify-center items-center"
+                                    type="submit">
+                                <div class="button__content flex-item">
+                                    <div class="button__content--container flex-container flex-row justify-center items-center">
+                                        <div class="button__text flex-item"><?= __('Reservar franja horaria') ?></div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br/><br/><br/>
+        </div>
+        <div class="col-md-4">
+            <div class="container bf-storepass-summary">
+                <div class="title"><?= __('Resumen de la selección') ?></div>
+                <div class="subtitle"><?= __('Tienda') ?></div>
+                <div class="tienda-address">
+                    <?= $block->getCurrentShop()->getData('name') ?><br/>
+                    <?= $block->getCurrentShop()->getData('address') ?>, <?= $block->getCurrentShop()->getData('city') ?>
+                </div>
+                <div class="change"><a href="<?= $block->getUrl('hiperdino_blackfriday/storepass') ?>"><?= __('Cambiar') ?></a></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        require(['jquery', 'jquery/validate'], function ($) {
+            
+            $('body').on('click', '.bfstorepass-date-element', function (e) {
+                e.preventDefault();
+                changeTimeslotsDate($(this));
+            });
+
+            $('body').on('click', '.bfstorepass-timeslot-element', function (e) {
+                e.preventDefault();
+                selectTimeslot($(this));
+            });
+
+            $('body').on('submit', '#bfstorepass-booking-form', function () {
+                $('#bfstorepass-booking-submit').prop("disabled", true);
+            });
+
+            function changeTimeslotsDate(element) {
+                $('.bfstorepass-date-button').addClass('has-border');
+                element.find('.bfstorepass-date-button').removeClass('has-border');
+                let date = element.data('date');
+                $('.bfstorepass-date-title').hide();
+                $('.bfstorepass-date-title[data-date=' + date + ']').show();
+                $('.bfstorepass-timeslot-element').hide();
+                $('.bfstorepass-timeslot-element[data-date=' + date + ']').show();
+                $('#book_for').val(date);
+                $('.bfstorepass-timeslot-button').addClass('has-border');
+                $('#timeslot_id').val('');
+            }
+
+            function selectTimeslot(element) {
+                $('.bfstorepass-timeslot-button').addClass('has-border');
+                element.find('.bfstorepass-timeslot-button').removeClass('has-border');
+                let timeslotId = element.data('timeslot-id');
+                $('#timeslot_id').val(timeslotId);
+                $('#bfstorepass-booking-container').show();
+            }
+        });
+    </script>
+
+<?php else: ?>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-11 col-xl-8 offset-md-1">
+                <div class="flex-container flex-column justify-center">
+                    <div class="checkout__item checkout__sub-title flex-item">
+                        <?= __('HiperDino Black Friday') ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container bf-storepass-main">
+        <div class="row">
+            <div class="col-12 col-lg-11 col-xl-8 offset-md-1">
+                <div class="flex-container flex-column justify-center">
+                    <div class="checkout__item checkout__sub-title flex-item">
+                        <?= __('No hay fechas disponibles en estos momentos.') ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php endif; ?>

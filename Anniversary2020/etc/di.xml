@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- commands -->
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="Hiperdino_Anniversary2020_Command_Update" xsi:type="object">Hiperdino\Anniversary2020\Command\Update</item>
+                <item name="Hiperdino_Anniversary2020_Command_Queue" xsi:type="object">Hiperdino\Anniversary2020\Command\Queue</item>
+                <item name="Hiperdino_Anniversary2020_Command_CleanQueue" xsi:type="object">Hiperdino\Anniversary2020\Command\CleanQueue</item>
+                <item name="Hiperdino_Anniversary2020_Command_SendEmailTest" xsi:type="object">Hiperdino\Anniversary2020\Command\SendEmailTest</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- end commands -->
+
+    <!-- colletions providers -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hiperdino_anniversary2020_post_rascas_data_source" xsi:type="string">Hiperdino\Anniversary2020\Model\ResourceModel\Rasca\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hiperdino_anniversary2020_queue_listing_data_source" xsi:type="string">Hiperdino\Anniversary2020\Model\ResourceModel\ParticipationQueue\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- end collections providers-->
+
+    <!-- virtual types -->
+    <virtualType name="Hiperdino\Anniversary2020\Model\ResourceModel\Rasca\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hiperdino_anniversary2020_rascas</argument>
+            <argument name="resourceModel" xsi:type="string">Hiperdino\Anniversary2020\Model\ResourceModel\Rasca</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Hiperdino\Anniversary2020\Model\ResourceModel\ParticipationQueue\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hiperdino_participation_queue</argument>
+            <argument name="resourceModel" xsi:type="string">Hiperdino\Anniversary2020\Model\ResourceModel\ParticipationQueue</argument>
+        </arguments>
+    </virtualType>
+    <!-- end virtual types-->
+
+    <preference for="Hiperdino\Ux\Block\Sidemenu" type="Hiperdino\Anniversary2020\Block\Link" />
+    <preference for="Hiperdino\Anniversary2020\Api\Data\ConfigInterface" type="Hiperdino\Anniversary2020\Model\Data\Config" />
+    <preference for="Hiperdino\Anniversary2020\Api\RegisterParticipationManagerInterface" type="Hiperdino\Anniversary2020\Model\Api\RegisterParticipationManager" />
+    <preference for="Hiperdino\Anniversary2020\Api\ScratchParticipationManagerInterface" type="Hiperdino\Anniversary2020\Model\Api\ScratchParticipationManager" />
+    <preference for="Hiperdino\Anniversary2020\Api\CustomerRgpdManagerInterface" type="Hiperdino\Anniversary2020\Model\Api\CustomerRgpdManager" />
+    <preference for="Hiperdino\Anniversary2020\Api\RaffleRgpdRepositoryInterface" type="Hiperdino\Anniversary2020\Model\RaffleRgpdRepository" />
+    <preference for="Magento\Ui\Model\Export\ConvertToCsv" type="Hiperdino\Anniversary2020\Model\Export\ConvertToCsv" />
+    <preference for="Hiperdino\Anniversary2020\Api\Data\ParticipationInterface" type="Hiperdino\Anniversary2020\Model\Data\Participation" />
+    <preference for="Hiperdino\Anniversary2020\Api\ParticipationByCustomerManagerInterface" type="Hiperdino\Anniversary2020\Model\Api\ParticipationByCustomerManager" />
+    <preference for="Hiperdino\Anniversary2020\Api\Data\ParticipationListInterface" type="Hiperdino\Anniversary2020\Model\Data\ParticipationList" />
+
+    <!-- plugins -->
+    <type name="Hiperdino\Ux\Block\Home\Element">
+        <plugin name="anniversary_home_banner" type="Hiperdino\Anniversary2020\Plugin\AroundBannerUrl" sortOrder="100" disabled="false" />
+    </type>
+
+    <type name="Hiperdino\Homai\Helper\Coupon">
+        <plugin name="homai_prize_text" type="Hiperdino\Anniversary2020\Plugin\AfterCustomerGetCoupons" sortOrder="100" disabled="false" />
+    </type>
+    <!-- end plugins -->
+
+</config>

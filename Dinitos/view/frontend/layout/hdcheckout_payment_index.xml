@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <update handle="ajax"/>
+
+        <referenceBlock name="hdcheckout_main_content">
+            <block class="Hiperdino\Dinitos\Block\Rewards" name="hiperdino_dinitos_rewards"
+                   as="hiperdino_dinitos_rewards" template="Hiperdino_Dinitos::payment/dinitos_rewards.phtml" before="-">
+                <block class="Hiperdino\Dinitos\Block\History" name="hiperdino_dinitos_expire"
+                       as="hiperdino_dinitos_expire" template="Hiperdino_Dinitos::history/dinitos_expire.phtml" before="-">
+                </block>
+                <block class="Hiperdino\Dinitos\Block\History" name="hiperdino_dinitos_info"
+                       as="hiperdino_dinitos_info" template="Hiperdino_Dinitos::history/dinitos_info.phtml" before="-">
+                </block>
+                <block name="hiperdino_dinitos_info_modal" class="Hiperdino\Dinitos\Block\History"
+                       template="Hiperdino_Dinitos::history/dinitos_info_modal.phtml" before="-"/>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

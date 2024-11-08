@@ -1,0 +1,115 @@
+<?php /** @var \Hiperdino\Anniversary2020\Block\Customer\Edit $block */ ?>
+
+<div class="page-corporate__headings">
+    <div class="container">
+        <div class="row">
+            <div class="">
+                <div class="page-corporate__block anniversary__item flex-item">
+                    <h2 class="header__text"> <?= __('Completa tus datos') ?></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="padding-bottom: 50px">
+    <div class="row">
+        <div class="rgpd-form">
+
+            <div class="rascas-error error-message input input__complex--container flex-container flex-row justify-center items-center" style="display: none;"></div>
+            <p><?= $escaper->escapeHtml(__('Para poder gestionar tu participación en los sorteos debes indicarnos tus datos y aceptar los términos de participación.')); ?></p>
+            <form class="form form form-rasca-edit" action="<?= $block->getAjaxActionUrl() ?>" method="post" id="rasca-customer-edit-form">
+
+                <div class="container-input">
+
+                    <div class="label__input">
+                        <label class="control-label" for="customer_dni"><?= __('DNI') ?> *</label>
+                        <div class="input input__complex input__complex--modal input__complex--container flex-container flex-row justify-center items-center">
+                            <div class="input__content flex-item">
+                                <div class="flex-container flex-row justify-center items-center">
+                                    <div class="input-wrapper">
+                                        <input id="customer_dni" type="text" name="customer_dni" class="input__text flex-item flex-double required-entry" placeholder="<?= __('DNI') ?>" value="<?= $block->getCustomerDni() ?>">
+                                        <label class="control-label" for="customer_dni"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="label__input">
+                        <label class="control-label" for="phone"><?= __('Móvil') ?> *</label>
+                        <div class="input input__complex input__complex--modal input__complex--container flex-container flex-row justify-center items-center">
+                            <div class="input__content flex-item">
+                                <div class="flex-container flex-row justify-center items-center">
+                                    <div class="input-wrapper">
+                                        <input id="customer_telephone" type="text" name="customer_telephone" class="input__text flex-item flex-double required-entry" placeholder="<?= __('600000000') ?>" value="<?= $block->getCustomerTelephone() ?>">
+                                        <label class="control-label" for="phone"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="type-select type__select block--wrapper flex-item">
+                        <div class="items--container flex-container flex-row justify-between normal-select">
+                            <div class="select__item item--wrapper quickview-type__select flex-item edit-form">
+                                <?php $islandsOptions = $block->getIslandsOptions() ?>
+                                <?php $islandSelected = $block->getCustomerIsland() ?>
+                                <select class="select2-normal required-entry select2" name="customer_island" data-placeholder="<?= __('Isla') ?>">
+                                    <option></option>
+                                    <?php foreach ($islandsOptions as $islandOption) : ?>
+                                        <?php if ($islandOption == $islandSelected) : ?>
+                                            <option selected value="<?= $islandOption['value'] ?>"><?= $islandOption['label'] ?></option>
+                                        <?php else : ?>
+                                            <option value="<?= $islandOption['value'] ?>"><?= $islandOption['label'] ?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="block__text block__text--register info__small_text rasca-terms-text">
+                    <label for="accept_anniversary"><?= $block->getTermsAcceptText() ?></label>
+                </p>
+
+                <div class="input input-radio-container flex-container flex-row items-center">
+                    <div class="input--radio input--radio--card flex-item rasca-terms-input">
+                        <input type="checkbox" value="retrieve" id="accept_anniversary" name="terms_and_conditions" class="required-entry">
+                        <label for="accept_anniversary">
+                            <span></span>
+                        </label>
+                    </div>
+
+                    <p class="block__text block__text--register info__small_text rasca-terms-text">
+                        <label for="accept_anniversary" class="control-label"><?= $block->getTermsAcceptCheckboxText() ?></label>
+                    </p>
+                </div>
+
+                <div class="anniversary__button block--wrapper flex-item">
+                    <button type="submit" class="button button__complex button__complex--modal button__complex--container flex-container flex-row justify-center items-center">
+                        <div class="button__content flex-item">
+                            <div class="button__content--container flex-container flex-row justify-center items-center">
+                                <div class="button__text flex-item">
+                                    <?= __('Continuar') ?>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Hiperdino_Anniversary2020/js/anniversary" : {
+            }
+        }
+    }
+</script>

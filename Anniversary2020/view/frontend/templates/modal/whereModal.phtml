@@ -1,0 +1,35 @@
+<div class="dialogBox-modal dialogBox-modal-where-rasca flex-container flex-row justify-center items-center">
+				<div class="dialogBox--wrapper dialogBox--wrapper-modal flex-item">
+					<div class="dialogBox__item dialogBox__login dialogBox__item--sixe-fixed flex-container flex-row-toggle justify-between">
+						<div class="login__control quickview__control quickview__control-modal">
+							<div class="button button__icon quickview__close flex-container flex-row justify-center items-center" data-myaction="closeCustomModal" data-target="dialogBox-modal-where-rasca">
+								<i class="icon icon-close flex-item"></i>
+							</div>
+						</div>
+						<div class="dialogBox__full flex-item">
+							<div class="dialogBox__content flex-container flex-column">
+								<div class="dialogBox__title flex-item">
+									<div class="title__text">
+										<?= __('Dónde encontrar tú código de participación') ?>
+									</div>
+								</div>
+								<p><?= $escaper->escapeHtml(__('Busca tú código de participación al final de tu ticket de compra. Tendrás tantos códigos como participaciones hayas obtenido.')); ?></p>
+								<div class="img-where text-center">
+									<img src="<?= $block->getRegisterImage() ?>" alt="">
+								</div>
+								<div class="anniversary__button block--wrapper flex-item">
+									<button type="submit" name="rascaButton" disabled="true" class="button button__complex button__complex--modal button__complex--container flex-container flex-row justify-center items-center" data-myaction="closeCustomModal" data-target="dialogBox-modal-where-rasca">
+										<div class="button__content flex-item">
+											<div class="button__content--container flex-container flex-row justify-center items-center">
+												<div class="button__text flex-item">
+													<?= __('Aceptar') ?>
+												</div>
+											</div>
+										</div>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>

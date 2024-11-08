@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <event name="customer_login">
+        <observer name="hdcustomer_anniversary2020_login" instance="Hiperdino\Anniversary2020\Observer\CustomerLogin" />
+    </event>
+
+    <event name="hiperdino_customer_register">
+        <observer name="hdcustomer_anniversary2020_register" instance="Hiperdino\Anniversary2020\Observer\CustomerRegister" />
+    </event>
+
+    <event name="singular_invoice_after">
+        <observer name="hdinvoice_anniversary2020_participation" instance="Hiperdino\Anniversary2020\Observer\RequestParticipation" />
+    </event>
+
+    <event name="customer_obtained_participation">
+        <observer name="send_push_customer_participation" instance="Hiperdino\Anniversary2020\Observer\SendPushCustomerParticipation" />
+    </event>
+
+    <event name="after_new_digital_ticket">
+        <observer name="hddigitalticket_anniversary2020_participation" instance="Hiperdino\Anniversary2020\Observer\AssignToCustomer" />
+    </event>
+</config>

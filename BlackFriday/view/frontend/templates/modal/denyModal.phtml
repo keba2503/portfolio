@@ -1,0 +1,34 @@
+<div class="dialogBox-modal dialogBox-modal-blackfriday-deny flex-container flex-row justify-center items-center">
+    <div class="dialogBox--wrapper postal-wrapper has-not-padding flex-item">
+        <div class="dialogBox__item dialogBox__recover flex-container flex-row-toggle justify-between">
+            <div class="dialogBox__recover-content dialogBox__recover-content--big flex-item">
+                <div class="dialogBox__content flex-container flex-column">
+
+                    <div class="dialogBox__title flex-item">
+                        <div class="title__text">
+                            <?= __('¡Lo sentimos!') ?>
+                        </div>
+                    </div>
+
+                    <div class="dialogBox__sub-title dialogBox__description flex-item">
+                        <?= $block->getModalMessage(); ?>
+                    </div>
+
+                    <div class="cart__button block--wrapper flex-item">
+                        <button type="button" class="button button__complex button__complex--modal button__complex--container has-margin-bottom flex-container flex-row justify-center items-center"
+                             data-myaction="closeCustomModal" data-target="dialogBox-modal-blackfriday-deny">
+                            <div class="button__content flex-item">
+                                <div class="button__content--container flex-container flex-row justify-center items-center">
+                                    <div class="button__text flex-item">
+                                        <?= __('Aceptar') ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

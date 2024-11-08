@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- commands -->
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="Hiperdino_BlackFriday_Command_Update" xsi:type="object">Hiperdino\BlackFriday\Command\Update</item>
+				<item name="Hiperdino_BlackFriday_Command_Json" xsi:type="object">Hiperdino\BlackFriday\Command\Json</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- end commands -->
+
+    <type name="Magento\Checkout\Model\Cart">
+        <plugin name="hiperdino_blackfriday_plugin_cart" type="Hiperdino\BlackFriday\Plugin\Cart" sortOrder="1" disabled="false" />
+    </type>
+
+    <type name="Hiperdino\FreeNavigation\Helper\BuyingFor">
+        <plugin name="hiperdino_blackfriday_plugin_buying_for" type="Hiperdino\BlackFriday\Plugin\BuyingFor" sortOrder="1" disabled="false" />
+    </type>
+
+    <type name="Magento\Quote\Model\Quote">
+        <plugin name="hiperdino_bf_plugin_quote_before_add_product" type="Hiperdino\BlackFriday\Plugin\QuoteBeforeAddProduct" sortOrder="1" disabled="false" />
+        <plugin name="hiperdino_bf_plugin_quote_before_update_item" type="Hiperdino\BlackFriday\Plugin\QuoteBeforeUpdateItem" sortOrder="2" disabled="false" />
+    </type>
+
+    <type name="Singular\Tiendas\Helper\Data">
+        <plugin name="hiperdino_bf_plugin_after_get_pickup_shops" type="Hiperdino\BlackFriday\Plugin\TiendasAfterGetPickupShop" sortOrder="1" disabled="false" />
+    </type>
+
+    <!-- Data sources -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hiperdino_blackfriday_timeslot_listing_data_source" xsi:type="string">Hiperdino\BlackFriday\Model\ResourceModel\StorepassTimeslot\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Hiperdino\BlackFriday\Model\ResourceModel\StorepassTimeslot\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hiperdino_blackfriday_storepass_timeslot</argument>
+            <argument name="resourceModel" xsi:type="string">Hiperdino\BlackFriday\Model\ResourceModel\StorepassTimeslot</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hiperdino_blackfriday_booking_listing_data_source" xsi:type="string">Hiperdino\BlackFriday\Model\ResourceModel\StorepassBooking\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Hiperdino\BlackFriday\Model\ResourceModel\StorepassBooking\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hiperdino_blackfriday_storepass_booking</argument>
+            <argument name="resourceModel" xsi:type="string">Hiperdino\BlackFriday\Model\ResourceModel\StorepassBooking</argument>
+        </arguments>
+    </virtualType>
+    <!-- ************ -->
+
+</config>

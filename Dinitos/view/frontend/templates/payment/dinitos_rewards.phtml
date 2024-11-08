@@ -1,0 +1,74 @@
+<?php /** @var $block Hiperdino\Dinitos\Block\Rewards; */
+
+$isDinitosEnabled = $block->isDinitosAccumulatedEnabledWeb();
+$storeRewards = $block->getStoreViewActiveRewards();
+$availableBalance = $block->getCustomerDinitosBalance()['available'];
+$netBalance = $block->getCustomerDinitosBalance()['net'];
+$rewardsFromQuote = $block->getDinitosRewardsFromQuote();
+$dinitosRewardsTexts = $block->getDinitosRewardsTexts();
+$dicountType = $block->getRewardDiscountType();
+?>
+
+<?php if ($isDinitosEnabled): ?>
+    <?php if ((count($storeRewards) > 0)): ?>
+        <div id="reward-error" class="error-message is-invisible mb-3"><?= __($block->getErrorMessage()) ?></div>
+        <div class="row mb-4">
+            <div class="checkout__select-cart col-12  offset-md-1">
+                <div class="flex-container flex-column justify-center">
+                    <div class="checkout__item flex-item mb-3">
+                        <h2 class="header__text hide-in-mobile"><?= __($dinitosRewardsTexts['main_title']) ?></h2>
+                    </div>
+                    <div class="mb-3 block__text">
+                        <?= $block->getBlockHtml('hiperdino_dinitos_expire') ?>
+                        <?= $block->getBlockHtml('hiperdino_dinitos_info') ?>
+                        <?= $block->getBlockHtml('hiperdino_dinitos_info_modal') ?>
+                    </div>
+                    <div id="balance-display" data-balance-available="<?= $availableBalance ?>">
+                        <span class="block__text text-base"><?= __("Disponible: ") ?></span>
+                        <span class="display-qty checkout__item w-bold"><?= $netBalance ?></span>
+                    </div>
+                    <?php foreach ($storeRewards as $reward): ?>
+                        <?php if ($reward['active']): ?>
+                            <div id="reward-<?= $reward['id'] ?>"
+                                class="reward <?= $block->enoughToGetReward($reward['dinitos_qty']) ? '' : 'is-disabled' ?> <?= $block->lookForRewardsInQuote($rewardsFromQuote, $reward['id']) ? 'in-quote' : '' ?>"
+                                data-id="<?= $reward['id'] ?>"
+                                data-dinitos-qty="<?= $reward['dinitos_qty'] ?>"
+                                data-balance="<?= $netBalance ?>"
+                                data-balance-available="<?= $availableBalance ?>"
+                                data-action-url="<?= $block->getUrl('dinitos_history/xhr/proccessReward') ?>"
+                                data-coupon-code="<?= $reward['type'] == $dicountType ? $reward['entity_identifier'] : '' ?>"
+                                data-type="<?= $reward['type'] ?>">
+                                <div class="input input-radio-container flex-container flex-row items-center no-margin">
+                                    <div class="rw-btn rw-pointer input--radio input--radio--card flex-item pr-4">
+                                        <input type="checkbox" value="1" id="rw-input-<?= $reward['id'] ?>"
+                                               name="rw-input-<?= $reward['id'] ?>">
+                                        <label for="rw-input-<?= $reward['id'] ?>">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <p class="block__text w-bold">
+                                        <label class="rw-pointer" for="rw-input-<?= $reward['id'] ?>"><?= $reward['name'] ?></label>
+                                    </p>
+                                </div>
+                                <div class="reward-value d-flex">
+                                    <div class="input--radio mr-1"></div>
+                                    <div>
+                                        <div class="dinitos-qty text-base">
+                                            <span><?= __($block->parseRewardText($dinitosRewardsTexts['reward_value_text'], $reward['dinitos_qty'])) ?></span>
+                                        </div>
+                                        <?php $shortfall = abs($netBalance - $reward['dinitos_qty']); ?>
+                                        <div class="shortfall text-base shortfall-hidden">
+                                            <?= __($block->parseRewardText($dinitosRewardsTexts['missing_digits_text'], $shortfall)) ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif ?>
+<?php endif ?>
+
+

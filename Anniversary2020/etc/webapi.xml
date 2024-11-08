@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/app/V1/anniversary2020/registerParticipation" method="POST">
+        <service class="Hiperdino\Anniversary2020\Api\RegisterParticipationManagerInterface" method="registerRasca"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/app/V1/anniversary2020/scratch" method="POST">
+        <service class="Hiperdino\Anniversary2020\Api\ScratchParticipationManagerInterface" method="scratchRasca"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/app/V1/anniversary2020/customer/participations/" method="GET">
+        <service class="Hiperdino\Anniversary2020\Api\ParticipationByCustomerManagerInterface" method="getParticipationByCustomer"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/app/V1/anniversary2020/customer/rgpd" method="POST">
+        <service class="Hiperdino\Anniversary2020\Api\CustomerRgpdManagerInterface" method="customerRgpd"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+</routes>

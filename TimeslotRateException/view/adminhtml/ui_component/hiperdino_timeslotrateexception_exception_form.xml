@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                hiperdino_timeslotrateexception_exception_form.hiperdino_timeslotrateexception_exception_form_data_source
+            </item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Información general</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Hiperdino\TimeslotRateException\Block\Adminhtml\Exception\Edit\BackButton"/>
+            <button name="delete" class="Hiperdino\TimeslotRateException\Block\Adminhtml\Exception\Edit\DeleteButton"/>
+            <button name="save" class="Hiperdino\TimeslotRateException\Block\Adminhtml\Exception\Edit\SaveButton"/>
+        </buttons>
+         <namespace>hiperdino_timeslotrateexception_exception_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>hiperdino_timeslotrateexception_exception_form.hiperdino_timeslotrateexception_exception_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="hiperdino_timeslotrateexception_exception_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="timeslotrateexception/exception/save"/>
+        </settings>
+        <dataProvider class="Hiperdino\TimeslotRateException\Model\DataProvider\Exception" name="hiperdino_timeslotrateexception_exception_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">exception</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>id</dataScope>
+            </settings>
+        </field>
+        <field name="name" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">exception</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="false">Nombre</label>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+        <field name="description" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">exception</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="false">Descripción</label>
+                <dataScope>description</dataScope>
+            </settings>
+        </field>
+        <field name="start_date" sortOrder="30" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">exception</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="false">Desde</label>
+                <dataScope>start_date</dataScope>
+                <notice>Si no especifica fecha de inicio, la excepción estará activa hasta la fecha de fin</notice>
+            </settings>
+        </field>
+        <field name="end_date" sortOrder="40" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">exception</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="false">Hasta</label>
+                <dataScope>end_date</dataScope>
+                <notice>Si no especifica fecha de fin, la excepción estará activa desde la fecha de inicio</notice>
+            </settings>
+        </field>
+        <field name="delivery_type" sortOrder="50" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">exception</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>int</dataType>
+                <label translate="false">Tipo de entrega</label>
+                <dataScope>delivery_type</dataScope>
+                <notice>Una vez seleccionado un tipo de entrega, recuerde que debe elegir también vistas de tienda y que automáticamente eso elige una serie de franjas horarias correspondientes a la selección.
+                    Por lo tanto, no se debe seleccionar manualmente franjas horarias que pertenezcan al tipo de entrega y vista seleccionados.</notice>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Singular\Delivery\Model\Config\Source\DeliveryTypeOptions"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="delivery_store_views" sortOrder="60" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">exception</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>int</dataType>
+                <label translate="false">Vistas de tienda</label>
+                <dataScope>delivery_store_views</dataScope>
+                <notice>Una vez seleccionada una vista de tienda, tenga en cuenta que debe elegir también tipo de entrega y que automáticamente se eligen una serie de franjas horarias correspondientes a dicha selección.
+                    Por lo tanto, evite seleccionar manualmente franjas horarias que ya pertenezcan a la vista de tienda y tipo de entrega seleccionada.</notice>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Singular\Delivery\Model\Config\Source\DeliveryStoreViewsOptions"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="timeslots" sortOrder="70" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">exception</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>int</dataType>
+                <label translate="false">Franjas horarias</label>
+                <dataScope>timeslots</dataScope>
+                <notice>No seleccionar franjas horarias que pertenezcan al Tipo de entrega y Vista de tienda seleccionadas anteriormente</notice>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Singular\Delivery\Ui\Component\Listing\Column\Timeslot\Options"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="rate" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">exception</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>int</dataType>
+                <label translate="true">Tarifa</label>
+                <visible>true</visible>
+                <dataScope>rate</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Hiperdino\TimeslotRateException\Model\Attribute\Rate"/>
+                        <caption translate="true">-- Seleccione --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="is_active" sortOrder="80" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">exception</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="false">Habilitado</label>
+                <dataScope>is_active</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

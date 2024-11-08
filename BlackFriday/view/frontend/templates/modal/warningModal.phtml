@@ -1,0 +1,48 @@
+<?php /** @var \Hiperdino\BlackFriday\Block\Modal\WarningModal $block */ ?>
+<div class="dialogBox-modal dialogBox-modal-blackfriday-start flex-container flex-row justify-center items-center blackfriday-modal">
+	<div class="dialogBox--wrapper dialogBox--wrapper--height-fixed postal-wrapper has-not-padding flex-item">
+		<div class="dialogBox__item dialogBox__recover flex-container flex-row-toggle justify-between">
+			<div class="dialogBox__recover-content dialogBox__recover-content--big flex-item">
+				<div class="dialogBox__content flex-container flex-column">
+
+					<div class="dialogBox__title flex-item">
+						<div class="title__text">
+							<?= __('¡Atención!') ?>
+						</div>
+					</div>
+
+					<div class="dialogBox__sub-title dialogBox__description flex-item">
+						<?= $block->getChildHtml('blackfriday-info'); ?>
+					</div>
+
+					<div class="cart__button block--wrapper flex-item">
+						<button type="button" class="button button__complex button__complex--modal button__complex--container has-margin-bottom flex-container flex-row justify-center items-center blackfriday-enter"
+								data-url="<?= $block->blackFridayLoginAjaxUrl() ?>">
+							<div class="button__content flex-item">
+								<div class="button__content--container flex-container flex-row justify-center items-center">
+									<div class="button__text flex-item">
+										<?= __('Acepto') ?>
+									</div>
+								</div>
+							</div>
+						</button>
+					</div>
+
+					<div class="cart__button block--wrapper flex-item">
+						<div class="button button__complex has-border button__complex--modal button__complex--container flex-container flex-row justify-center items-center"
+							 data-myaction="closeCustomModal" data-target="dialogBox-modal-blackfriday-start">
+							<div class="button__content flex-item">
+								<div class="button__content--container flex-container flex-row justify-center items-center">
+									<div class="button__text flex-item">
+										<?= __('Cancelar') ?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

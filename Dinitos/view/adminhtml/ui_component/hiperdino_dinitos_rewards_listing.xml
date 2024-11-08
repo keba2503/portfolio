@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                hiperdino_dinitos_rewards_listing.hiperdino_dinitos_rewards_listing_data_source
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>spinner_columns</spinner>
+        <buttons>
+            <button name="add">
+                <url path="*/*/create"/>
+                <class>primary</class>
+                <label translate="false">Añadir recompensa</label>
+            </button>
+        </buttons>
+        <deps>
+            <dep>hiperdino_dinitos_rewards_listing.hiperdino_dinitos_rewards_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="hiperdino_dinitos_rewards_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="hiperdino_dinitos_rewards_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="sticky" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters">
+            <filterSelect name="stores" provider="${ $.parentName }">
+                <settings>
+                    <captionValue>0</captionValue>
+                    <options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>
+                    <label translate="true">Vista de tienda</label>
+                    <dataScope>stores</dataScope>
+                    <dataType>multiselect</dataType>
+                    <imports>
+                        <link name="visible">componentType = column, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+        </filters>
+        <paging name="listing_paging"/>
+        <exportButton name="export_button"/>
+    </listingToolbar>
+    <columns name="spinner_columns">
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="stores" class="Hiperdino\Dinitos\Ui\Component\Listing\Column\StoresOptions">
+            <settings>
+                <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options" />
+                <dataType>select</dataType>
+                <label translate="true">Vistas de tienda</label>
+            </settings>
+        </column>
+        <column name="type" class="Hiperdino\Dinitos\Ui\Component\Listing\Column\RewardsTypeOptions" >
+            <settings>
+                <options class="Hiperdino\Dinitos\Ui\Component\Listing\Column\RewardsTypeOptions" />
+                <filter>select</filter>
+                    <dataType>select</dataType>
+                <label translate="true">Tipo de recompensa</label>
+            </settings>
+        </column>
+        <column name="dinitos_qty">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Cantidad de dinitos</label>
+            </settings>
+        </column>
+        <column name="entity_identifier">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Identificador de entidad</label>
+            </settings>
+        </column>
+        <column name="active" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Activa</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Nombre</label>
+            </settings>
+        </column>
+        <column name="checkout_text">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Texto para checkout</label>
+            </settings>
+        </column>
+        <column name="cart_text">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Texto para carrito</label>
+            </settings>
+        </column>
+        <column name="created_at">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Fecha de creación</label>
+            </settings>
+        </column>
+        <column name="updated_at">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Fecha de actualización</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Hiperdino\Dinitos\Ui\Component\Listing\Column\Reward\Actions">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

@@ -1,0 +1,60 @@
+<?php /** @var \Hiperdino\Anniversary2020\Block\Codes $block */ ?>
+
+<div class="dialogBox-modal dialogBox-modal-table-rasca flex-container flex-row justify-center items-center">
+    <div class="dialogBox--wrapper dialogBox--wrapper-modal flex-item">
+        <div class="dialogBox__item dialogBox__login dialogBox__item--sixe-fixed flex-container flex-row-toggle justify-between">
+            <div class="login__control quickview__control quickview__control-modal">
+                <div class="button button__icon quickview__close flex-container flex-row justify-center items-center" data-myaction="closeCustomModal" data-target="dialogBox-modal-table-rasca">
+                    <i class="icon icon-close flex-item"></i>
+                </div>
+            </div>
+            <div class="dialogBox__full flex-item">
+                <div class="dialogBox__content flex-container flex-column">
+                    <div class="dialogBox__title flex-item">
+                        <div class="title__text">
+                            <?= __('Sorteo semanal') ?>
+                        </div>
+                    </div>
+                    <div class="rascas-error is-invisible error-message input input__complex--container flex-container flex-row justify-center items-center"></div>
+                    <div class="content-text-rascas">
+                        <div class="inside-rascas-content" data-value="">
+                            <p class="initial change-after-click"><?= $escaper->escapeHtml(__('Puedes inscribirte con el código de esta participación')); ?> <b class="code-rasca"></b> <?= $escaper->escapeHtml(__('en el')); ?> <b><?= $escaper->escapeHtml(__('sorteo semanal*')); ?></b>.<br><?= $escaper->escapeHtml(__('Esta semana sorteamos')); ?></p>
+                            <p class="change-after-click hide"><?= $escaper->escapeHtml(__('Tu código')); ?> <b class="code-rasca"></b> <?= $escaper->escapeHtml(__('ha sido registrado correctamente y participas en el sorteo de')); ?></p>
+                            <div class="premios">
+                                <p><b class="fz-24"><?= $block->getTitleWeek() ?></b></p>
+                            </div>
+                            <div class="initial form-rasca modal-card change-after-click" data-url=<?= $this->escapeUrl($block->getAjaxActionUrl()) ?>>
+                                <?= $block->getBlockHtml('formkey') ?>
+                                <input autocomplete="off" type="text" name="rascaCode" class="input__text flex-item flex-double required-entry" value="" required hidden>
+                                <button type="submit" name="rascaButton" class="register-table-button button button__complex button__complex--modal button__complex--container flex-container flex-row justify-center items-center" id="register-button">
+                                    <?= $block->getChildHtml('button-loader'); ?>
+                                    <div class="button__content flex-item loader-hide">
+                                        <div class="button__content--container flex-container flex-row justify-center items-center">
+                                            <div class="button__text flex-item">
+                                            <?= __('Confirmar inscripción en el sorteo') ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                            <p><?= $escaper->escapeHtml(__('Inscribiéndote en el sorteo semanal también estarás inscrito en el')); ?> <b><?= $escaper->escapeHtml(__('gran sorteo final de')); ?> <?= $block->getFinalTitle() ?></b></p>
+                            <div class="flex-container flex-column justify-center change-after-click hide">
+                                <div class="anniversary__button block--wrapper flex-item">
+                                    <button type="submit" class="button button__complex has-border button__complex--modal button__complex--container has-margin-bottom flex-container flex-row justify-center items-center" data-myaction="closeCustomModal" data-target="dialogBox-modal-table-rasca">
+                                        <div class="button__content flex-item">
+                                            <div class="button__content--container flex-container flex-row justify-center items-center">
+                                                <div class="button__text flex-item">
+                                                    <?= $escaper->escapeHtml(__('Volver a mis participaciones')); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

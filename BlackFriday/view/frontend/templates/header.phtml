@@ -1,0 +1,20 @@
+<?php /** @var \Hiperdino\BlackFriday\Block\Header $block */ ?>
+<script type="text/javascript">
+	var blackFridayStores = <?= $block->getStoresJsonSortedByCity() ?>;
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= $block->getGoogleMapsKey(); ?>"></script>
+<?php if ($block->isOnBlackFridayStore()): ?>
+	<div id="bf-header-link" class="top-bar-menu__item item--wrapper flex-item hide-in-hdcheckout blackfriday-logout" data-url="<?= $block->getLogoutUrl() ?>">
+		<a href="#" class="item--container flex-container flex-row items-center">
+			<div class="icon--location flex-item"><i class="icon icon-blackfriday"></i></div>
+			<div class="menu__box flex-item"><?= __("Salir de Black Friday") ?></div>
+		</a>
+	</div>
+<?php elseif ($block->canAccessBlackFriday()): ?>
+	<div id="bf-header-link" class="top-bar-menu__item item--wrapper flex-item hide-in-hdcheckout blackfriday-login" data-url="<?= $block->getLoginUrl() ?>" data-loggedin="<?= $block->isLoggedIn() ?>">
+		<a href="#" class="item--container flex-container flex-row items-center">
+			<div class="menu__icon icon--location flex-item"><i class="icon icon-blackfriday"></i></div>
+			<div class="menu__text flex-item"><?= __("Entrar a Black Friday") ?></div>
+		</a>
+	</div>
+<?php endif; ?>

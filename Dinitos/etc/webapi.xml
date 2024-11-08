@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+    <route url="/app/V1/dinitos/customer/totaldinitos" method="GET">
+        <service class="Hiperdino\Dinitos\Api\AppManagerInterface" method="getCustomerDinitos"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/app/V1/dinitos/customer/history" method="GET">
+        <service class="Hiperdino\Dinitos\Api\AppManagerInterface" method="getCustomerDinitosHistory"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/app/V1/dinitos/rewards" method="GET">
+        <service class="Hiperdino\Dinitos\Api\AppManagerInterface" method="getStoreViewRewards"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/app/V1/dinitos/customer/packages/nextoexpire" method="GET">
+        <service class="Hiperdino\Dinitos\Api\AppManagerInterface" method="getCustomerClosestExpiredPackage"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/app/V1/dinitos/customer/totaldinitosplusquote" method="GET">
+        <service class="Hiperdino\Dinitos\Api\AppManagerInterface" method="getCustomerDinitosPlusQuote"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+</routes>

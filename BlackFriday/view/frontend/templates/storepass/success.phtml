@@ -1,0 +1,70 @@
+<?php
+/** @var \Hiperdino\BlackFriday\Block\StorePass $block */
+?>
+<?php
+$bookingInfo = $block->getCurrentBookingInfo();
+if(! $bookingInfo) return "";
+$shop = $bookingInfo['shop'];
+$booking = $bookingInfo['booking'];
+$timeslot = $bookingInfo['timeslot'];
+?>
+<section class="page-contact">
+    <div class="page-corporate__tiendas">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-left"><?= __('Su reserva de franja horaria durante la cual puede hacer su compra de juguetes con la promoción de Black Friday ha sido confirmada.') ?></p>
+                    <p class="text-left"><?= __('Por favor presente este QR en caja a la hora de realizar el pago.') ?></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="text-center"><img class="bf-booking-qr" src="<?= $block->getBookingQrImageUrl($booking) ?>" alt="<?= __('Reserva') ?>" /></p>
+                    <p class="text-center bf-booking-data">
+                        <span><?= $shop->getName() ?></span>|
+                        <span><?= date('d/m/Y', strtotime($booking->getBookedFor())) ?></span>|
+                        <span><?= $timeslot->getStartTime() ?>-<?= $timeslot->getEndTime() ?></span>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-left"><?= __('Puede acceder al QR a través de su cuenta o desde el email de confirmación de la reserva de franja horaria que le acabamos de enviar.') ?></p>
+                    <p class="text-left"><?= __('Muchas gracias.') ?></p>
+                </div>
+            </div>
+            <br/><br/>
+            <div class="row">
+                <div class="col-md-4">
+                    <form method="post" action="<?= $block->getBookingModifyUrl() ?>">
+                        <input type="hidden" name="booking_id" value="<?= $booking->getId() ?>" />
+                        <button id="bfstorepass-booking-modify"
+                                class="button button__complex button__complex--modal button__complex--container flex-container flex-row justify-center items-center has-border"
+                                type="submit">
+                            <div class="button__content flex-item">
+                                <div class="button__content--container flex-container flex-row justify-center items-center">
+                                    <div class="button__text flex-item"><?= __('Modificar') ?></div>
+                                </div>
+                            </div>
+                        </button>
+                        <br/>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form method="post" action="<?= $block->getBookingCancelUrl() ?>">
+                        <input type="hidden" name="booking_id" value="<?= $booking->getId() ?>" />
+                        <button id="bfstorepass-booking-cancel"
+                                class="button button__complex button__complex--modal button__complex--container flex-container flex-row justify-center items-center"
+                                type="submit">
+                            <div class="button__content flex-item">
+                                <div class="button__content--container flex-container flex-row justify-center items-center">
+                                    <div class="button__text flex-item"><?= __('Cancelar') ?></div>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

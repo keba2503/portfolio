@@ -1,0 +1,156 @@
+/* Mis Dinitos link - Web  */
+.icon-dinitos {
+    background: url(../img/dinito-icon.svg) no-repeat center;
+    display: block;
+    width: 25px;
+    height: 25px;
+}
+
+.side-menu-user__item:hover .icon-dinitos {
+    background: url(../img/dinito-icon-hover.svg) no-repeat center;
+}
+
+.side-menu-user__item.is-selected .icon-dinitos {
+    background: url(../img/dinito-icon-hover.svg) no-repeat center;
+}
+
+.radius-10 {
+    border-radius: 10px;
+}
+
+/* Mis Dinitos link - Mobile */
+.icon-dinitos-mobile {
+    height: 40px;
+    padding-left: 1.9rem !important;
+}
+
+.icon-dinitos-mobile .icon-dinitos {
+    height: 100%;
+}
+
+.icon-dinitos--hover,
+.side-menu-user-account .link-info.is-selected .icon-dinitos,
+.side-menu-user__primary .side-menu-user__item:hover .icon-dinitos {
+    background: url(../img/dinito-icon-hover.svg) no-repeat center;
+}
+
+/* Dinitos Info Modal */
+
+.dinitos_info_modal_close-btn {
+    top: 25px !important;
+    right: 25px !important;
+}
+
+/* Table format */
+.dinitos-history .table-container__left {
+    max-width: 80%;
+    width: 80%;
+}
+
+.dinitos-history .table-container__right {
+    width: 15%;
+}
+
+.dinitos-history .table-container__right-item {
+    width: auto;
+}
+
+.dinitos-history .table-container__left-item {
+    flex-basis: 20%;
+}
+
+.qty-accumulated, .qty-refunded {
+    color: #77bd1e;
+}
+
+.qty-redeemed, .qty-deducted {
+    color: red;
+}
+
+.qty-expired {
+    color: #666;
+    text-decoration: line-through;
+}
+
+.history-filter-item-btn {
+    cursor: pointer;
+}
+
+.date-excluded, .type-excluded {
+    display: none !important;
+}
+
+.date-selector-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #aaa;
+    padding: 15px;
+    border-radius: 7px;
+    box-shadow: 0 0 5px 0 #aaa;
+    background-color: #fff;
+    height: 150px;
+    width: 250px;
+    z-index: 1000;
+}
+
+#dinitos-history-filters {
+    position: relative;
+    height: 70px;
+}
+
+#type-filter {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#date-filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#reset-date-range-filter-btn {
+    background: #aaa;
+    margin-right: .5rem;
+}
+
+#reset-date-range-filter-btn, date-range-filter-btn {
+    height: 3rem;
+}
+
+#dinitos-history-filters{
+    visibility: hidden;
+}
+
+.button__date-filter {
+    border: 1px solid #aaa;
+    font-family: Source Sans Pro, sans-serif;
+    border-radius: 4px;
+    font-size: 1rem;
+    height: 100%;
+    line-height: calc(3rem - 4px);
+    padding: 0 35px 0 16px;
+    width: calc(100% + 4px);
+    box-sizing: border-box;
+    font-weight: 600;
+}
+
+.bg-dark-green {
+    background: #1C752C;
+}
+
+#select2-dinitos-type-filter-results {
+    max-height: 300px;
+}
+
+#type-filter .select2-dropdown {
+    display: inline-block;
+    border-top: 1px solid #aaa !important;
+    margin-top: -1px;
+}
+
+#type-filter .select2-results__option {
+    border-right: 1rem solid transparent !important;
+}

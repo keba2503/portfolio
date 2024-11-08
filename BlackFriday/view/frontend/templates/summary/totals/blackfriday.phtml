@@ -1,0 +1,18 @@
+<?php
+/** @var \Hiperdino\BlackFriday\Block\Cart\Totals\BlackFriday $block */
+?>
+<?php if($block->showBlackFridayInfo()):?>
+    <?php $blackfriday = $block->getBlackFridayInfo();?>
+    <div class="side-menu-checkout__item side-menu-checkout__text flex-item has-border-bottom has-padding-bottom">
+        <div class="flex-container justify-between has-max-height">
+            <span> <?= __($blackfriday["label_info_checkout"]) ?></span>
+        </div>
+        <div class="side-menu-checkout__sub-text flex-container justify-between has-margin-top-and-bottom">
+                <div><?= $blackfriday["info_checkout"] ?></div>
+        </div>
+    </div>
+    <div class="side-menu-checkout__item side-menu-checkout__text flex-item has-border-bottom has-padding-bottom">
+        <div><?= $block->getAvailabilityMessage() ?></div>
+    </div>
+<?php endif;?>
+

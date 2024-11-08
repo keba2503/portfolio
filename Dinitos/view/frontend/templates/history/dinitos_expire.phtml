@@ -1,0 +1,21 @@
+<?php /** @var $block Hiperdino\Dinitos\Block\History; */ ?>
+
+<?php
+$showDinitosLink = $block->isDinitosLinkEnabled();
+$dinitosHistoryTexts = $block->getDinitosHistoryTexts();
+$nextPackageToExpireQty = $block->getNextExpirableQty();
+$nextDinitosExpirationDate = $block->getNextExpirableDate();
+$nextDinitosExpirationDateShortned = $block->humaniseDate($nextDinitosExpirationDate);
+?>
+
+<?php if ($showDinitosLink): ?>
+    <?php if ($nextPackageToExpireQty && $nextDinitosExpirationDate): ?>
+        <div class="flex-item">
+            <div class="block__text ">
+                <span class="w-bold color-corp"><?= $nextPackageToExpireQty ?>&nbsp;Dinitos</span>
+                <span class="text-base">&nbsp;<?= __($dinitosHistoryTexts['text_to_expire']) ?></span>
+                <span class="text-base">&nbsp;<?= $nextDinitosExpirationDateShortned ?: $nextDinitosExpirationDate ?></span>
+            </div>
+        </div>
+    <?php endif ?>
+<?php endif ?>

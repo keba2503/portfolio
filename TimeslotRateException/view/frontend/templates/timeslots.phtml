@@ -1,0 +1,5 @@
+<?php /** @var \Hiperdino\TimeslotRateException\Block\Checkout\Timeslot $block */ ?>
+
+<?php if ($block->showTimeslotPrice()): ?>
+    <div class="timeslot__special_price"><?= $block->getData('price'); ?></div>
+<?php endif; ?>

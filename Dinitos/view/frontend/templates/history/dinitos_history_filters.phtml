@@ -1,0 +1,73 @@
+<?php /** @var $block Hiperdino\Dinitos\Block\History; */ ?>
+
+<?php
+$historyFilters = $block->getHistoryFilters();
+?>
+
+<?php if (!empty($historyFilters)): ?>
+    <div class="row">
+        <div class="col-sm-12 col-md-10 offset-md-1 p-0">
+            <div id="dinitos-history-filters">
+                <div id="date-filter">
+                    <div id="date-filter-btn" class="button flex-container flex-row justify-center items-center p-0">
+                        <div class="button__date-filter color-green bg-white flex-item px-3 py-0">Fecha</div>
+                    </div>
+                    <div class="date-selector-container is-hidden d-flex flex-column justify-between">
+                        <div>
+                            <div class="d-flex justify-between">
+                                <div>Inicio:</div>
+                                <div>
+                                    <input type="date" id="startDate" placeholder="Start Date">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-between">
+                                <div>Final:</div>
+                                <div>
+                                    <input type="date" id="endDate" placeholder="End Date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-between">
+                            <button id="reset-date-range-filter-btn" type="submit" class="button rounded button__complex--container flex-container flex-row justify-center items-center">
+                                <div class="button__content flex-item">
+                                    <div class="button__content--container flex-container flex-row justify-center items-center">
+                                        <div class="button__text flex-item">Reset</div>
+                                    </div>
+                                </div>
+                            </button>
+                            <button id="date-range-filter-btn" type="submit" class="button bg-dark-green rounded button__complex--container flex-container flex-row justify-center items-center">
+                                <div class="button__content flex-item">
+                                    <div class="button__content--container flex-container flex-row justify-center items-center">
+                                        <div class="button__text flex-item">Seleccionar</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="type-filter">
+                    <div class="page-contact__control-container page-contact__item col-12 col-md-11 offset-md-1">
+                        <div class="type-select type-select-contact block--wrapper flex-item">
+                            <div class="items--container flex-container flex-row justify-between normal-select">
+                                <div class="select__item item--wrapper quickview-type__select flex-item">
+                                <select
+                                    id="dinitos-type-filter"
+                                    class="movement-type-filter select2-normal select2"
+                                    name="dinitos-type-filter"
+                                    data-placeholder="<?= __('Selecciona una opción') ?>"
+                                    tabindex="-1"
+                                    aria-hidden="true"
+                                >
+                                    <?php foreach ($historyFilters as $filter): ?>
+                                        <option class="filter-<?= $filter['title_native'] ?>-btn history-filter-item-btn" value="<?= $filter['title_native'] ?>"><?= $filter['title_custom'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif ?>

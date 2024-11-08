@@ -1,0 +1,103 @@
+<?php /** @var \Hiperdino\Anniversary2020\Block\Adminhtml\PrizeReport $block */ ?>
+<?php /** @var $escaper \Magento\Framework\Escaper */ ?>
+
+<form action="<?= $block->getFormUrl() ?>" method="post">
+    <input type="hidden" name="form_key" value="<?= $escaper->escapeHtml($block->getFormKey()) ?>">
+    <div style="display: flex; flex-direction: row; gap: 10px; padding: 5px">
+        <div style="margin: 20px">
+            <label for="customer_id">Id Cliente: </label>
+            <input type="text" id="customer_id" name="customer_id">
+        </div>
+        <div style="margin: 15px">
+            <button type="submit" title="Buscar" class="action primary">
+                <span>Ver Premios</span>
+            </button>
+        </div>
+    </div>
+</form>
+
+<table class="data-grid" id="anniversary_prizes_grid_table">
+    <thead>
+        <tr>
+            <th data-sort="raffle_code" data-direction="asc" class="data-grid-th _sortable _descend col-status">
+                <span>Participación</span>
+            </th>
+            <th data-sort="order" data-direction="asc" class="data-grid-th _sortable not-sort col-rutas_code">
+                <span>Pedido</span>
+            </th>
+            <th data-sort="store_id" data-direction="asc" class="data-grid-th _sortable not-sort col-rutas_code">
+                <span>Tienda</span>
+            </th>
+            <th data-sort="scratching_date" data-direction="asc" class="data-grid-th _sortable not-sort col-show_shipping_app_tab">
+                <span>Fecha Rascado</span>
+            </th>
+            <th data-sort="coupon_code" data-direction="asc" class="data-grid-th _sortable not-sort col-label">
+                <span>Código Cupón</span>
+            </th>
+            <th data-sort="coupon_name" data-direction="asc" class="data-grid-th _sortable not-sort col-label">
+                <span>Nombre Cupón</span>
+            </th>
+            <th data-sort="coupon_promotion" data-direction="asc" class="data-grid-th _sortable not-sort col-label">
+                <span>Promoción Cupón</span>
+            </th>
+            <th data-sort="manual_selection" data-direction="asc" class="data-grid-th _sortable not-sort col-label">
+                <span>Selección Manual</span>
+            </th>
+            <th data-sort="used" data-direction="asc" class="data-grid-th _sortable not-sort col-label">
+                <span>Usado</span>
+            </th>
+            <th data-sort="active" data-direction="asc" class="data-grid-th _sortable not-sort col-label">
+                <span>Active</span>
+            </th>
+            <th data-sort="action" data-direction="asc" class="data-grid-th _sortable not-sort col-label">
+                <span>Acción</span>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php foreach ($block->getCustomerParticipations() as $customerParticipation): ?>
+            <tr data-role="row" title="#" class="even _clickable">
+                <td data-column="raffle_code" class="col-status">
+                    <?= $customerParticipation['raffleTicketCode'] ?>
+                </td>
+                <td data-column="order" class="col-rutas_code">
+                    <?= $customerParticipation['salesId'] ?>
+                </td>
+                <td data-column="store_id" class="col-rutas_code">
+                    <?= $customerParticipation['salesStoreCode'] ?>
+                </td>
+                <td data-column="scratching_date" class="col-position">
+                    <?= $customerParticipation['scratchingDate'] ?>
+                </td>
+                <td data-column="coupon_code" class="col-label">
+                    <?= $customerParticipation['couponCode'] ?>
+                </td>
+                <td data-column="coupon_name" class="col-label">
+                    <?= $customerParticipation['couponData']['couponName'] ?>
+                </td>
+                <td data-column="coupon_promotion" class="col-label">
+                    <?= $customerParticipation['couponData']['promotionId'] ?>
+                </td>
+                <td data-column="manual_selection" class="col-label">
+                    <?= $customerParticipation['couponData']['manualSelection'] ? "SI" : "NO" ?>
+                </td>
+                <td data-column="used" class="col-label">
+                    <?= $customerParticipation['couponData']['uses']['used'] ? "SI" : "NO"?>
+                </td>
+                <td data-column="active" class="col-label">
+                    <?= $customerParticipation['couponData']['active'] ? "SI" : "NO"?>
+                </td>
+                <td data-column="action" class="col-label">
+                    <?php if ($customerParticipation['couponData']['active']): ?>
+                    <form action="<?= $block->getDeactivateCouponUrl($customerParticipation['couponCode']) ?>" method="post">
+                        <input type="hidden" name="form_key" value="<?= $escaper->escapeHtml($block->getFormKey()) ?>">
+                        <button type="submit">Desactivar Cupón</button>
+                    </form>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+
+</table>

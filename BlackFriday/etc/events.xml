@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <event name="checkout_cart_save_after">
+        <observer name="blackfriday_cart_save_after" instance="Hiperdino\BlackFriday\Observer\CartSaveAfter" />
+    </event>
+
+    <event name="ecommerceapp_quote_save">
+        <observer name="blackfriday_app_cart_save_after" instance="Hiperdino\BlackFriday\Observer\CartSaveAfter" />
+    </event>
+
+    <event name="hdcheckout_merger_quote_after">
+        <observer name="blackfriday_merger_quote_after" instance="Hiperdino\BlackFriday\Observer\MergerQuoteAfter" />
+    </event>
+
+    <event name="controller_action_predispatch">
+        <observer name="bf_storepass_controller_action_predispatch" instance="Hiperdino\BlackFriday\Observer\ControllerActionPredispatch" />
+    </event>
+
+</config>

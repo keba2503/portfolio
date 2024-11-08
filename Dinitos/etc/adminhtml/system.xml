@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="hiperdino_dinitos" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Dinitos</label>
+            <tab>singular</tab>
+            <resource>Hiperdino_Dinitos::hiperdino_dinitos</resource>
+            <group id="enabled_dinitos_accumulation" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Acumulación de dinitos</label>
+                <field id="enabled_web" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Activar acumulación de Dinitos WEB</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enabled_app" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Activar acumulación de Dinitos APP</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="days_expiration" translate="label" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Vigencia de Dinitos</label>
+                <field id="days_qty" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Caducarán los Dinitos después de transcurrir X días desde la fecha de acumulación. Si esta vacio tomara en cuenta por defecto 365 días</label>
+                </field>
+            </group>
+            <group id="text_rewards_selector" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Textos - Selector de recompensas</label>
+                <field id="main_title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Titulo - Encabezado de selector de recompensas.</label>
+                    <comment>Si esta vacio mostrara por defecto: ¿Cómo quieres usar tus Dinitos?</comment>
+                </field>
+                <field id="text_to_expire" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto - Dinitos por caducar</label>
+                    <comment>Si esta vacio mostrara por defecto: próximos a caducar, válidos hasta </comment>
+                </field>
+                <field id="text_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto - Enlace onboarding</label>
+                    <comment>Si esta vacio mostrara por defecto: Te explicamos cómo usar tus Dinitos aquí.</comment>
+                </field>
+                <field id="reward_texts_missing_digits" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto de dinitos faltantes</label>
+                    <comment>Texto para indicar en la opcion deshabilitada, cuantos dinitos faltan para alcanzar la recompensa. Si está vacío mostrará por defecto: "Dinitos son necesarios", precedido de la cantidad. Los caracteres [dinitos_qty] se usan donde se desee añadir la cantidad de dinitos. Ej.: Faltan [dinitos_qty] dinitos  </comment>
+                </field>
+                <field id="reward_value_text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto valor de la recompensa</label>
+                    <comment>Si está vacío mostrará  el valor de dinitos al texto por defecto: "Dinitos por cada compra", precedido de la cantidad. Los caracteres [dinitos_qty]  se usan donde se desee añadir la cantidad de dinitos. Ej.: Valor: [dinitos_qty] dinitos </comment>
+                </field>
+            </group>
+            <group id="reward_products_discount" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Recompensa tipo producto</label>
+                <field id="discount_other_products" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Productos que no sean bolsas</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Si está habilitada, se aplica la recompensa a otros productos que no sean bolsas</comment>
+                </field>
+                <field id="discount_percentage" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Porcentaje de descuento</label>
+                    <validate>required-entry validate-digits validate-not-negative-number validate-digits-range digits-range-0-100</validate>
+                    <comment>Porcentaje de descuento a aplicar a productos. Introducir número mayor que 0 y menor o igual que 100</comment>
+                </field>
+                <field id="bags_discount_label" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Etiqueta de descuento en totales para recompensa de bolsas</label>
+                    <comment>Texto que aparece en el resumen del pedido del cliente y en su factura. Si esta vacio mostrara por defecto: Tus bolsas</comment>
+                </field>
+            </group>
+            <group id="reward_shipping_discount" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1" >
+                <label>Recompensa tipo envío</label>
+                <field id="discount_percentage" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Porcentaje de descuento</label>
+                    <validate>required-entry validate-digits validate-not-negative-number validate-digits-range digits-range-0-100</validate>
+                    <comment>Porcentaje de descuento a aplicar al coste del envío. Introducir número mayor que 0 y menor o igual que 100</comment>
+                </field>
+            </group>
+            <group id="text_history" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Textos - Historico de dinitos</label>
+                <field id="empty_history_text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto - Histórico vacío</label>
+                    <comment>Aparecerá si el histórico del cliente está vacío (En este momento no tiene dinitos acumulados).</comment>
+                </field>
+                <field id="main_title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Titulo - Encabezado de la pagina</label>
+                    <comment>Si esta vacio mostrara por defecto: Mis Dinitos</comment>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Titulo - Historico</label>
+                    <comment>Si esta vacio mostrara por defecto: Historial de Dinitos </comment>
+                </field>
+                <field id="text_to_expire" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto - Dinitos por caducar</label>
+                    <comment>Si esta vacio mostrara por defecto: próximos a caducar, válidos hasta </comment>
+                </field>
+                <field id="text_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto - Enlace onboarding</label>
+                    <comment>Si esta vacio mostrara por defecto: ¿Cómo usar tus Dinitos? </comment>
+                </field>
+                <field id="cms_block_id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Identificador bloque CMS - Onboarding</label>
+                    <comment>Bloque que debe configurarse previamente (Contenido -> Elementos -> Bloque) para mostrar en el modal </comment>
+                </field>
+                <field id="text_link_sidebar" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto - Enlace a historico desde el sidebar</label>
+                    <comment>Si esta vacio mostrara por defecto: Mis Dinitos </comment>
+                </field>
+                <field id="icon_sidebar" translate="label" type="image" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Icono - Sidebar</label>
+                    <backend_model>Singular\EcommerceApp\Model\Config\Backend\OnboardingImage</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">dinitos/history/icon_sidebar</upload_dir>
+                    <base_url type="media" scope_info="1">dinitos/history/icon_sidebar</base_url>
+                </field>
+                <field id="text_concept_accumulation" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto - Concepto (Acumulación) </label>
+                    <comment>
+                        Texto utilizado en el campo concepto del historico de dinitos del cliente en los movimientos del tipo acumulación.
+                        Si contiene [increment_id], mostrará el increment_id del pedido.
+                    </comment>
+                </field>
+                <field id="text_concept_redemption" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto - Concepto (Canjeo) </label>
+                    <comment>
+                        Texto utilizado en el campo concepto del historico de dinitos del cliente en los movimientos del tipo canjeo.
+                        Si contiene [increment_id], mostrará el increment_id del pedido.
+                    </comment>
+                </field>
+                <field id="text_concept_expiration" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto - Concepto (Expiración) </label>
+                    <comment>
+                        Texto utilizado en el campo concepto del historico de dinitos del cliente en los movimientos del tipo expiración.
+                    </comment>
+                </field>
+            </group>
+            <group id="history_filters" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Filtros historico de dinitos</label>
+                <comment>Si no existen filtros creados se veran por defecto, los siguientes: 'Defecto', 'Obtenidos', 'Canjeados', 'Caducados'</comment>
+                <field id="filter_custom_sort" translate="label"  showInDefault="1" showInWebsite="1"  showInStore="1">
+                    <label>Filtros personalizados</label>
+                    <backend_model>Hiperdino\Dinitos\Block\Adminhtml\Config\Backend\ArraySerialized</backend_model>
+                    <frontend_model>Hiperdino\Dinitos\Block\Adminhtml\DynamicField</frontend_model>
+                    <depends>
+                        <field id="original_filters_enabled">0</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="remind_config" translate="label" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configuración de recordatorios</label>
+                <field id="expiration_send_interval" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Recordatorio de expiración</label>
+                    <frontend_model>Hiperdino\Dinitos\Block\Adminhtml\Form\Field\ReminderIntervals</frontend_model>
+                    <backend_model>Hiperdino\Dinitos\Model\Config\Backend\ExpirationSendInterval</backend_model>
+                    <comment>Intervalo de tiempo para avisar al cliente en días. De mayor a menor (por ejemplo: 7,3,1)</comment>
+                </field>
+                <field id="alert_title" type="textarea" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Título de alerta de expiración</label>
+                    <comment>Si se deja en blanco será: "¡Tienes dinitos próximos a caducar!".</comment>
+                </field>
+                <field id="push_text" type="textarea" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Mensaje de alerta de expiración</label>
+                    <comment>Si no se rellena no habrá mensaje.</comment>
+                </field>
+                <field id="days_qty" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Días para filtrar el mensaje de expiración.</label>
+                    <comment>Cantidad de días a partir de hoy para que se tome como fecha de expiración máxima y mostrar el mensaje de expiración. Si no se rellena aparecerá el paquete más próximo sea cual sea la fecha.</comment>
+                </field>
+            </group>
+            <group id="text_dinitos" translate="label" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Mensaje de ventana emergente</label>
+                <field id="dinitos_text" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto para los dinitios</label>
+                    <comment>Poner #@ para inicio de negrita @# para fin de negrita y %1$s para envio a domicilio, %2$s recogida y %3$s para punto de recogida</comment>
+                </field>
+                <field id="dinitos_cms" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bloque Cms</label>
+                    <comment>Poner el identificador del bloque cms asociado. El identificador es el campo obligatorio que está debajo del título del bloque cms</comment>
+                </field>
+            </group>
+            <group id="text_cart_sidebar" translate="label" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Textos de configuración para el carrito</label>
+                <field id="dinitos_left" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto para los dinitos faltantes para la siguiente recompensa</label>
+                    <comment>Por defecto "Te faltan"</comment>
+                </field>
+                <field id="dinitos_to_achieve" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto para las recompensas que puedes conseguir</label>
+                    <comment>Por defecto "Puedes conseguir:"</comment>
+                </field>
+                <field id="dinitos_obtained" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto para describir en qué puedes usar los dinitos obtenidos</label>
+                    <comment>Por defecto "Tienes"</comment>
+                </field>
+                <field id="dinitos_use" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto para describir en qué puedes usar los dinitos obtenidos</label>
+                    <comment>Por defecto "Puedes usarlos en:"</comment>
+                </field>
+                <field id="exclude_selected_rewards" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>¿Excluir recompensas seleccionadas en el Checkout?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="error_messages" translate="label" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Textos de mensajes de error</label>
+                <field id="reward_checkout_error" translate="label" type="text"  showInDefault="1" showInWebsite="1"  showInStore="1">
+                    <label>Mensaje de error seleccionando recompensas.</label>
+                </field>
+                <field id="reward_coupon_error" translate="label" type="text"  showInDefault="1" showInWebsite="1"  showInStore="1">
+                    <label>Mensaje de error si el cliente intenta añadir un cupón de recompensa a mano.</label>
+                </field>
+            </group>
+            <group id="delivery" translate="label" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Envío a domicilio</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitado</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_qty" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Número de dinitos para envío gratuito</label>
+                </field>
+            </group>
+            <group id="pickup" translate="label" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Recogida en tienda</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitado</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_qty" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Número de dinitos para preparación gratuita</label>
+                </field>
+            </group>
+            <group id="pickuppoint" translate="label" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Punto de Recogida</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitado</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_qty" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Número de dinitos para recogida gratuita</label>
+                </field>
+            </group>
+            <group id="taquillas" translate="label" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Recogida en Taquilla</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitado</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_qty" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Número de dinitos para recogida gratuita</label>
+                </field>
+            </group>
+            <group id="import" translate="label" sortOrder="200" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>Importación de Dinitos</label>
+                <field id="csv" translate="label" type="file" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Archivo de importación</label>
+                    <backend_model>Hiperdino\Dinitos\Model\Config\Backend\File</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">dinitos</upload_dir>
+                    <comment>
+                        <![CDATA[<a href="/import/csv/dinitosimport.csv" style="color: #1e6ae6;">Descargar ejemplo</a> - El formato del archivo debe ser CSV. Los datos se trasladan a una tabla desde la cual una tarea programada se encargará luego de leer los dinitos para actualizar productos]]>
+                    </comment>
+                </field>
+            </group>
+        </section>
+        <section id="hiperdino_checkout">
+            <group id="logger">
+                <field id="dinitos" translate="label" type="select" sortOrder="300" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar dinitos.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="update_dinitos" translate="label" type="select" sortOrder="310" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar update_dinitos.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_rewards" translate="label" type="select" sortOrder="320" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar dinitos_rewards.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="history_dinitos" translate="label" type="select" sortOrder="330" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar history_dinitos.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_service" translate="label" type="select" sortOrder="340" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar dinitos_service.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_customer" translate="label" type="select" sortOrder="350" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar dinitos_customer.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_movement" translate="label" type="select" sortOrder="360" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar dinitos_movement.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_packages" translate="label" type="select" sortOrder="370" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar dinitos_packages.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_app" translate="label" type="select" sortOrder="370" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar dinitos_app.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_reminder" translate="label" type="select" sortOrder="380" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar dinitos_reminder.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dinitos_rewards_invoice_collect_totals" translate="label" type="select" sortOrder="390" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar dinitos_rewards_invoice_collect_totals.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="filter_quote_rewards" translate="label" type="select" sortOrder="400" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Activar filter_quote_rewards.log</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

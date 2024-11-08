@@ -1,0 +1,20 @@
+<?php /** @var \Hiperdino\Dinitos\Block\CartInfo $block */ ?>
+
+<div class="dino-modal">
+    <div class="close-button">
+        <span class="color-green flex-container align-center gap-c-5"><?= __('Cerrar info') ?><i class="icon icon-right"></i></span>
+    </div>
+    <div class="dino-modal-container">
+        <div class="dino-modal-content">
+            <?= $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($block->getDinitosCmsBlock())->toHtml(); ?>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(['jquery'], function($) {
+        $(".dino-modal .close-button").click(function() {
+            $(".dino-modal").removeClass("show");
+        });
+    })
+</script>

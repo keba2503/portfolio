@@ -1,0 +1,16 @@
+<?php /** @var $block \Hiperdino\Anniversary2020\Block\Link */ ?>
+
+<?php if ($block->isAnniversaryEnabled()): ?>
+    <li class="sidebar-item--wrapper flex-item order-2">
+        <a href="<?= $block->getAnniversaryUrl() ?>"
+           class="link-info item--container flex-container flex-row items-center">
+            <div class="sidebar__item-info flex-item">
+                <i class="icon icon2-anniversary"></i>
+            </div>
+            <div class="link--wrapper menu--link dropdown---info flex-item">
+                <?= $block->getMenuCustomerTitle() ?>
+            </div>
+        </a>
+    </li>
+<?php endif; ?>
+

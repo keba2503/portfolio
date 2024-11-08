@@ -1,0 +1,85 @@
+<?php /**  @var \Hiperdino\BlackFriday\Block\Modal\EntryModal $block */ ?>
+<div class="dialogBox-modal-blackfriday-entry dialogBox-modal flex-container flex-row justify-center items-center blackfriday-modal">
+
+    <div class="postal-wrapper dialogBox--wrapper dialogBox--wrapper-modal flex-item">
+
+        <div class="dialogBox__item dialogBox__item--little not-padding dialogBox__postal dialogBox__item--sixe-fixed flex-container justify-between">
+
+            <div class="login__control quickview__control quickview__control-modal">
+                <div class="button button__icon quickview__close control-position flex-container flex-row justify-center items-center"
+                     data-myaction="closeCustomModal" data-target="dialogBox-modal-blackfriday-entry">
+                    <i class="icon icon-close flex-item"></i>
+                </div>
+            </div>
+
+            <div class="dialogBox__left dialogBox__left--fullheight-image flex-item blackfriday-postal-results-wrapper__image is-hidden-mobile">
+                <div class="dialogBox__content flex-container flex-column">
+                </div>
+            </div>
+
+            <div class="dialogBox__right dialogBox__right-has-padding flex-item">
+                <div class="dialogBox__content flex-container flex-column justify-center">
+
+                    <div class="dialogBox__sub-title dialogBox__description--has-not-margin flex-item">
+                        <div class="sub-title__text has-less-height">
+                            <?= __('¡Hola!') ?>
+                        </div>
+                    </div>
+
+                    <div class="dialogBox__title flex-item">
+                        <div class="title__text">
+                            <?= __('Disfruta del nuevo Black Friday que hemos preparado para ti') ?>
+                        </div>
+                    </div>
+
+                    <div class="dialogBox__description flex-item">
+                        <div class="description__text">
+                            <?= $block->getModalMessage() ?>
+                        </div>
+                    </div>
+
+					<div class="dialogBox__description flex-item">
+						<div class="description__text">
+							<?= __('Selecciona tu tienda:') ?>
+						</div>
+					</div>
+
+					<div class="type-select type__select block--wrapper flex-item">
+						<div class="items--container flex-container flex-row justify-between normal-select">
+							<div class="select__item item--wrapper quickview-type__select flex-item">
+								<select id="bf-island-selector" class="select2-normal required-entry select2" required name="island" data-placeholder="<?= __('Elige una isla') ?>">
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="type-select type__select block--wrapper flex-item">
+						<div class="items--container flex-container flex-row justify-between normal-select">
+							<div class="select__item item--wrapper quickview-type__select flex-item">
+								<select id="bf-city-selector" class="select2-normal required-entry select2" required name="city" data-placeholder="<?= __('Selecciona una localidad') ?>" disabled>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="cart__button block--wrapper flex-item">
+						<button id="bf-search-stores-button" type="submit" class="blackfriday-button button button__complex button__complex--container button__complex--modal flex-container flex-row justify-center items-center" disabled>
+							<div class="button__content flex-item">
+								<div class="button__content--container flex-container flex-row justify-center items-center">
+									<div class="button__text flex-item">
+										<?= __('Buscar') ?>
+									</div>
+								</div>
+							</div>
+						</button>
+					</div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="hiperdino_anniversary" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Aniversario Rascas</label>
+            <tab>singular</tab>
+            <resource>Hiperdino_Anniversary::anniversary_configuration</resource>
+            <group id="general" translate="label" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configuración</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitado</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="promo_start" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fecha de inicio</label>
+                    <frontend_model>Hiperdino\Anniversary\Block\Adminhtml\DatePicker</frontend_model>
+                    <comment>Fecha de inicio de promoción (YYYY/mm/dd)</comment>
+                </field>
+                <field id="promo_end" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fecha de fin</label>
+                    <frontend_model>Hiperdino\Anniversary\Block\Adminhtml\DatePicker</frontend_model>
+                    <comment>Fecha de fin de promoción (YYYY/mm/dd)</comment>
+                </field>
+                <field id="rascas" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Número de rascas (cada X euros de compra)</label>
+                    <comment>Número de rascas (Y) que el cliente puede ganar cada X euros</comment>
+                </field>
+                <field id="euros" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Por cada (X euros de compra)</label>
+                    <comment>Cantidad con la que el usuario conseguirá Y rascas</comment>
+                </field>
+                <field id="rascas_extra" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Número de rascas extras</label>
+                    <comment>Número de rascas extras que se puede conseguir con los productos de aniversario</comment>
+                </field>
+                <field id="numero_productos" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Número de productos extra</label>
+                    <comment>Número de productos para conseguir los rascas extras</comment>
+                </field>
+                <field id="rasca_label" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Label para total de rascas</label>
+                    <comment>Título que se mostrará en los totales al mostrar los rascas</comment>
+                </field>
+                <field id="rasca_label_csv_export_sales" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Label csv pedidos</label>
+                    <comment>Título de columna de exportación de pedidos</comment>
+                </field>
+                <field id="times_label_single" translate="label" type="text" sortOrder="75" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Label participación única</label>
+                    <comment>Texto para indicar la obtención de una sola participación en email de pedido y factura (e.g., 'vez', 'sello')</comment>
+                </field>
+                <field id="times_label_plural" translate="label" type="text" sortOrder="76" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Label participaciones múltiples</label>
+                    <comment>Texto para indicar la obtención de múltiples participaciones en email de pedido y factura (e.g., 'veces', 'sellos')</comment>
+                </field>
+                <field id="extra_label_single" translate="label" type="text" sortOrder="77" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Label participación extra única</label>
+                    <comment>Texto para indicar la obtención de una sola participación extra en email de pedido y factura (e.g., 'extra')</comment>
+                </field>
+                <field id="extra_label_plural" translate="label" type="text" sortOrder="78" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Label participaciones extras múltiples</label>
+                    <comment>Texto para indicar la obtención de múltiples participaciones extras en email de pedido y factura (e.g., 'extras')</comment>
+                </field>
+                <field id="rasca_tag" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Tag para productos de aniversario</label>
+                    <comment>Se mostrará la etiqueta en los productos marcados como aniversario</comment>
+                    <source_model>Singular\Home\Model\Attribute\ProductTags\Options</source_model>
+                </field>
+                <field id="show_in_order_csv" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Habilitar columna en exportación de pedidos</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Si se activa se mostrará la columna de rascas en el excel de exportación de pedidos.</comment>
+                </field>
+                <field id="rasca_label_csv_export_sales" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Label csv pedidos</label>
+                    <comment>Título de columna de exportación de pedidos</comment>
+                </field>
+            </group>
+            <group id="import" translate="label" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>Importación de productos de Aniversario</label>
+                <field id="csv" translate="label" type="file" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Archivo de importación</label>
+                    <backend_model>Hiperdino\Anniversary\Model\Config\Backend\File</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">anniversary</upload_dir>
+                    <comment>El formato del archivo debe ser CSV. Los datos se trasladan a una tabla desde la cual una tarea programada se encargará luego de actualizar los productos.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

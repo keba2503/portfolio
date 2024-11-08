@@ -1,0 +1,58 @@
+<?php /** @var $block Hiperdino\Dinitos\Block\CartRewardInfo; */?>
+
+<?php
+$isDinitosEnabled = $block->isDinitosAccumulatedEnabledWeb();
+$storeRewards = $block->getStoreViewActiveRewards();
+$netBalance = $block->getCustomerDinitosBalance()['net'];
+$mapRewards = $block->mapRewards();
+$reachable = $mapRewards['reachable'];
+$unreachable = $mapRewards['unreachable'];
+$nearestUnreachable = $block->getNearestReward($unreachable);
+$nextRewardQty = $block->showShortfallNextReward($unreachable);
+$dinitosShortfallText = $block->getShortfallText();
+$dinitosToAchieveText = $block->getDinitosToAchieveText();
+$dinitosToUseText = $block->getDinitosToUseText();
+$dinitosObtainedText = $block->getDinitosObtainedText();
+?>
+
+<?php if ($isDinitosEnabled && (count($storeRewards) > 0)): ?>
+
+    <?php if (count($reachable) > 0): ?>
+        <div class="dino-header-cart cart__header block--wrapper flex-item">
+            <div class="dino-container block--container mb-2">
+                <div class="flex-container gap-c-5">
+                    <div><i class="icon icon-info color-green"></i></div>
+                    <div class=" pl-1">
+                        <span><span><?= __("{$dinitosObtainedText} ") ?></span><span class="color-corp w-bold"><?= __("{$netBalance} Dinitos. ") ?></span></span>
+                        <span><?= __("{$dinitosToUseText} ") ?><span><?= $block->joinRewards($reachable, 'y') ?></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif ?>
+
+    <?php if (count($nearestUnreachable) > 0): ?>
+        <div class="dino-header-cart cart__header block--wrapper flex-item">
+            <div class="dino-container block--container mb-2">
+                <div class="flex-container gap-c-5">
+                    <div><i class="icon icon-info color-green"></i></div>
+                    <div class=" pl-1">
+                        <span><span><?= __("{$dinitosShortfallText} ") ?></span><span class="color-corp w-bold"><?= __("{$nextRewardQty} Dinitos. ") ?></span></span>
+                        <span><?= __("{$dinitosToAchieveText} ") ?><span><?= $block->joinRewards($nearestUnreachable, 'o') ?></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif ?>
+
+<?php else: ?>
+    <?= $block->getChildHtml('hiperdino_dinitos_cart_info_default') ?>
+<?php endif;?>
+
+<script>
+    require(['jquery'], function ($) {
+        $(".dino-header-cart").click(function () {
+            $(".dino-modal").toggleClass("show");
+        });
+    })
+</script>

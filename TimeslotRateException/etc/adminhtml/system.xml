@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="hiperdino_timeslot_rate_exception" sortOrder="225" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+            <class>separator-top</class>
+            <label>Excepciones de Tarifa</label>
+            <tab>singular</tab>
+            <resource>Hiperdino_TimeslotRateException::hiperdino_timeslot_rate_exception_config</resource>
+            <group id="general" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>General</label>
+                <field id="show_shipping_method_price" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Mostrar precio del método de envío</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Si está a SI: aparece el precio del método de envío en el checkout, en las cajitas de selección de envío. Si está a NO: aparece el precio en cada franja</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

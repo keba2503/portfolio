@@ -1,0 +1,84 @@
+<!--@subject Cupon Black Friday HiperDino Online @-->
+<!--@vars {
+"var customerName":"Nombre del cliente",
+"var incrementId":"Increment Id del pedido",
+"var couponCode":"Coupon Code",
+"var discountAmount":"Cantidad de descuento",
+"var discountType":"Tipo de descuento"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+<tr>
+    <td>
+        <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+
+            <tr>
+                <td valign="middle">
+                    <table width="600" border="0" cellspacing="0" cellpadding="0">
+                        <tr class="email-image">
+                            <td>
+                                <img src="{{view url='Hiperdino_BlackFriday/images/cabecera_black_friday_email.jpg'}}" alt="Cabecera" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="600" align="center">
+                    <span bgcolor="#fff"
+                        style="margin-top: 20px; background: #201D1D;display:inline-block;padding:15px 100px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;color:#fff;font-family:'Source Sans Pro','Arial';font-size:18px;font-weight:bold;text-decoration:none!important;"
+                        href="#">
+                        <p
+                            style="font-family:'Source Sans Pro','Arial';font-size:16px;color:#fff;margin:0;margin-bottom: 10px;">
+                            {{trans "Tu cupón de Black Friday"}}
+                        </p>
+                        <p
+                            style="font-family:'Source Sans Pro','Arial';font-size:30px;font-weight: bold;color:#fff;margin:0;">
+                            {{trans "%discount_amount%discount_type" discount_amount=$discountAmount discount_type=$discountType}}
+                            <span></span>
+                        </p>
+                    </span>
+                </td>
+            </tr>
+
+            <tr height="30">
+            </tr>
+
+            <td width="600" style="font-family:'Source Sans Pro','Arial';font-size:16px;color:#999;line-height:24px;">
+
+                <p>{{trans "Has conseguido un cupón de %discount_amount%discount_type por realizar tu pedido # %order_increment_id.
+                    <br>
+                    Actívalo en tu apartado “Mis cupones” dentro de la app o en <a href="https://www.hiperdino.es/">hiperdino.es</a>.
+                    Disfruta de tu cupón en tu próxima compra desde el 27 de noviembre hasta el
+                    31 de diciembre de 2023.
+                    <br>
+                    <br>
+                    No se admite la devolución del cupón.
+                    <br>
+                    <br>
+                    Cupón no canjeable por efectivo.
+                    <br>
+                    <br>
+                    Cupón no válido para juguetes, jamones ibéricos por piezas, colonias, perfumes, menaje, alcohol, tabaco y/o
+                    recargas.
+                    <br>
+                    <br>
+                    Cupón al portador, en caso de pérdida no se admite duplicado.
+                    <br>
+                    <br>
+                    Cupón válido para compra en tienda física y online.
+                    <br>
+                    <br>
+                    Consulta las condiciones de la promoción en <a href="https://www.hiperdino.es/blackfriday">hiperdino.es</a>." discount_amount=$discountAmount
+                    discount_type=$discountType order_increment_id=$incrementId|raw}}
+                </p>
+
+            </td>
+
+
+        </table>
+    </td>
+</tr>
+
+{{template config_path="design/email/footer_template"}}

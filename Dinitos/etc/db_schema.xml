@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="hiperdino_dinitos_history" engine="innodb" resource="default" comment="Dinitos History table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Unique identifier of movement"/>
+        <column xsi:type="varchar" name="concept" nullable="false" length="255" comment="Record concept (edited from admin, order movement, etc)"/>
+        <column xsi:type="varchar" name="increment_id" nullable="true" length="50" comment="Order identifier"/>
+        <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="false" comment="Customer identifier"/>
+        <column xsi:type="int" name="dinitos_quantity" padding="6" unsigned="false" nullable="false" comment="Quantity of dinitos obtained or redeemed"/>
+        <column xsi:type="varchar" name="transaction_type" nullable="false" length="50" comment="Type of transaction"/>
+        <column xsi:type="varchar" name="package_id" padding="10" unsigned="true" comment="Translated and well-formulated package ID" />
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Movement creation date"/>
+        <column xsi:type="datetime" name="updated_at" nullable="false" comment="Updated at field" default="CURRENT_TIMESTAMP" on_update="true"/>
+        <column xsi:type="text" name="package_history" padding="6" unsigned="false" nullable="false" comment="History package"/>
+        <column xsi:type="int" name="dinitos_balance" padding="6" unsigned="false" nullable="false" comment="Quantity of dinitos from customer in this moment (photo)"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CUSTOMER_ID" table="hiperdino_dinitos_history" column="customer_id" referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <index referenceId="HIPERDINO_DINITOS_HISTORY_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+
+    <table name="hiperdino_dinitos_packages" engine="innodb" resource="default" comment="Dinitos Packages table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Unique identifier of package"/>
+        <column xsi:type="varchar" name="increment_id" nullable="true" length="50" comment="Order identifier"/>
+        <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="false" comment="Customer identifier"/>
+        <column xsi:type="int" name="dinitos_quantity" padding="6" unsigned="false" nullable="false" comment="Quantity of dinitos obtained or redeemed"/>
+        <column xsi:type="int" name="available_dinitos" padding="10" unsigned="false" nullable="false" comment="Quantity of available dinitos, updated on redemption movement"/>
+        <column xsi:type="boolean" name="redeemed" nullable="false" comment="Boolean field indicating whether it has been redeemed (true) or not (false)" />
+        <column xsi:type="boolean" name="expired" nullable="false" comment="Boolean field indicating whether it has expired (true) or not (false)" />
+        <column xsi:type="timestamp" name="expiration_date" on_update="false"  nullable="true" comment="Redemption deadline for dinitos"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Movement creation date"/>
+        <column xsi:type="datetime" name="updated_at" nullable="false" comment="Updated at field" default="CURRENT_TIMESTAMP" on_update="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CUSTOMER_ID" table="hiperdino_dinitos_packages" column="customer_id" referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <index referenceId="HIPERDINO_DINITOS_HISTORY_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+
+    <table name="hiperdino_dinitos_rewards" engine="innodb" resource="default" comment="Dinitos Rewards table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="varchar" name="stores" nullable="false" length="255" comment="Hiperdino Stores"/>
+        <column xsi:type="varchar" name="type" nullable="false" length="255" comment="Reward type"/>
+        <column xsi:type="varchar" name="entity_identifier" nullable="false" length="255" comment="Reward type ID"/>
+        <column xsi:type="smallint" name="active" padding="6" unsigned="false" nullable="false" identity="false" comment="Active"/>
+        <column xsi:type="int" name="dinitos_qty" padding="6" unsigned="false" nullable="false" identity="false" comment="Dinitos quantity"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Reward name"/>
+        <column xsi:type="varchar" name="checkout_text" nullable="false" length="255" comment="Reward checkout text"/>
+        <column xsi:type="varchar" name="cart_text" nullable="false" length="255" comment="Reward cart text"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created at"/>
+        <column xsi:type="datetime" name="updated_at" nullable="false" comment="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
+        <index referenceId="HIPERDINO_DINITOS_REWARDS_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+</schema>

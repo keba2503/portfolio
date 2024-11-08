@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Hiperdino_Anniversary2020::anniversary2020_configuration" title="Aniversario 2020" sortOrder="10"/>
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::marketing">
+                    <resource id="Hiperdino_Anniversary2020::anniversary2020" title="Anniversary 2020" sortOrder="51">
+                        <resource id="Hiperdino_Anniversary2020::anniversary2020_grid_rascas" title="Rascas" sortOrder="51"/>
+                        <resource id="Hiperdino_Anniversary2020::anniversary2020_prizes" title="Aniversario - Premios" sortOrder="100"/>
+                    </resource>
+                </resource>
+                <resource id="Singular_Queue::main_menu" title="Gestión de Colas" sortOrder="51">
+                    <resource id="Hiperdino_Anniversary2020::participation_queue" title="Participaciones" sortOrder="51">
+                        <resource id="Hiperdino_Anniversary2020::anniversary2020_grid_participation" title="Colas Participaciones" sortOrder="20" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,36 @@
+{
+    "hiperdino_delivery_rate": {
+        "column": {
+            "id": true,
+            "name": true,
+            "description": true,
+            "amount": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "HIPERDINO_DELIVERY_RATE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "hiperdino_delivery_rate_exception": {
+        "column": {
+            "id": true,
+            "start_date": true,
+            "end_date": true,
+            "name": true,
+            "description": true,
+            "is_active": true,
+            "rate": true
+        },
+        "index": {
+            "HIPERDINO_DELIVERY_RATE_EXCEPTION_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_CB48242BF098E9E94C0CE255DD836A05": true
+        }
+    }
+}

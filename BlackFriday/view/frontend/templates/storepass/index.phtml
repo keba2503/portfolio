@@ -1,0 +1,79 @@
+<?php
+/** @var \Hiperdino\BlackFriday\Block\StorePass $block */
+?>
+<section class="page-contact">
+    <?php if($block->isModifying()): ?>
+        <div class="container container-message bf-storepass-modifying-msg">
+            <?= $block->getIsModifyingMessage() ?>
+        </div>
+    <?php endif; ?>
+    <div class="page-corporate__headings">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 col-xl-7 offset-md-1">
+                    <div class="page-corporate__block checkout__item flex-item">
+                        <h2 class="header__text"><?= __("Elige tu tienda de compra de juguetes") ?></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-corporate__tiendas">
+        <div class="container">
+            <form class="form" id="search-storepass-form"
+                  action="<?= $block->escapeUrl($block->getUrl('hiperdino_blackfriday/storepass/search')) ?>">
+                <div class="row">
+                    <div class="col-12 col-md-11 col-lg-11 col-xl-5 offset-md-1">
+                        <div class="type-select type-select-contact block--wrapper flex-item">
+                            <div class="items--container flex-container flex-row justify-between normal-select">
+                                <div class="select__item item--wrapper quickview-type__select flex-item">
+                                    <select class="select2-normal select2" name="island"
+                                            data-placeholder="<?= __('Selecciona isla') ?>">
+                                        <option></option>
+                                        <?php foreach ($block->getIslands() as $island): ?>
+                                            <option value="<?= $island['value'] ?>"><?= $island['label'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-11 col-lg-11 col-xl-5 offset-md-1">
+                        <div class="type-select type-select-contact block--wrapper flex-item">
+                            <div class="items--container flex-container flex-row justify-between normal-select">
+                                <div class="select__item item--wrapper quickview-type__select flex-item">
+                                    <select class="select2-normal select2" disabled name="city"
+                                            data-placeholder="<?= __('Selecciona una localidad') ?>">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-11 col-lg-11 col-xl-5 offset-md-1">
+                        <div class="user-account__item cart__button block--wrapper flex-item">
+                            <button class="button button__complex button__complex--modal button__complex--container flex-container flex-row justify-center items-center"
+                                    type="submit">
+                                <div class="button__content flex-item">
+                                    <div class="button__content--container flex-container flex-row justify-center items-center">
+                                        <div class="button__text flex-item">
+                                            <?= __("Buscar") ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    var locations = <?= json_encode($block->getLocations(), JSON_UNESCAPED_UNICODE) ?>;
+</script>

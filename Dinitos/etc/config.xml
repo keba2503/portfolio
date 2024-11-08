@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <hiperdino_checkout>
+            <logger>
+                <dinitos>1</dinitos>
+                <update_dinitos>1</update_dinitos>
+                <dinitos_rewards>1</dinitos_rewards>
+                <history_dinitos>1</history_dinitos>
+                <dinitos_service>1</dinitos_service>
+                <dinitos_customer>1</dinitos_customer>
+                <dinitos_movement>1</dinitos_movement>
+                <dinitos_packages>1</dinitos_packages>
+                <dinitos_app>1</dinitos_app>
+                <dinitos_reminder>1</dinitos_reminder>
+                <dinitos_rewards_invoice_collect_totals>1</dinitos_rewards_invoice_collect_totals>
+                <filter_quote_rewards>1</filter_quote_rewards>
+            </logger>
+        </hiperdino_checkout>
+    </default>
+</config>

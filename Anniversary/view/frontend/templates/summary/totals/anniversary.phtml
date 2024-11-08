@@ -1,0 +1,10 @@
+<?php if($block->showAnniversaryInfo()):?>
+    <?php $anniversary = $block->getAnniversaryInfo(); ?>
+    <div class="side-menu-checkout__item side-menu-checkout__text flex-item has-border-bottom">
+        <div class="flex-container justify-between">
+            <span> <?= __($anniversary["label"]) ?></span>
+            <span class="price__text"><?= $anniversary["qty"] ?></span>
+        </div>
+    </div>
+<?php endif;?>
+

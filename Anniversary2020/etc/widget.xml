@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+	<widget id="hiperdino_anniversary2020_registerrascas" class="Hiperdino\Anniversary2020\Block\Widget\RegisterRasca">
+		<label translate="true">Registro de rascas</label>
+		<description>Registro de rascas</description>
+	</widget>
+</widgets>

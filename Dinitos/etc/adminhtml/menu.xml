@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hiperdino_Dinitos::dinitos" title="Dinitos" module="Hiperdino_Dinitos" sortOrder="120" parent="Magento_Backend::marketing" resource="Hiperdino_Dinitos::hiperdino_dinitos" dependsOnModule="Hiperdino_Dinitos"/>
+        <add id="Hiperdino_Dinitos::hiperdino_dinitos_history" title="Historico de dinitos" module="Hiperdino_Dinitos" sortOrder="10" parent="Hiperdino_Dinitos::dinitos" action="dinitos/history/index" resource="Hiperdino_Dinitos::hiperdino_dinitos_history" dependsOnModule="Hiperdino_Dinitos"/>
+        <add id="Hiperdino_Dinitos::hiperdino_dinitos_rewards" title="Recompensas" module="Hiperdino_Dinitos" sortOrder="10" parent="Hiperdino_Dinitos::dinitos" action="dinitos/reward/index" resource="Hiperdino_Dinitos::hiperdino_dinitos_rewards" dependsOnModule="Hiperdino_Dinitos"/>
+        <add id="Hiperdino_Dinitos::hiperdino_dinitos_package" title="Paquetes" module="Hiperdino_Dinitos" sortOrder="20" parent="Hiperdino_Dinitos::dinitos" action="dinitos/package/index" resource="Hiperdino_Dinitos::hiperdino_dinitos_package" dependsOnModule="Hiperdino_Dinitos"/>
+    </menu>
+</config>

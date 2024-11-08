@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hiperdino_BlackFriday::storepass" title="Acceso a tienda BlackFriday" translate="title" module="Hiperdino_BlackFriday" parent="Magento_Backend::content" sortOrder="100" dependsOnModule="Hiperdino_BlackFriday" resource="Hiperdino_BlackFriday::storepass"/>
+        <add id="Hiperdino_BlackFriday::storepass_timeslot" title="Franjas horarias" translate="title" module="Hiperdino_BlackFriday" parent="Hiperdino_BlackFriday::storepass" sortOrder="110" dependsOnModule="Hiperdino_BlackFriday" action="hiperdino_blackfriday/timeslot/index" resource="Hiperdino_BlackFriday::storepass"/>
+        <add id="Hiperdino_BlackFriday::storepass_booking" title="Lista de reservas activas" translate="title" module="Hiperdino_BlackFriday" parent="Hiperdino_BlackFriday::storepass" sortOrder="120" dependsOnModule="Hiperdino_BlackFriday" action="hiperdino_blackfriday/booking/index" resource="Hiperdino_BlackFriday::storepass"/>
+    </menu>
+</config>

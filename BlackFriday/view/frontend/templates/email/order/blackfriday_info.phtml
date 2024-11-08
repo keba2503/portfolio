@@ -1,0 +1,15 @@
+<?php /** @var \Hiperdino\BlackFriday\Block\Email\Sales\BlackFriday $block */ ?>
+
+<?php if ($block->hasBlackFridayInfo() && $block->getExistBlackFridayDiscount()): ?>
+    <?php $labelInfoCheckout = $block->getLabeInfoCheckout() ?>
+    <?php if ($labelInfoCheckout): ?>
+        <span style="color:#1c752c"><?= __($labelInfoCheckout) ?><br></span>
+        <?php $infoCheckout = $block->getInfoCheckout() ?>
+        <?php if ($infoCheckout): ?>
+            <?= __($infoCheckout) ?><br>
+        <?php endif; ?>
+    <?php endif; ?>
+    <br><br>
+<?php endif; ?>
+
+

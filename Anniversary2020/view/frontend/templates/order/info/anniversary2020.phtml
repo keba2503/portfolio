@@ -1,0 +1,20 @@
+<?php /** @var \Hiperdino\Anniversary2020\Block\Order\Info\Anniversary2020 $block */ ?>
+
+<?php if ($block->isAnniversaryEnabled()): ?>
+    <div class="container">
+        <div class="row">
+            <div class="col offset-md-1 offset-lg-2">
+                <div class="user-account__item--less-margin">
+                    <h2 class="sub__title"><?= __($block->getTitle()) ?></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col offset-md-1 offset-lg-2">
+                <div class="user-account__item--less-margin">
+                    <a href="<?= $block->getURLPromo() ?>"><?= $block->getTextPromo() ?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

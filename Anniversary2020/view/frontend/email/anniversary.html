@@ -1,0 +1,94 @@
+<!--@subject Aniversario Hiperdino @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image"}
+@-->
+<!--@styles
+.t-center {
+    text-align: center; margin: 0 auto;
+}
+.prize {
+    background-color: #eaefdc;
+}
+.green {
+    color: #2a613e;
+}
+.fz-24 {
+    font-size:24px;
+}
+.fz-16 {
+    font-size: 12px;
+}
+.padding-10 {
+    padding: 10px;
+}
+@-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+        {{var template_styles|raw}}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+
+<table width="700" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr>
+        <td>
+            <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr height="80">
+                </tr>
+
+                <tr>
+                    <td valign="middle">
+                        <table width="600" border="0" cellspacing="0" cellpadding="0">
+                            <tr class="email-image">
+                                <td>
+                                    <img src="{{view url='Hiperdino_Anniversary2020/images/emailpremio.jpg'}}" alt="Cabecera" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr height="70">
+                </tr>
+
+                <tr class="win">
+                    <td class="t-center" width="600">
+                        <p class="t-center">
+                            <b>{{trans "Has ganado un premio en nuestro Aniversario."}}</b>
+                            <br>
+                            {{trans "¡Aquí lo tienes!"}}
+                        </p>
+                        <p class="t-center">{{trans "Acércate a tu tienda mas cercana para canjear tu premio."}}</p>
+                    </td>
+                </tr>
+                <table width="600" border="0" cellspacing="0" cellpadding="0">
+                    <tr class="prize">
+                        <td class="text-prize padding-10" valign="middle">
+                            <p class="green fz-24">{{trans "Has ganado"}} {{var prize}}</p>
+                        </td>
+                        <td class="barcode padding-10 t-center" valign="middle">
+                            <img src='{{var image_qr}}' alt="QR Cupón 64" style="width: 200px"/>
+                            {{var barcode_prize}}
+                        </td>
+                    </tr>
+                </table>
+                <tr class="prize">
+                    <td class="t-center fz-16 padding-10">
+                        {{trans "Valido hasta el"}} {{var date_until}}.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="t-center padding-10" width="600">
+                        <p class="t-center"><b>{{trans "¡GRACIAS POR PARTICIPAR EN NUESTRO ANIVERSARIO!"}}</b></p>
+                    </td>
+                </tr>
+
+{{template config_path="design/email/footer_template"}}

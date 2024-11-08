@@ -1,0 +1,110 @@
+<?php /** @var $block \Hiperdino\Anniversary2020\Block\Link */ ?>
+
+<?php if ($block->isAnniversaryEnabled()): ?>
+
+    <div class="category-group dropdown--trigger flex-item">
+        <div class="category-group--container flex-container flex-column">
+            <div class="category-group__header flex-item">
+                <div class="category-group__header--container flex-container flex-row items-center">
+
+                    <i class="category-icon-anniversary cat-icon icon-aniv-aniversario flex-item menu__text"></i>
+
+                    <div class="menu__text dropdown--info flex-item flex-double"><?= $block->getAnniversary2020TitleMenu() ?></div>
+                    <div class="dropdown__control--container flex-container flex-row items-center">
+                        <i class="dropdown__icon dropdown__icon--info icon icon-right flex-item"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="category-group__content flex-item">
+                <ul class="category__list flex-container flex-column">
+                    <li class="sidebar__item-info sidebar-item--wrapper flex-item">
+                        <a href="<?= $block->getUrlAnniversary2020Participate() ?>" class="link-info item--container flex-container flex-row items-center">
+                            <div class="flex-item">
+                                <div class="category-group__header--container flex-container flex-row items-center">
+                                    <i class="category__icon cat-icon icon-aniv-como-participar flex-item"></i>
+                                </div>
+                            </div>
+                            <div class="flex-item">
+                                <?= __("Cómo participar") ?>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidebar__item-info sidebar-item--wrapper flex-item">
+                        <a href="<?= $block->getUrlAnniversary2020InsertYourCode() ?>" class="link-info item--container flex-container flex-row items-center">
+                            <div class="flex-item">
+                                <div class="category-group__header--container flex-container flex-row items-center">
+                                    <i class="category__icon cat-icon icon-aniv-intro-codigo flex-item menu__text"></i>
+                                </div>
+                            </div>
+                            <div class="linl--wrapper menu--link dropdown---info flex-item">
+                                <?= __("Introduce tu código") ?>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidebar__item-info sidebar-item--wrapper flex-item">
+                        <?php if ($block->isLoggedIn()): ?>
+                            <a href="<?= $block->getUrlAnniversary2020SeeCodes() ?>" class="link-info item--container flex-container flex-row items-center">
+                                <div class="flex-item">
+                                    <div class="category-group__header--container fz-20 flex-container flex-row items-center">
+                                        <i class="category__icon cat-icon icon2-anniversary flex-item"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <?= __("Mis participaciones") ?>
+                                </div>
+                            </a>
+                        <?php else: ?>
+                            <a href="<?= $block->getUrl('hdlogin/login/check', ['redirect' => 1]) ?>" class="link-info item--container flex-container flex-row items-center">
+                                <div class="flex-item">
+                                    <div class="category-group__header--container fz-20 flex-container flex-row items-center">
+                                        <i class="category__icon cat-icon icon2-anniversary flex-item"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <?= __("Mis participaciones") ?>
+                                </div>
+                            </a>
+                        <?php endif; ?>
+                    </li>
+                    <li class="sidebar__item-info sidebar-item--wrapper flex-item">
+                        <a href="<?= $block->getUrlAnniversary2020Raffles() ?>" class="link-info item--container flex-container flex-row items-center">
+                            <div class="flex-item">
+                                <div class="category-group__header--container flex-container flex-row items-center">
+                                    <i class="category__icon cat-icon icon-aniv-sorteos flex-item"></i>
+                                </div>
+                            </div>
+                            <div class="flex-item">
+                                <?= __("Sorteos") ?>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidebar__item-info sidebar-item--wrapper flex-item">
+                        <a href="<?= $block->getUrlAnniversary2020DirectAwards() ?>" class="link-info item--container flex-container flex-row items-center">
+                            <div class="flex-item">
+                                <div class="category-group__header--container flex-container flex-row items-center">
+                                    <i class="category__icon cat-icon icon-aniv-premios-directos flex-item"></i>
+                                </div>
+                            </div>
+                            <div class="flex-item">
+                                <?= __("Premios directos") ?>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidebar__item-info sidebar-item--wrapper flex-item">
+                        <a href="<?= $block->getUrlAnniversary2020Legal() ?>" class="link-info item--container flex-container flex-row items-center">
+                            <div class="flex-item">
+                                <div class="category-group__header--container flex-container flex-row items-center">
+                                    <i class="category__icon cat-icon icon-aniv-legal flex-item"></i>
+                                </div>
+                            </div>
+                            <div class="flex-item">
+                                <?= __("Bases legales") ?>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+

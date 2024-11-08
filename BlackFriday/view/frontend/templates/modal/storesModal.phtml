@@ -1,0 +1,39 @@
+<?php /**  @var \Hiperdino\BlackFriday\Block\Modal\StoresModal $block */ ?>
+<div class="dialogBox-modal-blackfriday-stores dialogBox-modal flex-container flex-row justify-center items-center blackfriday-modal">
+
+    <div class="postal-wrapper dialogBox--wrapper dialogBox--wrapper-modal flex-item">
+
+        <div class="dialogBox__item dialogBox__item--little not-padding dialogBox__postal dialogBox__item--sixe-fixed flex-container justify-between">
+
+            <div class="login__control quickview__control quickview__control-modal">
+                <div class="button button__icon quickview__close control-position flex-container flex-row justify-center items-center"
+                     data-myaction="closeCustomModal" data-target="dialogBox-modal-blackfriday-stores">
+                    <i class="icon icon-close flex-item"></i>
+                </div>
+            </div>
+
+            <div class="dialogBox__left dialogBox__left--fullheight-image flex-item blackfriday-postal-results-wrapper__image is-hidden-mobile">
+                <div class="dialogBox__content flex-container flex-column">
+                </div>
+            </div>
+
+            <div class="dialogBox__right dialogBox__right-has-padding flex-item blackfriday-map-modal">
+                <div class="dialogBox__content flex-container flex-column justify-center">
+
+                    <div class="dialogBox__title flex-item">
+                        <div class="title__text">
+                            <?= __('Tiendas de recogida de juguetes') ?>
+                        </div>
+                    </div>
+
+                    <div id="bf-stores-list"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

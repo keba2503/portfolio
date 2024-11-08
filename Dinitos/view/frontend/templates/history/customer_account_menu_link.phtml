@@ -1,0 +1,21 @@
+<?php /** @var $block Hiperdino\Dinitos\Block\History; */ ?>
+
+<?php
+$showDinitosHistory = $block->isDinitosLinkEnabled();
+$defaulPosition = 2;
+$linkPosition = $block->getData('link_position') ?: $defaulPosition;
+$linkText = $block->getDinitosHistoryTexts()['text_link_sidebar'];
+?>
+
+<?php if ($showDinitosHistory): ?>
+    <a href="<?= $block->getUrl('dinitos_history') ?>" class="side-menu-user__item flex-item order-<?= $linkPosition ?>">
+        <div class="flex-container menu__text items-center">
+            <div class="menu__icon menu__icon--user flex-item">
+                <i class="icon icon-dinitos"></i>
+            </div>
+            <div class="menu__text flex-item">
+                <?= __($linkText) ?>
+            </div>
+        </div>
+    </a>
+<?php endif; ?>

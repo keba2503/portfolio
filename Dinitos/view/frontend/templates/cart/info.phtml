@@ -1,0 +1,93 @@
+<?php /** @var $block Hiperdino\Dinitos\Block\CartInfo; */?>
+
+<?php if ($block->hasDinitosEnabled()) : ?>
+    <?php $pickupDinitos = $block->isPickupDinitosEnabled(); ?>
+    <?php $pickupPointDinitos = $block->isPickupPointDinitosEnabled(); ?>
+    <?php $deliveryDinitos = $block->isDeliveryDinitosEnabled(); ?>
+
+    <div class="dino-header-cart cart__header block--wrapper flex-item">
+        <div class="dino-container block--container flex-container flex-row flex-wrap justify-between">
+            <div class="block--container flex-container flex-row flex-wrap justify-between">
+                <span class="color-green flex-container align-center gap-c-5">
+                    <i class="icon icon-info"></i>
+                    <?= $block->hasFreeShipping() ? __('Te faltan') : "" ?>
+               </span>
+            </div>
+
+            <?php if ($pickupDinitos): ?>
+                <?php $pickupLeft = $block->getDinitosLeftForFreeShipping('pickup'); ?>
+                <div class="cart-menu__item item--wrapper flex-item">
+                    <div class="item--container flex-container flex-row items-center">
+                        <?php if ($pickupLeft > 0): ?>
+                            <div class="menu__text flex-item">
+                                <span class="cart-text-dinito"> <?= $pickupLeft ?> <?= __('Dinitos') ?> &nbsp;</span>
+                            </div>
+                        <?php endif; ?>
+                        <div class="menu__text flex-item">
+                            <?php if ($pickupLeft > 0): ?>
+                                <?= __('para recogida gratis') ?>
+                            <?php else: ?>
+                                <?= __('Recogida gratis') ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <?php if ($pickupPointDinitos || $deliveryDinitos): ?>
+                    <div class="cart-menu__item item--wrapper flex-item">o</div>
+                <?php endif; ?>
+            <?php endif; ?>
+
+            <?php if ($pickupPointDinitos): ?>
+                <?php $pickupLeftPoint = $block->getDinitosLeftForFreeShipping('pickuppoint'); ?>
+                <div class="cart-menu__item item--wrapper flex-item">
+                    <div class="item--container flex-container flex-row items-center">
+                        <?php if ($pickupLeftPoint > 0) : ?>
+                            <div class="menu__text flex-item">
+                                <span
+                                    class="cart-text-dinito"> <?= $pickupLeftPoint ?> <?= __('Dinitos') ?> &nbsp;</span>
+                            </div>
+                        <?php endif; ?>
+                        <div class="menu__text flex-item">
+                            <?php if ($pickupLeftPoint > 0): ?>
+                                <?= __('para recogida gratis') ?>
+                            <?php else : ?>
+                                <?= __('Recogida gratis') ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <?php if ($deliveryDinitos): ?>
+                    <div class="cart-menu__item item--wrapper flex-item">o</div>
+                <?php endif; ?>
+            <?php endif; ?>
+
+            <?php if ($deliveryDinitos): ?>
+                <?php $deliveryLeft = $block->getDinitosLeftForFreeShipping('delivery'); ?>
+                <div class="cart-menu__item item--wrapper flex-item">
+                    <div class="item--container flex-container flex-row items-center">
+                        <?php if ($deliveryLeft > 0): ?>
+                            <div class="menu__text flex-item">
+                                <span class="cart-text-dinito"> <?= $deliveryLeft ?> <?= __('Dinitos') ?> &nbsp;</span>
+                            </div>
+                        <?php endif; ?>
+                        <div class="menu__text flex-item">
+                            <?php if ($deliveryLeft > 0): ?>
+                                <?= __('para envío gratis') ?>
+                            <?php else: ?>
+                                <?= __('Envío gratis') ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>
+
+<script>
+    require(['jquery'], function ($) {
+        $(".dino-header-cart").click(function () {
+            $(".dino-modal").toggleClass("show");
+        });
+    })
+</script>

@@ -1,0 +1,20 @@
+<?php /** @var $block \Hiperdino\Anniversary\Block\Order\Totals\ */ ?>
+
+<?php if ($block->showAnniversaryInfo()): ?>
+
+    <?php $anniversary = $block->getAnniversaryInfo(); ?>
+    <div class="send-final flex-container items-end flex-column">
+        <div class="send-final__item send-final__item--margin flex-item">
+            <div class="flex-container justify-between">
+                <div class="menu__text">
+                    <p class="block__text"><?= $anniversary["label"] ?></p>
+                </div>
+                <div class="cart-item__total flex-item">
+                    <?= $anniversary["qty"] ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+

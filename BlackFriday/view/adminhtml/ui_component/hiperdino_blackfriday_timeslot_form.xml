@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">hiperdino_blackfriday_timeslot_form.hiperdino_blackfriday_timeslot_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Información general</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Singular\Delivery\Block\Adminhtml\Timeslot\Edit\SaveButton"/>
+            <button name="back" class="Singular\Delivery\Block\Adminhtml\Timeslot\Edit\BackButton"/>
+        </buttons>
+        <namespace>hiperdino_blackfriday_timeslot_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>hiperdino_blackfriday_timeslot_form.hiperdino_blackfriday_timeslot_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="hiperdino_blackfriday_timeslot_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="hiperdino_blackfriday/timeslot/save"/>
+        </settings>
+        <dataProvider class="Hiperdino\BlackFriday\Model\StorepassTimeslot\DataProvider" name="hiperdino_blackfriday_timeslot_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">storepasstimeslot</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>id</dataScope>
+            </settings>
+        </field>
+        <field name="parent_store" sortOrder="40" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">storepasstimeslot</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>number</dataType>
+                <label translate="false">Tienda física</label>
+                <visible>true</visible>
+                <dataScope>parent_store</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Hiperdino\BlackFriday\Model\Attribute\Source\BlackFridayPickupShop"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="start_time" sortOrder="50" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">storepasstimeslot</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="false">Desde</label>
+                <dataScope>start_time</dataScope>
+            </settings>
+        </field>
+        <field name="end_time" sortOrder="60" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">storepasstimeslot</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="false">Hasta</label>
+                <dataScope>end_time</dataScope>
+            </settings>
+        </field>
+        <field name="limit" sortOrder="70" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">storepasstimeslot</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>number</dataType>
+                <label translate="false">Límite</label>
+                <dataScope>limit</dataScope>
+            </settings>
+        </field>
+        <field name="weekdays" sortOrder="80" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">storepasstimeslot</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>int</dataType>
+                <label translate="false">Días de la semana</label>
+                <dataScope>weekdays</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Singular\Delivery\Ui\Component\Listing\Column\Weekday\Options"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="is_active" sortOrder="90" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">storepasstimeslot</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="false">Habilitado</label>
+                <dataScope>is_active</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

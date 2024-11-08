@@ -1,0 +1,75 @@
+<?php
+
+/** @var \Hiperdino\Anniversary2020\Block\Widget\RegisterRasca $block */
+?>
+<?php $rascaError = $block->getRascaSessionError(); ?>
+<div class="page-corporate__headings">
+	<div class="container">
+		<div class="">
+			<div class="page-corporate__block anniversary__item flex-item">
+				<h2 class="header__text"><?= $block->getRegisterTitle() ?></h2>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-corporate__aniversario2020">
+	<div class="container">
+		<?php if ($rascaError) : ?>
+			<div class="rascas-error error-message input input__complex--container flex-container flex-row justify-center items-center">
+				<?= $rascaError ?>
+			</div>
+		<?php endif; ?>
+		<?php if ($block->isPromotionAvailable()) : ?>
+			<p class="text-center"><b><?= $escaper->escapeHtml(__('¿Tienes un código? Regístralo aquí')); ?></b> <?= $escaper->escapeHtml(__('e inscríbete en el sorteo semanal y en el gran sorteo final. Esta semana sorteamos:')); ?></p>
+			<div class="premios">
+				<p><b class="fz-24"><?= $block->getTitleWeek() ?></b></p>
+			</div>
+			<div class="anniversary2020-square-border">
+				<form class="form-rasca<?= $block->isLoggedIn() ? ' loggedIn' : '' ?>" action="<?= $this->escapeUrl($block->getAjaxActionUrl()) ?>" method="post" id="rasca-form">
+					<?= $block->getBlockHtml('formkey') ?>
+					<div class="label__input">
+                        <label class="control-label" for="rascaCode"><?= __('Código') ?> *</label>
+                        <div class="input input__complex input__complex--modal input__complex--container flex-container flex-row justify-center items-center">
+                            <div class="input__content flex-item">
+                                <div class="flex-container flex-row justify-center items-center">
+                                    <div class="input-wrapper">
+                                        <input autocomplete="off" type="text" name="rascaCode" class="input__text flex-item flex-double required-entry" value="<?= $block->getCodeSession() ?>" placeholder="<?= __('Código') ?>">
+                                        <label class="control-label" for="rascaCode"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+					<div class="anniversary__button block--wrapper flex-item">
+						<button type="submit" name="rascaButton" disabled="true" class="button button__complex button__complex--modal button__complex--container flex-container flex-row justify-center items-center" data-myaction="tryRegisterRasca">
+							<div class="button__content flex-item">
+								<div class="button__content--container flex-container flex-row justify-center items-center">
+									<div class="button__text flex-item">
+										<?= __('Registrar código') ?>
+									</div>
+								</div>
+							</div>
+						</button>
+					</div>
+				</form>
+				<br>
+				<p class="text-center rasca-where"><a class="underline" data-myaction="openCustomModal" data-target="dialogBox-modal-where-rasca"><?= $escaper->escapeHtml(__('¿Dónde puedo encontrar el código de mi participación?')); ?></a></p>
+				<br>
+				<p class="text-center"><?= $escaper->escapeHtml(__('Inscribiéndote en el sorteo semanal también estarás inscrito en el')); ?> <b><?= $escaper->escapeHtml(__('gran sorteo final de')); ?> <?= $block->getFinalTitle() ?></b></p>
+
+			</div>
+		<?php else : ?>
+			<p class="text-center"><?= __($block->getTextOutPromo()) ?></p>
+		<?php endif; ?>
+	</div>
+</div>
+
+<script type="text/x-magento-init">
+	{
+        "*": {
+            "Hiperdino_Anniversary2020/js/anniversary" : {
+            }
+        }
+    }
+</script>

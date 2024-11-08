@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
+    <body>
+        <referenceContainer name="extra_customer_account_links">
+            <block class="Hiperdino\Anniversary2020\Block\Link" name="anniversary_menu_link" template="side/customer_account_menu_link.phtml" />
+        </referenceContainer>
+    </body>
+</page>

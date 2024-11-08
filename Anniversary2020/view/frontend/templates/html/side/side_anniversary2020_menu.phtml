@@ -1,0 +1,92 @@
+<?php /** @var \Hiperdino\Anniversary2020\Block\Link $block */ ?>
+
+<div class="side-menu side-menu-user-account flex-container flex-column">
+    <div class="side-menu-body flex-item">
+        <div class="side-menu-body--container flex-container flex-column">
+
+            <?= $block->getChildHtml('side_menu_controls') ?>
+
+            <div class="side-menu-user--wrapper flex-item">
+                <div class="side-menu-user--container flex-container flex-column ">
+                    <div class="flex-item">
+                        <div class="side-menu-user__primary flex-container flex-column">
+                            <a href="<?= $block->getAnniversaryUrl() ?>">
+                                <div class="side-menu-user__item flex-item">
+                                    <div class="category-group__header--container flex-container flex-row items-center">
+                                        <h2 class="item--wrapper sub-title flex-item"><?= $block->getAnniversary2020TitleMenu() ?></h2>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="<?= $block->getUrlAnniversary2020Participate() ?>" class="side-menu-user__item flex-item">
+                                <div class="category-group__header--container flex-container flex-row items-center">
+                                    <i class="category__icon cat-icon icon-aniv-como-participar-green flex-item"></i>
+                                    <div class="anniversary-menu-text flex-item flex-double"><?= __("Cómo participar") ?></div>
+                                </div>
+                            </a>
+
+                            <?php if ($block->isLoggedIn()): ?>
+                                <a href="<?= $block->getUrl('aniversario/rasca/registerrasca') ?>" class="side-menu-user__item flex-item">
+                                    <div class="category-group__header--container flex-container flex-row items-center">
+                                        <i class="category__icon cat-icon icon-aniv-intro-codigo-green flex-item menu__text"></i>
+                                        <div class="anniversary-menu-text flex-item flex-double"><?= $block->getRegisterTitle() ?></div>
+                                    </div>
+                                </a>
+                            <?php else: ?>
+                                <a href="<?= $block->getUrl('hdlogin/login/check', ['redirect' => 1]) ?>" class="side-menu-user__item flex-item">
+                                    <div class="category-group__header--container flex-container flex-row items-center">
+                                        <i class="category__icon cat-icon icon-aniv-intro-codigo-green flex-item menu__text"></i>
+                                        <div class="anniversary-menu-text flex-item flex-double"><?= $block->getRegisterTitle() ?></div>
+                                    </div>
+                                </a>
+                            <?php endif; ?>
+
+                            <?php if ($block->isLoggedIn()): ?>
+                                <a href="<?= $block->getUrlAnniversary2020SeeCodes() ?>" class="side-menu-user__item flex-item">
+                                    <div class="category-group__header--container flex-container flex-row items-center">
+                                        <i class="category__icon cat-icon icon2-anniversary flex-item fz-20"></i>
+                                        <div class="anniversary-menu-text flex-item flex-double"><?= __("Mis participaciones") ?></div>
+                                    </div>
+                                </a>
+                            <?php else: ?>
+                                <a href="<?= $block->getUrl('hdlogin/login/check', ['redirect' => 1]) ?>" class="side-menu-user__item flex-item">
+                                    <div class="category-group__header--container flex-container flex-row items-center">
+                                        <i class="category__icon cat-icon icon2-anniversary flex-item fz-20 color-green"></i>
+                                        <div
+                                            class="anniversary-menu-text flex-item flex-double"><?= __("Mis participaciones") ?></div>
+                                    </div>
+                                </a>
+                            <?php endif; ?>
+
+                            <a href="<?= $block->getUrlAnniversary2020Raffles() ?>" class="side-menu-user__item flex-item">
+                                <div class="category-group__header--container flex-container flex-row items-center">
+                                    <i class="category__icon cat-icon icon2-trebol flex-item fz-24 color-green"></i>
+                                    <div class="anniversary-menu-text flex-item flex-double"><?= __("Sorteos") ?></div>
+                                </div>
+                            </a>
+
+                            <a href="<?= $block->getUrlAnniversary2020DirectAwards() ?>" class="side-menu-user__item flex-item">
+                                <div class="category-group__header--container flex-container flex-row items-center">
+                                    <i class="category__icon cat-icon icon-aniv-premios-directos-green flex-item"></i>
+                                    <div class="anniversary-menu-text flex-item flex-double"><?= __("Premios directos") ?></div>
+                                </div>
+                            </a>
+
+                            <a href="<?= $block->getUrlAnniversary2020Legal() ?>" class="side-menu-user__item flex-item">
+                                <div class="category-group__header--container flex-container flex-row items-center">
+                                    <i class="category__icon cat-icon icon-aniv-legal--green flex-item"></i>
+                                    <div class="anniversary-menu-text flex-item flex-double"><?= __("Bases legales") ?></div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <?= $block->getChildHtml('side_menu_categories') ?>
+
+            <?= $block->getChildHtml('side_menu_sections') ?>
+        </div>
+    </div>
+</div>

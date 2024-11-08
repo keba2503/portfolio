@@ -1,0 +1,58 @@
+<?php
+
+/** @var \Hiperdino\Anniversary2020\Block\Success $block */
+?>
+
+<?php $rascaRegistered = $block->getCodeSession(); ?>
+
+<div class="page-corporate__headings">
+	<div class="container">
+		<div class="">
+			<div class="page-corporate__block anniversary__item flex-item">
+				<h2 class="header__text"><?= $block->getRegisterTitle() ?></h2>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-corporate__aniversario2020">
+	<div class="container">
+		<?php if ($block->isPromotionAvailable()) : ?>
+			<br>
+			<p class="text-center"><?= $escaper->escapeHtml(__('Tu código')); ?> <b><?= $rascaRegistered ?></b> <?= $escaper->escapeHtml(__('se ha registrado correctamente y estás inscrito en el sorteo de')); ?></p>
+			<div class="premios">
+				<p><b class="fz-24"><?= $block->getTitleWeek() ?></b></p>
+			</div>
+			<div class="anniversary2020-square-border">
+				<br>
+				<p class="text-center"><?= $escaper->escapeHtml(__('Inscribiéndote en el sorteo semanal también estarás inscrito en el')); ?> <b><?= $escaper->escapeHtml(__('gran sorteo final de')); ?> <?= $block->getFinalTitle() ?></b> </p>
+			</div>
+			<div class="flex-item other-code">
+				<hr class="line-code">
+				<div class="flex-container flex-column justify-center">
+					<div class="anniversary__button block--wrapper flex-item">
+						<a href="<?= $block->getUrl("aniversario/rasca/registerrasca") ?>" class="button button__complex has-border button__complex--modal button__complex--container has-margin-bottom flex-container flex-row justify-center items-center action_createAccount">
+							<div class="button__content flex-item">
+								<div class="button__content--container flex-container flex-row justify-center items-center">
+									<div class="button__text flex-item">
+										<?= __('Registrar otro código') ?>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		<?php else : ?>
+			<p class="text-center"><?= __($block->getTextOutPromo()) ?></p>
+		<?php endif; ?>
+	</div>
+</div>
+
+<script type="text/x-magento-init">
+	{
+        "*": {
+            "Hiperdino_Anniversary2020/js/anniversary" : {
+            }
+        }
+    }
+</script>

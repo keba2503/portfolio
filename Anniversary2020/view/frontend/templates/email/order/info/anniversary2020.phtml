@@ -1,0 +1,13 @@
+<?php /** @var \Hiperdino\Anniversary2020\Block\Order\Info\ $block */ ?>
+
+<?php if ($block->showAnniversary2020Info()): ?>
+    <?php $anniversaryTitle = $block->getTitle(); ?>
+    <?php $anniversaryUrlPromo = $block->getURLPromo(); ?>
+    <?php $anniversaryTextPromo = $block->getTextPromo(); ?>
+
+    <p style="font-family:'Source Sans Pro','Arial';font-size:18px;color:green"><?= __($anniversaryTitle) ?></p>
+
+    <p style="font-family: 'Source Sans Pro','sans-serif'; font-size: 16px; color: green;">
+        <a href="<?= $anniversaryUrlPromo ?>" target="_blank"><?= __($anniversaryTextPromo) ?></a>
+    </p>
+<?php endif; ?>

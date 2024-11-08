@@ -1,0 +1,157 @@
+<?php /** @var $block Hiperdino\Dinitos\Block\History; */ ?>
+
+<?php
+$showDinitosLink = $block->isDinitosLinkEnabled();
+$dinitosHistory = $block->getDinitosHistorySummary();
+$dinitosBalance = $block->getDinitosBalance();
+$dinitosHistoryTexts = $block->getDinitosHistoryTexts();
+$nextPackageToExpireQty = $block->getNextExpirableQty();
+$nextDinitosExpirationDate = $block->getNextExpirableDate();
+$nextDinitosExpirationDateShortned = $block->humaniseDate($nextDinitosExpirationDate);
+$dinitosCMSblockIdentifier = $dinitosHistoryTexts['cms_block_id_onboarding'];
+$historyFilters = $block->getHistoryFilters();
+$textWhenThereIsNoDinitosHistory = $dinitosHistoryTexts['empty_history_text'];
+?>
+
+<?php if ($showDinitosLink): ?>
+    <div class="user-account">
+        <div class="container">
+            <div class="row">
+                <div class="col offset-md-1">
+                    <div class="user-account__first-heading user-account__item flex-container mb-4">
+                        <h2 class="header__text flex-item"><?= __($dinitosHistoryTexts['main_title']) ?></h2>
+                    </div>
+                </div>
+            </div>
+            <?php if ($dinitosHistory): ?>
+                <div class="row mb-2">
+                    <div class="col offset-md-1">
+                        <div class="user-account__first-heading user-account__item mb-4">
+                            <div class="mb-2 mr-3 pb-0 d-flex">
+                                <h1 class="flex-item align-center color-green m-0 w-bold h1"><?= __('Saldo: ') ?><?= $dinitosBalance ?></h1>
+                            </div>
+                            <div class="flex-item">
+                                <div>
+                                    <?php if ($nextPackageToExpireQty && $nextDinitosExpirationDate): ?>
+                                        <span class="w-bold color-corp"><?= $nextPackageToExpireQty ?>&nbsp;Dinitos</span>
+                                        <span>&nbsp;<?= __($dinitosHistoryTexts['text_to_expire']) ?></span>
+                                        <span>&nbsp;<?= $nextDinitosExpirationDateShortned ?: $nextDinitosExpirationDate ?></span>
+                                    <?php endif ?>
+                                </div>
+                                <div>
+                                    <?php if ($dinitosCMSblockIdentifier): ?>
+                                        <a href="#" class="dinitos-info-btn"><?= __($dinitosHistoryTexts['text_url_onboarding']) ?></a>
+                                    <?php endif ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <?= $block->getBlockHtml('dinitos_info_modal') ?>
+
+                <div class="row">
+                    <div class="col offset-md-1">
+                        <div class="user-account__first-heading user-account__item flex-container">
+                            <h2 class="header__text flex-item"><?= __($dinitosHistoryTexts['title']) ?></h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="user-account__table dinitos-history">
+                    <div class="container">
+
+                        <?= $block->getBlockHtml('dinitos_history_filters') ?>
+
+                        <div class="row">
+                            <div class="order-table-container col-sm-12 col-md-10 table-container-headings offset-md-1">
+                                <div class="flex-container justify-between flex-wrap">
+                                    <div class="table-container__left flex-container justify-between">
+                                        <div class="table-container__left-item flex-item">
+                                            <div class="block__text flex-container items-center">
+                                                <div class="flex-item"><?= __('Fecha') ?></div>
+                                            </div>
+                                        </div>
+                                        <div class="table-container__left-item flex-item">
+                                            <div class="block__text flex-container items-center">
+                                                <div class="flex-item"><?= __('Concepto') ?></div>
+                                            </div>
+                                        </div>
+                                        <div class="table-container__left-item flex-item">
+                                            <div class="block__text flex-container items-center">
+                                                <div class="flex-item"><?= __('Dinitos') ?></div>
+                                            </div>
+                                        </div>
+                                        <div class="table-container__left-item flex-item">
+                                            <div class="block__text flex-container items-center">
+                                                <div class="flex-item"><?= __('Validez') ?></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-container__right flex-container justify-end">
+                                        <div class="table-container__right-item-item flex-item">
+                                            <div class="block__text flex-container items-center">
+                                                <div class="flex-item"><?= __('Saldo') ?></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php foreach ($dinitosHistory as $field): ?>
+
+                            <div class="row dinitos-movement <?= $block->applyTrasantionCSS($field['transaction_type']); ?> " data-date="<?= $block->dateShortener($field['created_at'], " ") ?? ''; ?>">
+                                <div class="order-table-container col-sm-12 col-md-10 offset-md-1">
+                                    <div class="flex-container justify-between flex-wrap">
+                                        <div class="table-container__left flex-container justify-between">
+                                            <div class="table-container__left-item flex-item">
+                                                <div class="block__text flex-container items-center">
+                                                    <div class="flex-item"><?= $block->humaniseDate($field['created_at'], " ") ?? ''; ?></div>
+                                                </div>
+                                            </div>
+                                            <div class="table-container__left-item flex-item">
+                                                <div class="block__text flex-container items-center">
+                                                    <div class="flex-item"><?= $field['concept'] ?? ''; ?></div>
+                                                </div>
+                                            </div>
+                                            <div class="table-container__left-item flex-item">
+                                                <div class="block__text flex-container items-center">
+                                                    <div class="flex-item qty-<?= $block->applyTrasantionCSS($field['transaction_type']); ?>"><?= $block->prependMinusSymbol($field['transaction_type']); ?><?= $field['dinitos_quantity']; ?></div>
+                                                </div>
+                                            </div>
+                                            <div class="table-container__left-item flex-item">
+                                                <div class="block__text flex-container items-center">
+                                                    <?php if (isset($field['expiration_date']) && $field['expiration_date']): ?>
+                                                        <div class="flex-item"><?= $block->humaniseDate($field['expiration_date']); ?></div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-container__right flex-container justify-end">
+                                            <div class="table-container__right-item flex-item">
+                                                <div class="block__text flex-container items-center">
+                                                    <div class="flex-item"><?= $field['dinitos_balance'] ?? ''; ?></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+
+                    </div>
+                </div>
+
+            <?php else: ?>
+                <div class="row">
+                    <div class="col offset-md-1">
+                        <div class="user-account__first-heading user-account__item flex-container mb-4">
+                            <span><?= $textWhenThereIsNoDinitosHistory ?></span>
+                        </div>
+                    </div>
+                </div>
+            <?php endif ?>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+
+        <move element="breadcrumbs" destination="bc-container" as="breadcrumbs" before="-"/>
+
+        <referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Home</item>
+                    <item name="label" xsi:type="string" translate="true">Home</item>
+                    <item name="link" xsi:type="string">/</item>
+                </argument>
+            </action>
+             <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Aniversario</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Aniversario</item>
+                    <item name="label" xsi:type="string" translate="true">Aniversario</item>
+                    <item name="link" xsi:type="string">/aniversario</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Inscribirme en un sorteo</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Inscribirme en un sorteo</item>
+                    <item name="label" xsi:type="string" translate="true">Inscribirme en un sorteo</item>
+                </argument>
+            </action>
+        </referenceBlock>
+
+        <referenceBlock name="side_menu">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">
+                    Hiperdino_Anniversary2020::html/side/side_anniversary2020_menu.phtml
+                </argument>
+            </action>
+        </referenceBlock>
+
+        <referenceContainer name="content">
+            <container name="bc-container-outer" as="bc-container-outer" htmlTag="div" htmlClass="container" before="-">
+                <container name="bc-container-inner" as="bc-container-inner" htmlTag="div" htmlClass="row" before="-">
+                    <container name="bc-container" as="bc-container" htmlTag="div"
+                               htmlClass="col-md-10 col-lg-8 col-xl-7" before="-"/>
+                </container>
+            </container>
+            <block class="Hiperdino\Anniversary2020\Block\Widget\RegisterRasca" name="hdanniversary2020_registerrasca"
+                   template="Hiperdino_Anniversary2020::widget/registerrasca.phtml" cacheable="false"/>
+        </referenceContainer>
+
+        <referenceContainer name="global-modals">
+            <block class="Hiperdino\Anniversary2020\Block\Widget\RegisterRasca" name="hdanniversary2020_where_rasca" template="Hiperdino_Anniversary2020::modal/whereModal.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

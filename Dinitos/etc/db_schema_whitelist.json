@@ -1,0 +1,95 @@
+{
+    "hiperdino_dinitos_history": {
+        "columns": {
+            "id": true,
+            "concept": true,
+            "increment_id": true,
+            "customer_id": true,
+            "created_at": true,
+            "dinitos_quantity": true,
+            "transaction_type": true,
+            "expiration_date": true
+        },
+        "index": {
+            "HIPERDINO_DINITOS_HISTORY_ID": true
+        },
+        "hiperdino_dinitos_rewards": {
+            "column": {
+                "id": true,
+                "stores": true,
+                "type": true,
+                "active": true,
+                "dinitos_qty": true,
+                "created_at": true,
+                "entity_identifier": true,
+                "name": true,
+                "checkout_text": true,
+                "cart_text": true,
+                "updated_at": true
+            },
+            "index": {
+                "HIPERDINO_DINITOS_REWARDS_ID": true
+            }
+        },
+        "column": {
+            "id": true,
+            "concept": true,
+            "increment_id": true,
+            "customer_id": true,
+            "created_at": true,
+            "dinitos_quantity": true,
+            "transaction_type": true,
+            "expiration_date": true,
+            "package_id": true,
+            "redeemed": true,
+            "expired": true,
+            "available_dinitos": true,
+            "updated_at": true,
+            "dinitos_balance": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "HIPERDINO_DINITOS_HISTORY_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true,
+            "FK_82373377DC9D8B937312E81DE16D4350": true
+        }
+    },
+    "hiperdino_dinitos_rewards": {
+        "column": {
+            "id": true,
+            "stores": true,
+            "type": true,
+            "entity_identifier": true,
+            "active": true,
+            "dinitos_qty": true,
+            "name": true,
+            "checkout_text": true,
+            "cart_text": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "HIPERDINO_DINITOS_REWARDS_ID": true
+        }
+    },
+    "hiperdino_dinitos_packages": {
+        "column": {
+            "id": true,
+            "increment_id": true,
+            "customer_id": true,
+            "dinitos_quantity": true,
+            "available_dinitos": true,
+            "redeemed": true,
+            "expired": true,
+            "expiration_date": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "HIPERDINO_DINITOS_PACKAGES_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "HIPERDINO_DINITOS_PACKAGES_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    }
+}

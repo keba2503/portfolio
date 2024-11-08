@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="extra_customer_account_links_mobile">
+            <block class="Hiperdino\Anniversary2020\Block\Link" name="anniversary_menu_mobile_link" template="side/customer_account_menu_mobile_link.phtml" />
+        </referenceContainer>
+
+        <referenceContainer name="extra_side_account_blocks_links_mobile">
+            <block class="Hiperdino\Anniversary2020\Block\Link" name="anniversary_menu_block_mobile_link" template="side/customer_account_menu_block_mobile_link.phtml" />
+        </referenceContainer>
+    </body>
+</page>

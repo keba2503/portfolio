@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <hiperdino_anniversary>
+            <general>
+                <promo_start>2019/09/23</promo_start>
+                <promo_end>2019/10/22</promo_end>
+                <euros>30</euros>
+                <rascas>1</rascas>
+                <rasca_label>Rasca y Gana</rasca_label>
+                <numero_productos>10</numero_productos>
+                <rascas_extra>1</rascas_extra>
+                <show_in_order_csv>0</show_in_order_csv>
+            </general>
+        </hiperdino_anniversary>
+    </default>
+</config>

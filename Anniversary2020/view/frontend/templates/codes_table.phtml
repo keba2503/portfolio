@@ -1,0 +1,114 @@
+<?php
+
+/** @var \Hiperdino\Anniversary2020\Block\Codes $block */ ?>
+
+
+<?php $rascasCollection = $block->getCustomerCodes()['participations']; ?>
+<?php $rascasNumberNotUse = count($block->getCustomerCodes(false)['participations']) ?>
+
+<div class="page-corporate__headings">
+    <div class="container-rascas<?php if ($rascasNumberNotUse <= 0) : ?> container-rascas__no-codes<?php endif; ?> container">
+        <div class="page-corporate__block anniversary__item flex-item">
+            <h2 class="header__text"> <?= __('Mis participaciones') ?></h2>
+        </div>
+        <?php if ($block->isAnniversaryEnabled()) : ?>
+            <?php if ($rascasNumberNotUse > 0) : ?>
+                <div class="rascas-no-usadas">
+                    <p class="number-rascas fz-32 text-center t-upper">
+                        <?= $escaper->escapeHtml(__('Tienes')); ?> <b><?= $rascasNumberNotUse ?> <?= $escaper->escapeHtml(__('participaciones pendientes')); ?></b>
+                    </p>
+                </div>
+
+                <a href='<?= $block->getScratchUrl() ?>' class="button button__complex button__complex--modal button__complex--container flex-container flex-row justify-center items-center w-350 m-auto">
+                    <div class="button__content flex-item">
+                        <div class="button__content--container flex-container flex-row justify-center items-center">
+                            <div class="button__text flex-item">
+                                <?= $block->getButtonScratchText() ?>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            <?php else : ?>
+                <div class="anniversary-codes-table__no-codes">
+                    <p class="no-codes"><?= __('No tienes participaciones pendientes') ?></p>
+                </div>
+            <?php endif; ?>
+        <?php else : ?>
+            <p class="text-center"><?= __($block->getTextOutPromo()) ?></p>
+        <?php endif; ?>
+    </div>
+</div>
+
+
+<div class="page-corporate__aniversario2020">
+    <div class="container">
+        <?php if ($block->isAnniversaryEnabled()) : ?>
+            <?php if (count($rascasCollection) > 0) : ?>
+                <div class="type-select type-select-modal block--wrapper flex-item">
+                    <label class="control-label" for="rascaCode"><?= __('Filtrar') ?></label>
+                    <div class="items--container flex-container flex-row justify-between normal-select">
+                        <div class="select__item item--wrapper flex-item">
+                            <select id="filterRascas" class="select2-normal select2" name="filterRascas">
+                                <option value="0"><?= $escaper->escapeHtml(__('Todas mis participaciones')); ?></option>
+                                <option value="1"><?= $escaper->escapeHtml(__('Participaciones con premio canjeado')); ?></option>
+                                <option value="2"><?= $escaper->escapeHtml(__('Participaciones con premio sin canjear')); ?></option>
+                                <option value="3"><?= $escaper->escapeHtml(__('Participaciones sin premio')); ?></option>
+                                <option value="4"><?= $escaper->escapeHtml(__('Participaciones no inscritas en el sorteo')); ?></option>
+                                <option value="5"><?= $escaper->escapeHtml(__('Participaciones inscritas en el sorteo')); ?></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="countList" class="anniversary-codes-table">
+                    <?php foreach ($rascasCollection as $key => $rasca) : ?>
+                        <?php $scratch = $rasca['scratch'] ?>
+                        <?php $raffle = $rasca['associated_raffle'] ?>
+                        <?php $participation_date = $rasca['participation_date'] ?>
+                        <?php $code_win = $rasca['coupon_code'] ?>
+                        <?php $has_prize = $rasca['has_prize'] ?>
+                        <?php $redeemed = $rasca['redeemed_prize'] ?>
+                        <?php $codeNum = $rasca['participation_id'] ?>
+                        <div class="code-<?= $codeNum ?> card-rasca<?= ($raffle) ? ' check' : ' no-check' ?><?= ($has_prize) ? (($redeemed) ? ' win-redeemed' : ' win-no-redeemed') : ' no-win' ?>">
+                            <div class="first">
+                                <span><i class="icon-<?= ($raffle) ? "check" : "pending" ?>"></i></span>
+                                <div>
+                                    <div><?= ($has_prize) ? ($redeemed) ? 'Premio canjeado' : "Premio no canjeado" : 'Participación sin premio' ?></div>
+                                    <div><?= ($raffle) ? $block->getCardRaffleText() : $block->getCardNotRaffleText() ?> </div>
+                                </div>
+                            </div>
+                            <div class="raffle" data-th="<?= __('Fecha de participación') ?>"><?= $escaper->escapeHtml(__('Fecha de participación:')); ?> <span class="participation-date"><?= ($participation_date) ? $participation_date : $block->_getCurrentDateTime() ?></span></div>
+                            <div data-th="<?= __('Numero de código') ?>"><?= $escaper->escapeHtml(__('Código:')); ?> <span class="rasca-code"><?= $codeNum ?></span></div>
+                            <div class="raffle<?= (!$raffle) ? " hide" : "" ?>" data-th="<?= __('Sorteo semanal') ?>"><?= $escaper->escapeHtml(__('Sorteo semanal:')); ?> <b><?= $block->getWeekTitle($block->getWeekIdFromRasca($codeNum)) ?></b></div>
+                            <div class="raffle<?= (!$raffle) ? " hide" : "" ?>" data-th="<?= __('Sorteo final') ?>"><?= $escaper->escapeHtml(__('Participando en el sorteo final')); ?> </div>
+                            <?php if (!$raffle) : ?>
+                                <div class="initial-without-raffle raffle<?= ($raffle) ? " hide" : "" ?>"><?= $escaper->escapeHtml(__('Inscríbete en un sorteo semanal y en el gran sorteo final')); ?></div>
+                                <button class="initial-without-raffle register-table-button raffle<?= ($raffle) ? " hide" : "" ?>" data-number="<?= $codeNum ?>">
+                                    <?= $block->getButtonText() ?>
+                                </button>
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="pages-input hide">
+                    <button class="page-rasca w-350" type="button" id="previous" value="previous"><?= $escaper->escapeHtml(__('Anterior')); ?></button>
+                    <button class="page-rasca w-350" type="button" id="next" value="next"><?= $escaper->escapeHtml(__('Siguiente')); ?></button>
+                </div>
+            <?php else : ?>
+                <div class="anniversary-codes-table__no-codes">
+                    <p class="no-codes"><?= __('No tienes códigos registrados') ?></p>
+                </div>
+            <?php endif; ?>
+        <?php else : ?>
+            <p class="text-center"><?= __($block->getTextOutPromo()) ?></p>
+        <?php endif; ?>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Hiperdino_Anniversary2020/js/registerRasca" : {
+            }
+        }
+    }
+</script>
